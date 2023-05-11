@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\BookResale.Api.props" />
+</Project>

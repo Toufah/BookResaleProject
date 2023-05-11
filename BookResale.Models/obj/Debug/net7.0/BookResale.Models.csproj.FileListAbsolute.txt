@@ -1,0 +1,12 @@
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Models\bin\Debug\net7.0\BookResale.Models.deps.json
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Models\bin\Debug\net7.0\BookResale.Models.dll
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Models\bin\Debug\net7.0\BookResale.Models.pdb
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Models\obj\Debug\net7.0\BookResale.Models.csproj.AssemblyReference.cache
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Models\obj\Debug\net7.0\BookResale.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Models\obj\Debug\net7.0\BookResale.Models.AssemblyInfoInputs.cache
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Models\obj\Debug\net7.0\BookResale.Models.AssemblyInfo.cs
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Models\obj\Debug\net7.0\BookResale.Models.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Models\obj\Debug\net7.0\BookResale.Models.dll
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Models\obj\Debug\net7.0\refint\BookResale.Models.dll
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Models\obj\Debug\net7.0\BookResale.Models.pdb
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Models\obj\Debug\net7.0\ref\BookResale.Models.dll
