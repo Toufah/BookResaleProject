@@ -1,46 +1,137 @@
 ﻿@page "/"
 @inherits BooksBase
 
-@if(Books == null)
-{
-    <h3>Loading Books ...</h3>
-}
-else
-{
-    <h3 class="mb-5">Books</h3>
+<div class="slogon">
+    <div class="ach-container">
+        <div class="slogon-text">
+            <p>buy <span class="ch-bb">&</span> sell your books <span class="ch-bb">online</span>.</p>
+            <a href="#">see more</a>
+        </div>
+        <div class="slogon-image">
+            <img src="/Images/Website-Images/glasses-over-books-01.svg" alt="books-image" />
+        </div>
+    </div>
+</div>
 
-    var booksCount = Books.Count();
 
-    @if(booksCount > 0)
-    {
-        const int booksPerRow = 4;
-        var booksRowList = new List<BookDto>();
-
-        @for(int i = 0; i < booksPerRow; i++)
+<div class="ds-books">
+    <div class="ach-container content">
+        @if (Books == null)
         {
-            booksRowList = Books.Skip(i * booksPerRow).Take(booksPerRow).ToList();
+            <h1>Loading Books ...</h1>
+        }
+        else
+        {
+            @*Start new arrivals*@
+            <div>
+                <a href="#" class="ct-title">New Arrivals</a>
 
-            <div class="row mt-3">
-                @foreach(var book in booksRowList)
+                @if (Books.Count() > 0)
                 {
-                    <div class="col-md-3 mb-2">
-                        <a href="#">
-                            <div class="card">
-                                <img class="img-thumbnail" src="@book.ImageURL">
-                                <div class="card-body">
-                                    <h5 class="card-title mb-3">
-                                        @book.Title;
-                                    </h5>
-                                    <p class="card-text">
-                                        <b>@book.Price.ToString("C")</b>
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
+                    var booksCount = Books.Count();
+                    const int booksPerRow = 6;
+                    var booksRowList = new List<BookDto>();
+                    <div class="book-card">
+                        @for (int i = 0; i < booksPerRow; i++)
+                        {
+                            booksRowList = Books.Skip(i * booksPerRow).Take(booksPerRow).ToList();
+                            int counter = 0;
+                            @foreach (var book in booksRowList)
+                            {
+                                if(counter < 5){
+                                    <a href="#">
+                                        <div class="img-cont">
+                                            <img class="image-thumbnail" src="@book.ImageURL" />
+                                        </div>
+                                        <div class="card-body">
+                                            <h6>@book.Title</h6>
+                                            <p><span>$</span>@book.Price</p>
+                                        </div>
+                                    </a>
+                                    counter++;
+                                }
+                            }
+
+                        }
                     </div>
                 }
             </div>
-        }
 
-    }
-}
+            @*End new arrivals*@
+            @*Start self-help*@
+
+            <div>
+                <a href="#" class="ct-title">New Arrivals</a>
+
+                @if (Books.Count() > 0)
+                {
+                    var booksCount = Books.Count();
+                    const int booksPerRow = 6;
+                    var booksRowList = new List<BookDto>();
+                    <div class="book-card">
+                        @for (int i = 0; i < booksPerRow; i++)
+                        {
+                            booksRowList = Books.Skip(i * booksPerRow).Take(booksPerRow).ToList();
+                            int counter = 0;
+                            @foreach (var book in booksRowList)
+                            {
+                                if (counter < 5)
+                                {
+                                    <a href="#">
+                                        <div class="img-cont">
+                                            <img class="image-thumbnail" src="@book.ImageURL" />
+                                        </div>
+                                        <div class="card-body">
+                                            <h6>@book.Title</h6>
+                                            <p><span>$</span>@book.Price</p>
+                                        </div>
+                                    </a>
+                                    counter++;
+                                }
+                            }
+
+                        }
+                    </div>
+                }
+            </div>
+            @*End self-help*@
+            @*Start recommended*@
+
+            <div>
+                <a href="#" class="ct-title">New Arrivals</a>
+
+                @if (Books.Count() > 0)
+                {
+                    var booksCount = Books.Count();
+                    const int booksPerRow = 6;
+                    var booksRowList = new List<BookDto>();
+                    <div class="book-card">
+                        @for (int i = 0; i < booksPerRow; i++)
+                        {
+                            booksRowList = Books.Skip(i * booksPerRow).Take(booksPerRow).ToList();
+                            int counter = 0;
+                            @foreach (var book in booksRowList)
+                            {
+                                if (counter < 5)
+                                {
+                                    <a href="#">
+                                        <div class="img-cont">
+                                            <img class="image-thumbnail" src="@book.ImageURL" />
+                                        </div>
+                                        <div class="card-body">
+                                            <h6>@book.Title</h6>
+                                            <p><span>$</span>@book.Price</p>
+                                        </div>
+                                    </a>
+                                    counter++;
+                                }
+                            }
+
+                        }
+                    </div>
+                }
+            </div>
+            @*End recommended*@
+        }
+    </div>
+</div>

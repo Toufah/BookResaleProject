@@ -90,3 +90,4 @@ C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Api\bin\Debug\
 C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Api\bin\Debug\net7.0\BookResale.Web.pdb
 C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Api\bin\Debug\net7.0\BookResale.Models.dll
 C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Api\bin\Debug\net7.0\BookResale.Models.pdb
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Api\bin\Debug\net7.0\libman.json

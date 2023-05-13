@@ -13,6 +13,62 @@
       "PackagePath": "staticwebassets\\BookResale.Web.styles.css"
     },
     {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\Images\\Logo\\Icon-01.png",
+      "PackagePath": "staticwebassets\\Images\\Logo\\Icon-01.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\Images\\Logo\\Icon-01.svg",
+      "PackagePath": "staticwebassets\\Images\\Logo\\Icon-01.svg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\Images\\Logo\\SecondPage-01.png",
+      "PackagePath": "staticwebassets\\Images\\Logo\\SecondPage-01.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\Images\\Logo\\SecondPage-01.svg",
+      "PackagePath": "staticwebassets\\Images\\Logo\\SecondPage-01.svg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\Images\\Logo\\SecondPageLogo-01.svg",
+      "PackagePath": "staticwebassets\\Images\\Logo\\SecondPageLogo-01.svg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\Images\\Website-Images\\glasses-over-books-01.svg",
+      "PackagePath": "staticwebassets\\Images\\Website-Images\\glasses-over-books-01.svg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\Images\\Website-Images\\wave.png",
+      "PackagePath": "staticwebassets\\Images\\Website-Images\\wave.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\Images\\self-help\\AtomicHabits.jpg",
+      "PackagePath": "staticwebassets\\Images\\self-help\\AtomicHabits.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\Images\\self-help\\MenAreFromMarsWomenAreFromVenus.jpg",
+      "PackagePath": "staticwebassets\\Images\\self-help\\MenAreFromMarsWomenAreFromVenus.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\Images\\self-help\\RichDadPoorDad.webp",
+      "PackagePath": "staticwebassets\\Images\\self-help\\RichDadPoorDad.webp"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\Images\\self-help\\SecretsOfTheMillionaireMind.jpg",
+      "PackagePath": "staticwebassets\\Images\\self-help\\SecretsOfTheMillionaireMind.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\Images\\self-help\\TheRichestManInBabylon.webp",
+      "PackagePath": "staticwebassets\\Images\\self-help\\TheRichestManInBabylon.webp"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\Images\\self-help\\TheSubtleArtOfNotGivingAFuck.webp",
+      "PackagePath": "staticwebassets\\Images\\self-help\\TheSubtleArtOfNotGivingAFuck.webp"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\Images\\self-help\\ThinkAndGrowRich.jpg",
+      "PackagePath": "staticwebassets\\Images\\self-help\\ThinkAndGrowRich.jpg"
+    },
+    {
       "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\Images\\test1.jpg",
       "PackagePath": "staticwebassets\\Images\\test1.jpg"
     },
@@ -29,12 +85,48 @@
       "PackagePath": "staticwebassets\\css\\app.css"
     },
     {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\css\\bootstrap\\bootstrap-icons\\font\\bootstrap-icons.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap-icons\\font\\bootstrap-icons.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\css\\bootstrap\\bootstrap-icons\\font\\bootstrap-icons.json",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap-icons\\font\\bootstrap-icons.json"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\css\\bootstrap\\bootstrap-icons\\font\\bootstrap-icons.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap-icons\\font\\bootstrap-icons.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\css\\bootstrap\\bootstrap-icons\\font\\fonts\\bootstrap-icons.woff",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap-icons\\font\\fonts\\bootstrap-icons.woff"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\css\\bootstrap\\bootstrap-icons\\font\\fonts\\bootstrap-icons.woff2",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap-icons\\font\\fonts\\bootstrap-icons.woff2"
+    },
+    {
       "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
     },
     {
       "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\css\\custom-styling\\Footer.css",
+      "PackagePath": "staticwebassets\\css\\custom-styling\\Footer.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\css\\custom-styling\\Header.css",
+      "PackagePath": "staticwebassets\\css\\custom-styling\\Header.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\css\\custom-styling\\books.css",
+      "PackagePath": "staticwebassets\\css\\custom-styling\\books.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\css\\custom-styling\\general.css",
+      "PackagePath": "staticwebassets\\css\\custom-styling\\general.css"
     },
     {
       "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\css\\open-iconic\\FONT-LICENSE",

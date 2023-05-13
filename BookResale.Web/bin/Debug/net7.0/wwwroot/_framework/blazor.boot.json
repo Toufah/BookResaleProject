@@ -199,14 +199,14 @@
       "netstandard.dll": "sha256-OYYuPT3JUknj4LdYIa58zF7kDB3tCnLzjCSuhEjtKXM=",
       "System.Private.CoreLib.dll": "sha256-EVS7zPxPV\/41g2mzPwdXtwiigWxI\/SeAHme1IgyD6tc=",
       "BookResale.Models.dll": "sha256-zubrz\/p1o4IFFRfJDhs8krz83q9bgpak1jlmEQevyh0=",
-      "BookResale.Web.dll": "sha256-HqqoU8uF35hYSRss1kepGQUUyb\/grALls2jy2pivpp0="
+      "BookResale.Web.dll": "sha256-8EDUYYpxJI2HadTKXsuBzYvjaY7EpjzdlKVD4nHiNxc="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
       "BookResale.Models.pdb": "sha256-Z0Ojfi2gzbqjyLD1vtklXE6+FieExaN8Ao2P30l6iuA=",
-      "BookResale.Web.pdb": "sha256-Cj1BBratZlwQ6ap49\/rbNrS0eVnMTI2jDR4zdIJdcDk="
+      "BookResale.Web.pdb": "sha256-+kCJZzPlWbH5HaQqqqRx\/l\/wUE2+UoLjKvNnlmhM71w="
     },
     "runtime": {
       "dotnet.7.0.5.7xykp5whe1.js": "sha256-codB25EodaFEP43MDCfMBuKXU4LqurUKnQrpoMIFnPs=",

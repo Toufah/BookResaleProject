@@ -834,3 +834,4 @@ C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\bin\Debug\
 C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\bin\Debug\net7.0\BookResale.Models.pdb
 C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\obj\Debug\net7.0\build-gz\THhQKrO+.gz
 C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\obj\Debug\net7.0\build-gz\TdP6L7U7.gz
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\bin\Debug\net7.0\libman.json

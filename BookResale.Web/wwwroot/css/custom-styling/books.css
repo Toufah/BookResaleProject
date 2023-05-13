@@ -1,0 +1,112 @@
+﻿.slogon {
+    background-color: var(--orange);
+    color: #ffffff;
+    padding: 20px 0;
+}
+
+.slogon > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.slogon-text {
+    font-size: 2rem;
+}
+
+.slogon-text > p {
+    margin-bottom: -20px;
+}
+
+.ch-bb {
+        color: var(--baby-blue);
+    }
+
+.slogon-text a {
+    color: inherit;
+    font-size: 0.7rem;
+    margin-top: -10px;
+}
+
+.slogon-image {
+    width: 200px;
+    margin-right: 10%;
+}
+
+.slogon-image img {
+    width: 100%;
+}
+
+/*Body*/
+
+.ds-books{
+    margin: 20px 0;
+}
+
+.content {
+    padding: 0 20px;
+}
+
+.content > div {
+    position: relative
+}
+
+.content > div::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 0.5px;
+    background-color: var(--bronze);
+    opacity: 0.2;
+    top: 40px
+}
+
+.ct-title {
+    font-size: 1.5rem;
+    color: var(--bronze);
+    transition: 0.2s;
+    position: relative;
+}
+
+.ct-title:hover {
+    color: var(--orange);
+}
+
+.book-card {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: 20px;
+    margin: 20px 0;
+}
+
+.book-card > a {
+    width: 10rem;
+    height: fit-content;
+    overflow: hidden;
+    border-radius: 2px;
+    text-align: center;
+    color: initial;
+    font-weight: 600;
+    transition: 0.2s
+}
+
+.book-card > a:hover {
+    transform: translateY(-7px);
+}
+
+.book-card > a h6 {
+    font-weight: inherit
+}
+
+.book-card > a span {
+    color: var(--orange)
+}
+
+.img-cont{
+    width: 100%
+}
+
+.image-thumbnail {
+    width: 100%;
+}

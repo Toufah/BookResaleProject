@@ -1,0 +1,29 @@
+﻿.ach-container {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*Small Screens*/
+@media (min-width : 768px) {
+    .ach-container {
+        width: 800px;
+    }
+}
+
+/*Medium Screens*/
+@media (min-width : 992px) {
+    .ach-container {
+        width: 1000px;
+    }
+}
+
+/*Large Screens*/
+@media (min-width : 1200px) {
+    .ach-container {
+        width: 1200px;
+    }
+}
+
+/* End global style */

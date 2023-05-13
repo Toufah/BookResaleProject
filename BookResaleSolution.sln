@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookResale.Web", "BookResal
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookResale.Api", "BookResale.Api\BookResale.Api.csproj", "{81CB7F0E-8A96-4D2E-AF5D-8BF35E5E6A5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookResale.Models", "BookResale.Models\BookResale.Models.csproj", "{99965FB6-3608-4BE6-A88D-366E29C9E28D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookResale.Models", "BookResale.Models\BookResale.Models.csproj", "{99965FB6-3608-4BE6-A88D-366E29C9E28D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

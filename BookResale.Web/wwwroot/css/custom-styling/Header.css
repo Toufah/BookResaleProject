@@ -1,0 +1,121 @@
+﻿header::before {
+    content: '';
+    position: absolute;
+    background-color: var(--baby-blue);
+    width: 100%;
+    height: 5px;
+}
+
+.static-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.second-page-logo-container {
+    padding: 5px;
+}
+
+.second-page-logo {
+    width: 250px
+}
+
+.search-bar {
+    width: 40%;
+    position: relative;
+}
+
+#search-bar {
+    outline: none;
+    border: solid var(--lookalike-gray) 1px;
+    border-radius: 1px;
+    padding: 5px 30px 5px 5px;
+    width: 100%;
+}
+
+.search-icon-container {
+    width: fit-content;
+    position: absolute;
+    right: 10px;
+    top: calc(50% - 15px);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.sign-in-add-to-cart-container {
+    font-size: 0.9rem;
+    position: relative;
+}
+
+.sign-in-add-to-cart-container::after {
+    content: "";
+    position: absolute;
+    height: 80%;
+    width: 1px;
+    background-color: var(--lookalike-gray);
+    top: 50%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+}
+
+.sign-in {
+    color: var(--lookalike-gray);
+    margin-right: 5px;
+    transition: 0.2s;
+}
+
+    .sign-in:hover, .nav-menu li a:hover{
+        color: var(--orange);
+    }
+
+.cart-container {
+        margin-left: 5px;
+    }
+
+.cart-text {
+    font-weight: 900;
+    color: initial;
+    margin-right: -4px;
+}
+
+.cart-icon {
+    color: var(--orange);
+    font-size: 25px;
+    position: relative;
+    top: 2px;
+}
+
+.nav-menu {
+    padding: 0;
+    color: var(--lookalike-gray);
+}
+
+.nav-menu li {
+    display: inline-block;
+    font-size: 0.9rem;
+    margin-right: 25px;
+    position: relative;
+}
+
+.nav-menu li a{
+    color: inherit;
+    transition: 0.2s;
+}
+
+.nav-menu .after-arrow::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    top: 50%;
+    right: -12px;
+    border: solid 1px;
+    border-color: transparent var(--lookalike-gray) var(--lookalike-gray) transparent;
+    transform: translateY(-50%) rotate(45deg);
+    transition: 0.2s;
+}
+
+.nav-menu .after-arrow:hover::after{
+    border-color: transparent var(--orange) var(--orange) transparent;
+}

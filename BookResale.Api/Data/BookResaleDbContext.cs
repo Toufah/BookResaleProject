@@ -18,7 +18,7 @@ namespace BookResale.Api.Data
                 Title = "The subtle art of not giving a f*ck",
                 AuthorId = 1,
                 Description = "A self-help book written by Mark Manson. The book challenges traditional self-help advice by arguing that the key to a fulfilling life is not to try to be happy all the time, but to embrace the inevitable struggles and failures that come with life.",
-                ImageURL = "/Images/Beauty/theSubtleArtOfNotGivingAF*ck.png",
+                ImageURL = "/Images/self-help/TheSubtleArtOfNotGivingAFuck.webp",
                 Price = 100,
                 StateId = 1,
                 Qty = 12,
@@ -27,11 +27,11 @@ namespace BookResale.Api.Data
             });
             modelBuilder.Entity<Book>().HasData(new Book
             {
-                Id = 5687421938751,
+                Id = 1687421938751,
                 Title = "Rich dad poor dad",
                 AuthorId = 2,
                 Description = "A personal finance book written by Robert Kiyosaki. The book is structured as a series of lessons that Kiyosaki learned from his RICH DAD and his POOR DAD, who had contrasting attitudes towards money and wealth.",
-                ImageURL = "/Images/Beauty/RichDadPoorDad.png",
+                ImageURL = "/Images/self-help/RichDadPoorDad.webp",
                 Price = 80,
                 StateId = 0,
                 Qty = 10,
@@ -40,11 +40,37 @@ namespace BookResale.Api.Data
             });
             modelBuilder.Entity<Book>().HasData(new Book
             {
-                Id = 5687421875751,
+                Id = 1687421875751,
                 Title = "The Richest Man in Babylon",
                 AuthorId = 1,
                 Description = "A classic personal finance book written by   . The book uses parables set in ancient Babylon to teach timeless lessons about money management and wealth creation.",
-                ImageURL = "/Images/Beauty/TheRichestManInBabylon.png",
+                ImageURL = "/Images/self-help/TheRichestManinBabylon.webp",
+                Price = 120,
+                StateId = 0,
+                Qty = 8,
+                CategoryId = 2
+
+            });
+            modelBuilder.Entity<Book>().HasData(new Book
+            {
+                Id = 9999999999999,
+                Title = "Test",
+                AuthorId = 1,
+                Description = "Test.",
+                ImageURL = "/Images/self-help/TheRichestManinBabylon.webp",
+                Price = 120,
+                StateId = 0,
+                Qty = 8,
+                CategoryId = 2
+
+            });
+            modelBuilder.Entity<Book>().HasData(new Book
+            {
+                Id = 9999999999998,
+                Title = "Test",
+                AuthorId = 1,
+                Description = "Test.",
+                ImageURL = "/Images/self-help/TheRichestManinBabylon.webp",
                 Price = 120,
                 StateId = 0,
                 Qty = 8,
