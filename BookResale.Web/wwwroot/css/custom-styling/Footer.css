@@ -26,7 +26,7 @@
 }
 
 .footInf ul li:hover {
-    color: var(--baby-blue)
+    font-weight: 700;
 }
 
 .footInf ul li a {

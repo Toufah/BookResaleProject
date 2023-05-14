@@ -6,9 +6,11 @@ namespace BookResale.Api.Repositories.Contracts
     {
         Task<IEnumerable<Book>> GetBooks();
         Task<IEnumerable<BookCategory>> GetCategories();
-        Task<IEnumerable<Book>> GetBook(int id);
-        Task<IEnumerable<BookCategory>> GetCategorie(int id);
+        Task<Book> GetBook(long id);
+        Task<BookCategory> GetCategorie(int id);
         Task<IEnumerable<Author>> GetAuthors();
+        Task<Author> GetAuthor(int id);
         Task<IEnumerable<BookState>> GetBookStates();
+        Task<BookState> GetBookState(int id);
     }
 }

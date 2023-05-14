@@ -1,0 +1,128 @@
+﻿.top-line {
+    position: relative
+}
+.top-line::before, .sec-book-det-cont::after, .recommended::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--bronze);
+    width: 100%;
+    height: 0.5px;
+    opacity: 0.2
+}
+.dt-bk-pg {
+    padding: 20px 40px !important;
+}
+.main-book-det-cont {
+    display: flex;
+    gap: 30px;
+    justify-content: left;
+    margin: 0 0 50px 0;
+    padding: 0 20px;
+}
+.main-book-det-cont .book-thumbnail {
+    width: 20%;
+    padding: 2px;
+    box-shadow: 0 0 8px -4px #000;
+    border-radius: 5px;
+}
+.main-book-det-cont .book-thumbnail img {
+    width: 100%;
+    border-radius: inherit;
+}
+.book-details {
+    width: 80%
+}
+.book-details .imp-inf {
+    position: relative;
+    margin-bottom: 15px
+}
+.imp-inf::after {
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: 0.5px;
+    background-color: var(--bronze);
+    bottom: -7px;
+    left: 0;
+    opacity: 0.5
+}
+.imp-inf h4 {
+    font-weight: 700;
+}
+.ch-org {
+    color: var(--orange);
+}
+.price-inf h4 {
+    font-weight: 700;
+}
+.take-action a {
+    margin-right: 5px
+}
+.ach-btn {
+    width: 120px;
+    height: 40px;
+    display: inline-block;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+    border-radius: 3px;
+    transition: 0.2s;
+}
+.ach-btn:hover {
+    color: #fff !important;
+}
+.or-btn {
+    background-color: var(--orange);
+}
+    .or-btn:hover {
+        background-color: #d54f23;
+    }
+.bb-btn {
+    background-color: var(--lookalike-gray);
+}
+.bb-btn:hover {
+    background-color: #717171;
+}
+.price-inf > a {
+    font-size: 0.8rem;
+    color: var(--bronze);
+    transition: 0.2s;
+}
+.price-inf > a:hover {
+    color: var(--orange)
+}
+.sec-book-det-cont{
+    margin-bottom: 20px;
+    position: relative;
+}
+.sec-book-det-cont::after{
+    top: 38px
+}
+.dt-ct-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    box-shadow: inset 0 0 0 0 var(--orange);
+    color: #000;
+    padding: 0 .25rem;
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+    width: fit-content;
+}
+.dt-ct-title:hover{
+    color: #fff;
+  box-shadow: inset 200px 0 0 0 var(--orange);
+}
+.about-book h6, .book-desc h6{
+    font-weight: 700;
+}
+.about-book ul li{
+    list-style: circle;
+}
+.recommended {
+    position: relative;
+}
+.recommended::after {
+    top: 40px
+}

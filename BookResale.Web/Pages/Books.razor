@@ -18,13 +18,13 @@
     <div class="ach-container content">
         @if (Books == null)
         {
-            <h1>Loading Books ...</h1>
+            <LoadingAnimation/>
         }
         else
         {
             @*Start new arrivals*@
             <div>
-                <a href="#" class="ct-title">New Arrivals</a>
+                <a href="#" class="ct-title">new arrivals</a>
 
                 @if (Books.Count() > 0)
                 {
@@ -39,7 +39,7 @@
                             @foreach (var book in booksRowList)
                             {
                                 if(counter < 5){
-                                    <a href="#">
+                                    <a href="/BookDetails/@book.Id">
                                         <div class="img-cont">
                                             <img class="image-thumbnail" src="@book.ImageURL" />
                                         </div>
@@ -61,7 +61,7 @@
             @*Start self-help*@
 
             <div>
-                <a href="#" class="ct-title">New Arrivals</a>
+                <a href="#" class="ct-title">self-help</a>
 
                 @if (Books.Count() > 0)
                 {
@@ -75,9 +75,9 @@
                             int counter = 0;
                             @foreach (var book in booksRowList)
                             {
-                                if (counter < 5)
+                                if (counter < 5 && book.CategoryId == 1)
                                 {
-                                    <a href="#">
+                                    <a href="/BookDetails/@book.Id">
                                         <div class="img-cont">
                                             <img class="image-thumbnail" src="@book.ImageURL" />
                                         </div>
@@ -98,7 +98,7 @@
             @*Start recommended*@
 
             <div>
-                <a href="#" class="ct-title">New Arrivals</a>
+                <a href="#" class="ct-title">recommended</a>
 
                 @if (Books.Count() > 0)
                 {
@@ -114,7 +114,7 @@
                             {
                                 if (counter < 5)
                                 {
-                                    <a href="#">
+                                    <a href="/BookDetails/@book.Id">
                                         <div class="img-cont">
                                             <img class="image-thumbnail" src="@book.ImageURL" />
                                         </div>

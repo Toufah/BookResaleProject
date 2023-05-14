@@ -14,15 +14,22 @@ namespace BookResale.Api.Repositories
             this.bookResaleDbContext = bookResaleDbContext;
         }
 
+        public async Task<Author> GetAuthor(int id)
+        {
+            var author = await this.bookResaleDbContext.Authors.SingleOrDefaultAsync(a => a.Id == id);
+            return author;
+        }
+
         public async Task<IEnumerable<Author>> GetAuthors()
         {
             var authors = await this.bookResaleDbContext.Authors.ToListAsync();
             return authors;
         }
 
-        public Task<IEnumerable<Book>> GetBook(int id)
+        public async Task<Book> GetBook(long id)
         {
-            throw new NotImplementedException();
+            var book = await this.bookResaleDbContext.Books.FindAsync(id);
+            return book;
         }
 
         public async Task<IEnumerable<Book>> GetBooks()
@@ -31,15 +38,22 @@ namespace BookResale.Api.Repositories
             return (IEnumerable<Book>)books;
         }
 
+        public async Task<BookState> GetBookState(int id)
+        {
+            var bookState = await this.bookResaleDbContext.BookStates.SingleOrDefaultAsync(s => s.Id == id);
+            return bookState;
+        }
+
         public async Task<IEnumerable<BookState>> GetBookStates()
         {
             var states = await this.bookResaleDbContext.BookStates.ToListAsync();
             return states;
         }
 
-        public Task<IEnumerable<BookCategory>> GetCategorie(int id)
+        public async Task<BookCategory> GetCategorie(int id)
         {
-            throw new NotImplementedException();
+            var bookCategory = await this.bookResaleDbContext.BookCategories.SingleOrDefaultAsync(c => c.Id == id);
+            return bookCategory;
         }
 
         public async Task<IEnumerable<BookCategory>> GetCategories()

@@ -1,0 +1,89 @@
+﻿@page "/BookDetails/{Id:long}"
+@inherits BookDetailsBase
+@inject NavigationManager NavManager
+
+<div class="ds-books top-line">
+    <div class="ach-container dt-bk-pg">
+        @if(Book == null && ErrorMessage == null)
+        {
+            <LoadingAnimation />
+        }
+        else if(ErrorMessage != null)
+        {
+            <DisplayError @ErrorMessage="@ErrorMessage"></DisplayError>
+        }
+        else
+        {
+            <div class="main-book-det-cont">
+                <div class="book-thumbnail">
+                    <img src="@Book.ImageURL" />
+                </div>
+                <div class="book-details">
+                    <div class="imp-inf">
+                        <h4>@Book.Title</h4>
+                        <p>by <b class="ch-org">@Book.AuthorLastName @Book.AuthorFirstName</b></p>
+                        <p>category: <b class="ch-org">@Book.CategoryName</b></p>
+                    </div>
+                    <div class="price-inf">
+                        <p>condition: <b class="ch-org">@Book.State</b></p>
+                        <h4>@Book.Price.ToString("C")&nbsp;</h4>
+                        <div class="take-action">
+                            <a href="#" class="or-btn ach-btn">add to cart</a>
+                            <a href="#" class="bb-btn ach-btn">buy now</a>
+                        </div>
+                        <a href="#">view all available books for this title.</a>
+                    </div>
+                </div>
+            </div>
+            <div class="sec-book-det-cont">
+                <div class="about-book">
+                    <h5 class="dt-ct-title">about this book</h5>
+                    <h6>details:</h6>
+                    <ul>
+                        <li>ISBN-13: @Book.Id</li>
+                        <li>available: @Book.Qty</li>
+                        <li>category: @Book.CategoryName</li>
+                    </ul>
+                </div>
+                <div class="book-desc">
+                    <h6>description:</h6>
+                    @Book.Description
+                </div>
+            </div>
+            <div class="recommended">
+                <a href="#" class="dt-ct-title rec">recommended</a>
+
+                @if (Books.Count() > 0)
+                {
+                    var booksCount = Books.Count();
+                    const int booksPerRow = 6;
+                    var booksRowList = new List<BookDto>();
+                    <div class="book-card">
+                        @for (int i = 0; i < booksPerRow; i++)
+                        {
+                            booksRowList = Books.Skip(i * booksPerRow).Take(booksPerRow).ToList();
+                            int counter = 0;
+                            @foreach (var book in booksRowList)
+                            {
+                                if (counter < 5 && book.CategoryId == Book.CategoryId && book.Id != Book.Id)
+                                {
+                                    <a href="/BookDetails/@book.Id" @onclick=@(() => NavManager.NavigateTo($"/BookDetails/{book.Id}"))>
+                                        <div class="img-cont">
+                                            <img class="image-thumbnail" src="@book.ImageURL" />
+                                        </div>
+                                        <div class="card-body">
+                                            <h6>@book.Title</h6>
+                                            <p><span>$</span>@book.Price</p>
+                                        </div>
+                                    </a>
+                                    counter++;
+                                }
+                            }
+
+                        }
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>

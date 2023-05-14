@@ -1,0 +1,28 @@
+﻿.load-cont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 625px;
+}
+.loading-logo {
+    width: 250px;
+    animation: loading 1s ease-in-out 3s infinite;
+    position: relative;
+    perspective: 800px;
+    transform-style: preserve-3d;
+}
+@keyframes loading{
+    0% {
+        transform: scaleX(0);
+    }
+
+    25% {
+        transform: scaleX(1);
+    }
+    75% {
+        transform: scaleX(1);
+    }
+    100% {
+        transform: scaleX(0);
+    }
+}

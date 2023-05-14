@@ -34,5 +34,28 @@ namespace BookResale.Api.Extensions
 
                     }).ToList();
         }
+
+        public static BookDto ConvertToDto(this Book book,
+                                                        BookCategory bookcategorie,
+                                                        Author bookAuthor,
+                                                        BookState bookState)
+        {
+            return new BookDto
+                    {
+                        Id = book.Id,
+                        Title = book.Title,
+                        Description = book.Description,
+                        AuthorId = book.AuthorId,
+                        AuthorFirstName = bookAuthor.FirstName,
+                        AuthorLastName = bookAuthor.LastName,
+                        ImageURL = book.ImageURL,
+                        CategoryId = book.CategoryId,
+                        CategoryName = bookcategorie.CategoryName,
+                        StateId = book.StateId,
+                        State = bookState.State,
+                        Price = book.Price,
+                        Qty = book.Qty
+                    };
+        }
     }
 }

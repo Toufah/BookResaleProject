@@ -24,6 +24,10 @@
     <link href="css/custom-styling/books.css" rel="stylesheet" />
     <!-- Footer style sheet -->
     <link href="css/custom-styling/Footer.css" rel="stylesheet" />
+    <!-- Book details style sheet -->
+    <link href="css/custom-styling/BookDetails.css" rel="stylesheet" />
+    <!-- Loading Animation style sheet -->
+    <link href="css/custom-styling/LoadingAnimation.css" rel="stylesheet" />
     <style>
         * {
             font-family: 'Open Sans', sans-serif;
@@ -48,16 +52,20 @@
         .cl-red {
             color: red;
         }
+
+        p {
+            margin: 0
+        }
     </style>
 </head>
 
 <body>
     <div id="app">
-        <svg class="loading-progress">
-            <circle r="40%" cx="50%" cy="50%" />
-            <circle r="40%" cx="50%" cy="50%" />
-        </svg>
-        <div class="loading-progress-text"></div>
+        <span class="load-cont">
+            <span>
+                <img src="/Images/Logo/SecondPage-01.svg" class="loading-logo" />
+            </span>
+        </span>
     </div>
 
     <div id="blazor-error-ui">
