@@ -7,8 +7,11 @@
 <p role="status">Current count: @currentCount</p>
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<input type="text" @bind-value="myProperty" For="@(() => myProperty)"/>
+<h1>@myProperty</h1>
 
 @code {
+    private int myProperty;
     private int currentCount = 0;
 
     private void IncrementCount()

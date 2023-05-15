@@ -1,6 +1,7 @@
 using BookResale.Api.Data;
 using BookResale.Api.Repositories;
 using BookResale.Api.Repositories.Contracts;
+using BookResale.Api.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Net.Http.Headers;
@@ -18,6 +19,7 @@ builder.Services.AddDbContextPool<BookResaleDbContext>(options => options.UseSql
 
 builder.Services.AddScoped<BookRepository>();
 builder.Services.AddScoped<IBookRepository, BookRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 
 var app = builder.Build();

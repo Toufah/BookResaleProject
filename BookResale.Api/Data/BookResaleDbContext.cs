@@ -6,8 +6,8 @@ namespace BookResale.Api.Data
     public class BookResaleDbContext:DbContext
     {
         public BookResaleDbContext(DbContextOptions<BookResaleDbContext> options) : base(options){ }
-        
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+
+        /*protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
@@ -194,7 +194,7 @@ namespace BookResale.Api.Data
                 Id = 3,
                 State = "Old"
             });
-        }
+        }*/
 
         public DbSet<User> Users { get; set; }
         public DbSet<Book> Books { get; set; }

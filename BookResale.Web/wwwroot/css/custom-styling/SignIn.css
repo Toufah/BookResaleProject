@@ -1,0 +1,42 @@
+﻿.form-cont {
+    height: 648px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+.form-cont > div {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    width: 70%;
+    margin: 0 auto;
+    border: solid 0.5px var(--lookalike-gray);
+    border-radius: 3px;
+    padding: 30px;
+    position: relative;
+}
+.form-cont > div::after{
+    content: '';
+    height: 80%;
+    width: 0.5px;
+    background-color: var(--lookalike-gray);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%);
+}
+.form-title {
+    color: var(--bronze);
+    margin: 0
+}
+.form-cont > div .sign-in-cont {
+    width: 50%;
+}
+.form-cont > div .register-cont {
+    width: 50%
+}
+
+.mud-input {
+    border-bottom: 0.5px var(--lookalike-gray) solid;
+    margin: 10px 0;
+}

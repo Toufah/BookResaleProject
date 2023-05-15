@@ -57,5 +57,6 @@ namespace BookResale.Api.Extensions
                         Qty = book.Qty
                     };
         }
+
     }
 }

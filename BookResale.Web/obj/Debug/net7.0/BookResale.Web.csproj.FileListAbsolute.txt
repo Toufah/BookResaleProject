@@ -835,3 +835,11 @@ C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\bin\Debug\
 C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\obj\Debug\net7.0\build-gz\THhQKrO+.gz
 C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\obj\Debug\net7.0\build-gz\TdP6L7U7.gz
 C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\bin\Debug\net7.0\libman.json
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\bin\Debug\net7.0\wwwroot\_framework\MudBlazor.dll
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\bin\Debug\net7.0\wwwroot\_framework\MudBlazor.dll.gz
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\bin\Debug\net7.0\MudBlazor.dll
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\obj\Debug\net7.0\build-gz\In2HRSbS.gz
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\bin\Debug\net7.0\wwwroot\_framework\FluentValidation.dll
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\bin\Debug\net7.0\wwwroot\_framework\FluentValidation.dll.gz
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\bin\Debug\net7.0\FluentValidation.dll
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\obj\Debug\net7.0\build-gz\2thP9V17.gz
