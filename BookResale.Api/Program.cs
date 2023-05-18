@@ -2,6 +2,7 @@ using BookResale.Api.Data;
 using BookResale.Api.Repositories;
 using BookResale.Api.Repositories.Contracts;
 using BookResale.Api.Services;
+using BookResale.Api.Shared.Settings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Net.Http.Headers;
@@ -20,6 +21,12 @@ builder.Services.AddDbContextPool<BookResaleDbContext>(options => options.UseSql
 builder.Services.AddScoped<BookRepository>();
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<CartItemsRepository>();
+builder.Services.AddScoped<ICartItemsRepository, CartItemsRepository>();
+builder.Services.AddScoped<FilterRepository>();
+builder.Services.AddScoped<IFilterRepository, FilterRepository>();
+
+builder.Services.Configure<TokenSettings>(builder.Configuration.GetSection(nameof(TokenSettings)));
 
 
 var app = builder.Build();

@@ -58,5 +58,25 @@ namespace BookResale.Api.Extensions
                     };
         }
 
+
+        public static List<CartItemDto> ConvertToDto(this List<Book> books)
+        {
+            var cartItems = new List<CartItemDto>();
+            foreach (var book in books)
+            {
+                var cartItem = new CartItemDto
+                {
+                    BookId = book.Id,
+                    BookTitle = book.Title,
+                    BookImageURL = book.ImageURL,
+                    Price = book.Price,
+                    Qty = book.Qty
+                };
+                cartItems.Add(cartItem);
+            }
+            return cartItems;
+        }
+
+
     }
 }

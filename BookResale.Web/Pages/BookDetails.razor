@@ -28,8 +28,8 @@
                         <p>condition: <b class="ch-org">@Book.State</b></p>
                         <h4>@Book.Price.ToString("C")&nbsp;</h4>
                         <div class="take-action">
-                            <a href="#" class="or-btn ach-btn">add to cart</a>
-                            <a href="#" class="bb-btn ach-btn">buy now</a>
+                            <a style="cursor: pointer" @onclick="async () => await AddToCart()" class="or-btn ach-btn">add to cart</a>
+                            <a style="cursor: pointer" class="bb-btn ach-btn">buy now</a>
                         </div>
                         <a href="#">view all available books for this title.</a>
                     </div>
@@ -41,7 +41,18 @@
                     <h6>details:</h6>
                     <ul>
                         <li>ISBN-13: @Book.Id</li>
-                        <li>available: @Book.Qty</li>
+                        <li>
+                            available: 
+                            @if (Book.Qty == 1)
+                            {
+                                <span>yes</span>
+                            }
+                            else
+                            {
+                                <span>no</span>
+                            }
+                        </li>
+
                         <li>category: @Book.CategoryName</li>
                     </ul>
                 </div>

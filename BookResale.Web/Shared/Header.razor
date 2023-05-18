@@ -1,20 +1,65 @@
-﻿<header>
+﻿@using System.Security.Claims;
+@using BookResale.Web.Shared.Providers;
+@inject ILocalStorageService _localStorageService;
+@inject ISyncLocalStorageService _syncLocalStorageService;
+@inject NavigationManager _navigationManager;
+@inject AuthenticationStateProvider _authStateProvider;
+@inject ICartService cartService;
+@inject IToastService _toastService;
+@inherits HeaderBase;
+
+<header>
     <div class="static-header ach-container">
         <a href="/" class="second-page-logo-container">
             <img src="/Images/Logo/SecondPageLogo-01.svg" alt="logo" class="second-page-logo" />
         </a>
         <div class="search-bar">
-            <input type="text" name="search" id="search-bar" placeholder="Search"/>
-            <div class="search-icon-container">
+            <input type="text" name="search" id="search-bar" placeholder="Search" @bind="@searchQuery" @bind:event="oninput" @onkeyup="async () => await searchBook()" />
+            <div class="search-icon-container" @onclick="async () => await searchBook()">
                 <i class="bi bi-search"></i>
             </div>
+            @if(searchResult != null)
+            {
+                @if(searchResult.Count() > 0)
+                {
+                    @if (!string.IsNullOrEmpty(searchQuery))
+                    {
+                        <div class="search-list">
+                        @foreach (var book in searchResult)
+                        {
+                            <div class="list-item">
+                                <img src="@book.ImageURL">
+                                <div>
+                                    <h6>@book.Title</h6>
+                                    <span>@book.AuthorFirstName @book.AuthorLastName</span>
+                                </div>
+                            </div>
+                        }
+                        </div>
+                    }
+                }
+                
+            }
         </div>
         <div class="sign-in-add-to-cart-container">
-            <a href="/SignIn" class="sign-in">sign in</a>
+            <AuthorizeView>
+                <Authorized>
+                    <span class="name">@UserDisplayName(context.User.Claims.ToList())</span>
+                    <ul class="tgl-list">
+                        <li><a href="#">profil</a></li>
+                        <li @onclick="Logout">logout</li>
+                    </ul>
+                </Authorized>
+                <NotAuthorized>
+                    <a href="/SignIn" class="sign-in">sign in</a>
+                </NotAuthorized>
+            </AuthorizeView>
             <span class="separator"></span>
-            <a href="#" class="cart-container">
+            <a href="/Cart" class="cart-container">
                 <span class="cart-text">cart</span>
-                <i class="bi bi-cart cart-icon"></i>
+                <i class="bi bi-cart cart-icon">
+                    <span class="books-count">@GetBooksCount()</span>
+                </i>
             </a>
         </div>
     </div>
@@ -27,3 +72,50 @@
         </ul>
     </div>
 </header>
+
+@code {
+    private string UserDisplayName(List<Claim> claims)
+    {
+        var firstName = claims.Where(_ => _.Type == "Firstname").Select(_ => _.Value).FirstOrDefault();
+        var LastName = claims.Where(_ => _.Type == "Lastname").Select(_ => _.Value).FirstOrDefault();
+        var Email = claims.Where(_ => _.Type == "Email").Select(_ => _.Value).FirstOrDefault();
+        if(!string.IsNullOrEmpty(firstName) || !string.IsNullOrEmpty(LastName))
+        {
+            return $"{firstName} {LastName}";
+        }
+        return Email;
+    }
+
+
+    private async Task Logout()
+    {
+        await _localStorageService.RemoveItemAsync("jwt-access-token");
+        _navigationManager.NavigateTo("/");
+        (_authStateProvider as CustomAuthProvider).NotifyAuthState();
+        _toastService.ShowSuccess("Logged-out.");
+    }
+
+    private int GetBooksCount()
+    {
+        var cart = _syncLocalStorageService.GetItem<List<BookDto>>("cart");
+        return cart != null ? cart.Count : 0;
+
+    }
+
+    protected override void OnInitialized()
+    {
+        cartService.OnChange += StateHasChanged;
+    }
+
+    private void Dispose()
+    {
+        cartService.OnChange -= StateHasChanged;
+    }
+
+    bool isListVisible = false;
+
+    /*private void ToggleList()
+    {
+        isListVisible = !isListVisible;
+    }*/
+}

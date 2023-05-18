@@ -843,3 +843,15 @@ C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\bin\Debug\
 C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\bin\Debug\net7.0\wwwroot\_framework\FluentValidation.dll.gz
 C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\bin\Debug\net7.0\FluentValidation.dll
 C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\obj\Debug\net7.0\build-gz\2thP9V17.gz
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\bin\Debug\net7.0\wwwroot\_framework\Blazored.LocalStorage.dll
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\bin\Debug\net7.0\wwwroot\_framework\Blazored.LocalStorage.dll.gz
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\bin\Debug\net7.0\Blazored.LocalStorage.dll
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\obj\Debug\net7.0\build-gz\6MeIeTnk.gz
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\bin\Debug\net7.0\wwwroot\_framework\Microsoft.AspNetCore.Components.Authorization.dll
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\bin\Debug\net7.0\wwwroot\_framework\Microsoft.AspNetCore.Components.Authorization.dll.gz
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\bin\Debug\net7.0\Microsoft.AspNetCore.Components.Authorization.dll
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\obj\Debug\net7.0\build-gz\A5WEn3hi.gz
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\bin\Debug\net7.0\wwwroot\_framework\Blazored.Toast.dll
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\bin\Debug\net7.0\wwwroot\_framework\Blazored.Toast.dll.gz
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\bin\Debug\net7.0\Blazored.Toast.dll
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\obj\Debug\net7.0\build-gz\xivr439m.gz

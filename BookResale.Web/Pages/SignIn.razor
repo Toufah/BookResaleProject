@@ -2,31 +2,31 @@
 @using System.Text.Json;
 @using System.Text;
 @using System.Net;
-@inject HttpClient _http
-@inject NavigationManager _navigationManager
+@using BookResale.Web.Shared.Providers;
+@inject HttpClient _http;
+@inject NavigationManager _navigationManager;
+@inject ILocalStorageService _localStorageService;
+@inject AuthenticationStateProvider _authStateProvider;
+@inject IToastService _toastService;
 
 <div class="ach-container form-cont">
-    @if (!string.IsNullOrEmpty(APIErrorMessages))
-    {
-        <p class="txt-dgr">@APIErrorMessages</p>
-    }
     <div>
         <div class="sign-in-cont">
             <h3 class="dt-ct-title form-title" style="cursor: default;">sign in</h3>
             <MudCard>
-                <MudForm Model="SignInModel">
+                <MudForm Model="loginModel" @ref="form_login" Validation="loginValidatorModel.ValidateValues">
                     <MudCardContent>
-                        <MudTextField @bind-Value="SignInModel.Email"
-                                      For="@(() => SignInModel.Email)"
+                        <MudTextField @bind-Value="loginModel.Email"
+                                      For="@(() => loginModel.Email)"
                                       Immediate="true"
                                       Label="email" />
-                        <MudTextField @bind-Value="SignInModel.Password"
-                                      For="@(() => SignInModel.Password)"
+                        <MudTextField @bind-Value="loginModel.Password"
+                                      For="@(() => loginModel.Password)"
                                       Immediate="true"
                                       Label="password" InputType="InputType.Password" />
                     </MudCardContent>
                     <MudCardActions Class="btn-cont">
-                        <MudButton Variant="Variant.Filled" Class="cust-btn" OnClick="@(async () => await RegisterAsync())">sign in</MudButton>
+                        <MudButton Variant="Variant.Filled" Class="cust-btn" OnClick="LoginAsync">sign in</MudButton>
                     </MudCardActions>
                 </MudForm>
             </MudCard>
@@ -58,7 +58,7 @@
                                       Label="confirm password" InputType="InputType.Password" />
                     </MudCardContent>
                     <MudCardActions Class="btn-cont">
-                            <MudButton Variant="Variant.Filled" Class="cust-btn" OnClick="@(async () => await RegisterAsync())">register</MudButton>
+                        <MudButton Variant="Variant.Filled" Class="cust-btn" OnClick="RegisterAsync">register</MudButton>
                     </MudCardActions>
                 </MudForm>
             </MudCard>
@@ -68,8 +68,12 @@
 
 
 @code {
+    //Registration
     RegistrationVM RegistratioModel = new RegistrationVM();
+
     SignInVM SignInModel = new SignInVM();
+
+
 
     ResgistrationValidationVM validationModel;
 
@@ -102,7 +106,7 @@
                     {
                         foreach (var errorMessage in item.Value)
                         {
-                            APIErrorMessages = $"{APIErrorMessages} {errorMessage}";
+                            _toastService.ShowError($"{errorMessage}.");
                         }
                     }
                 }
@@ -110,10 +114,58 @@
             else if (response.StatusCode == HttpStatusCode.OK)
             {
                 _navigationManager.NavigateTo("/SignIn");
+                _toastService.ShowSuccess("Registred.You can login now.");
             }
             else
             {
-                APIErrorMessages = "Failed to register user.";
+                _toastService.ShowError($"Failed to register.");
+            }
+        }
+    }
+
+    //Sign In
+    LoginVM loginModel = new LoginVM();
+
+    MudForm form_login;
+    string APIErrorMessagesLogin;
+
+    LoginValidationVM loginValidatorModel = new LoginValidationVM();
+
+    private async Task LoginAsync()
+    {
+        await form_login.Validate();
+        if (form_login.IsValid)
+        {
+            var jsonPayload = JsonSerializer.Serialize(loginModel);
+            var requestContent = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
+
+            var response = await _http.PostAsync("api/User/login", requestContent);
+
+            if (response.StatusCode == HttpStatusCode.BadRequest)
+            {
+                var errors = await response.Content.ReadFromJsonAsync<Dictionary<string, List<string>>>();
+                if (errors.Count > 0)
+                {
+                    foreach (var item in errors)
+                    {
+                        foreach (var errorMessage in item.Value)
+                        {
+                            _toastService.ShowError($"{errorMessage}.");
+                        }
+                    }
+                }
+            }
+            else if (response.StatusCode == HttpStatusCode.OK)
+            {
+                _navigationManager.NavigateTo("/");
+                var tokenResponse = await response.Content.ReadFromJsonAsync<JwtTokenResponseVm>();
+                await _localStorageService.SetItemAsync<string>("jwt-access-token", tokenResponse.AccessToken);
+                (_authStateProvider as CustomAuthProvider).NotifyAuthState();
+                _toastService.ShowSuccess("logged-In.");
+            }
+            else
+            {
+                _toastService.ShowError("Failed to login.");
             }
         }
     }

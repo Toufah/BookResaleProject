@@ -117,6 +117,10 @@
       "PackagePath": "staticwebassets\\css\\custom-styling\\BookDetails.css"
     },
     {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\css\\custom-styling\\Cart.css",
+      "PackagePath": "staticwebassets\\css\\custom-styling\\Cart.css"
+    },
+    {
       "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\css\\custom-styling\\Footer.css",
       "PackagePath": "staticwebassets\\css\\custom-styling\\Footer.css"
     },

@@ -1,21 +1,82 @@
-﻿@page "/counter"
+﻿@page "/Counter"
+@using System.Text.Json;
+@using System.Text;
+@using System.Net;
+@inject HttpClient _http
+@inject NavigationManager _navigationManager
 
-<PageTitle>Counter</PageTitle>
 
-<h1>Counter</h1>
+<div class="ach-container form-cont">
+    @if (!string.IsNullOrEmpty(APIErrorMessagesLogin))
+    {
+        <p class="txt-dgr">@APIErrorMessagesLogin</p>
+    }
+    <div>
+        <div class="sign-in-cont">
+            <h3 class="dt-ct-title form-title" style="cursor: default;">sign in</h3>
+            <MudCard>
+                <MudForm Model="loginModel" @ref="form_login" Validation="loginValidatorModel.ValidateValues">
+                    <MudCardContent>
+                        <MudTextField @bind-Value="loginModel.Email"
+                                      For="@(() => loginModel.Email)"
+                                      Immediate="true"
+                                      Label="email" />
+                        <MudTextField @bind-Value="loginModel.Password"
+                                      For="@(() => loginModel.Password)"
+                                      Immediate="true"
+                                      Label="password" InputType="InputType.Password" />
+                    </MudCardContent>
+                    <MudCardActions Class="btn-cont">
+                        <MudButton Variant="Variant.Filled" Class="cust-btn" OnClick="LoginAsync">sign in</MudButton>
+                    </MudCardActions>
+                </MudForm>
+            </MudCard>
+        </div>
+    </div>
+</div>
 
-<p role="status">Current count: @currentCount</p>
-
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
-<input type="text" @bind-value="myProperty" For="@(() => myProperty)"/>
-<h1>@myProperty</h1>
 
 @code {
-    private int myProperty;
-    private int currentCount = 0;
+    //Sign In
+    LoginVM loginModel = new LoginVM();
 
-    private void IncrementCount()
+    MudForm form_login;
+    string APIErrorMessagesLogin;
+
+    LoginValidationVM loginValidatorModel = new LoginValidationVM();
+
+    private async Task LoginAsync()
     {
-        currentCount++;
+        await form_login.Validate();
+        if (form_login.IsValid)
+        {
+            var jsonPayload = JsonSerializer.Serialize(loginModel);
+            var requestContent = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
+
+            var response = await _http.PostAsync("api/User/login", requestContent);
+
+            if (response.StatusCode == HttpStatusCode.BadRequest)
+            {
+                var errors = await response.Content.ReadFromJsonAsync<Dictionary<string, List<string>>>();
+                if (errors.Count > 0)
+                {
+                    foreach (var item in errors)
+                    {
+                        foreach (var errorMessage in item.Value)
+                        {
+                            APIErrorMessagesLogin = $"{APIErrorMessagesLogin} {errorMessage}";
+                        }
+                    }
+                }
+            }
+            else if (response.StatusCode == HttpStatusCode.OK)
+            {
+                //_navigationManager.NavigateTo("/SignIn");
+            }
+            else
+            {
+                APIErrorMessagesLogin = "Failed to login.";
+            }
+        }
     }
 }

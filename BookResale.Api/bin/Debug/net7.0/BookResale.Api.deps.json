@@ -54,6 +54,30 @@
           }
         }
       },
+      "Blazored.LocalStorage/4.3.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Components.Web": "7.0.5"
+        },
+        "runtime": {
+          "lib/net7.0/Blazored.LocalStorage.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Blazored.Toast/4.1.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "7.0.5",
+          "Microsoft.AspNetCore.Components.Web": "7.0.5",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0"
+        },
+        "runtime": {
+          "lib/net7.0/Blazored.Toast.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "FluentValidation/11.5.2": {
         "runtime": {
           "lib/net7.0/FluentValidation.dll": {
@@ -96,6 +120,18 @@
         }
       },
       "Microsoft.AspNetCore.Components.Analyzers/7.0.5": {},
+      "Microsoft.AspNetCore.Components.Authorization/7.0.5": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Authorization": "7.0.5",
+          "Microsoft.AspNetCore.Components": "7.0.5"
+        },
+        "runtime": {
+          "lib/net7.0/Microsoft.AspNetCore.Components.Authorization.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.523.17410"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Components.Forms/7.0.5": {
         "dependencies": {
           "Microsoft.AspNetCore.Components": "7.0.5"
@@ -851,8 +887,11 @@
       },
       "BookResale.Web/1.0.0": {
         "dependencies": {
+          "Blazored.LocalStorage": "4.3.0",
+          "Blazored.Toast": "4.1.0",
           "BookResale.Models": "1.0.0",
           "FluentValidation": "11.5.2",
+          "Microsoft.AspNetCore.Components.Authorization": "7.0.5",
           "Microsoft.AspNetCore.Components.WebAssembly": "7.0.5",
           "MudBlazor": "6.2.3"
         },
@@ -881,6 +920,20 @@
       "sha512": "sha512-EycyMsb6rD2PK9P0SyibFfEhvWWttdrYhyPF4f41uzdB/44yQlV+2Wehxyg489Rj6gbPvSPgbKq0xsHJBhipZA==",
       "path": "azure.identity/1.6.0",
       "hashPath": "azure.identity.1.6.0.nupkg.sha512"
+    },
+    "Blazored.LocalStorage/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CfHp9SWN45cM/TM8uw4pELQBfCRtMssCMSOjsEXVWibeYBn36TLpzw+J1vsC2Su2BEQ3Et19A5+GqK1S3kHbTQ==",
+      "path": "blazored.localstorage/4.3.0",
+      "hashPath": "blazored.localstorage.4.3.0.nupkg.sha512"
+    },
+    "Blazored.Toast/4.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-k12tFBnMMU67bPoBKLTuR2POcYOz02UtT8Lzyeu8fMv587nO8VaWqFfRMJ8Hxkb1SbxL8lY2WiK9tWAZ934khQ==",
+      "path": "blazored.toast/4.1.0",
+      "hashPath": "blazored.toast.4.1.0.nupkg.sha512"
     },
     "FluentValidation/11.5.2": {
       "type": "package",
@@ -916,6 +969,13 @@
       "sha512": "sha512-jjweXKrkmQ9E2MWyHCuGHAk4I7mIY6WCjq35iRbJWl2nW8G2t41hWrEwUXip5qeL5YzAaiucPMPkHwgc1NH4jA==",
       "path": "microsoft.aspnetcore.components.analyzers/7.0.5",
       "hashPath": "microsoft.aspnetcore.components.analyzers.7.0.5.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Components.Authorization/7.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-PoZ96emiHObTuJpfvOcFR1dIE6yA1oIGZM6HJXYJZR+vT/Pi12iYFJOT1Z4F+CdWUT0WqaW0rNw20VoDvPM+9Q==",
+      "path": "microsoft.aspnetcore.components.authorization/7.0.5",
+      "hashPath": "microsoft.aspnetcore.components.authorization.7.0.5.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Components.Forms/7.0.5": {
       "type": "package",

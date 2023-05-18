@@ -93,3 +93,6 @@ C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Api\bin\Debug\
 C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Api\bin\Debug\net7.0\libman.json
 C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Api\bin\Debug\net7.0\MudBlazor.dll
 C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Api\bin\Debug\net7.0\FluentValidation.dll
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Api\bin\Debug\net7.0\Blazored.LocalStorage.dll
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Api\bin\Debug\net7.0\Microsoft.AspNetCore.Components.Authorization.dll
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Api\bin\Debug\net7.0\Blazored.Toast.dll

@@ -33,5 +33,18 @@ namespace BookResale.Api.Controllers
 
             return Ok(result);
         }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> LoginAsync(LoginDto payload)
+        {
+            var result = await userService.LoginAsync(payload);
+            if(result.IsLoginSuccess)
+            {
+                return Ok(result.TokenResponse);
+            }
+
+            ModelState.AddModelError("LoginError", "Invalid Credentials");
+            return BadRequest(ModelState);
+        }
     }
 }

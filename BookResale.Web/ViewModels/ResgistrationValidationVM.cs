@@ -14,14 +14,14 @@ namespace BookResale.Web.ViewModels
             RuleFor(x => x.Email).NotEmpty().EmailAddress()
                 .MustAsync(async (value, CancellationToken) => await UniqueEmail(value))
                 .When(_ => !string.IsNullOrEmpty(_.Email) && Regex.IsMatch(_.Email, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase), ApplyConditionTo.CurrentValidator)
-                .WithMessage("Email Already Exists");
+                .WithMessage("Email Already Exists.");
             RuleFor(x => x.Password).NotEmpty().WithMessage("Empty Password.")
                 .MinimumLength(6).WithMessage("Short Password Use At Ceast 6 Characters.")
                 .Matches(@"[A-Z]+").WithMessage("Use Uppercase Letters In Your Password.")
                 .Matches(@"[a-z]+").WithMessage("Use Lowercase Letters In Your Password.")
                 .Matches(@"[0-9]+").WithMessage("Use Numbers In Your Password.")
                 .Matches(@"[\@\!\?\*\.]+").WithMessage("Use Signs [@, !, ?, *, .] In Your Password.");
-            RuleFor(x => x.ConfirmPassword).Equal(_ => _.Password).WithMessage("Passwords does not match");
+            RuleFor(x => x.ConfirmPassword).Equal(_ => _.Password).WithMessage("Passwords does not match.");
             this._httpClient = _httpClient;
         }
 

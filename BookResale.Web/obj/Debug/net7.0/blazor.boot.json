@@ -7,9 +7,12 @@
   "linkerEnabled": false,
   "resources": {
     "assembly": {
+      "Blazored.LocalStorage.dll": "sha256-eXVgTw72kEn74FZgDQbLtvAmXbiZDSj5gzUnxVmwowQ=",
+      "Blazored.Toast.dll": "sha256-6wGoA8FmxkQCTFIXEM+U+Y2kJJnSTJXRYwuByAUPWGU=",
       "FluentValidation.dll": "sha256-AerL0YWVusUjQ161sI1tP5jyzULbGlkWMb3RFoodQ\/A=",
       "Microsoft.AspNetCore.Authorization.dll": "sha256-\/EkWRHMHBhfvvlx5hLVtXGPm8+Gyp4WkPiKKiiJIrqQ=",
       "Microsoft.AspNetCore.Components.dll": "sha256-SvjxqyTqc68zPsYivPRkvjKRhUg5zYufzqwGNS83bwg=",
+      "Microsoft.AspNetCore.Components.Authorization.dll": "sha256-41dLN3Fx\/ysI0SP+sKtAMWTZamweRiufJ7JPqZlnXrA=",
       "Microsoft.AspNetCore.Components.Forms.dll": "sha256-eoQ2CgfBGkvbK4QUMBgFDPIBqJem+g8247Fb3ZmnmCI=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-p3BQFPwUbOgu5j9V+1HlUGwDcVzB7iYNO4dIsDCOAgA=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-55+LOYcA1yHHPQEjl6eI0UGgteq41y+8js6DQ5PhXDk=",
@@ -200,15 +203,15 @@
       "mscorlib.dll": "sha256-qqpKd+W+AFb6UxudEYEKzrz7ma81p5LrWUwPBVvHV4U=",
       "netstandard.dll": "sha256-OYYuPT3JUknj4LdYIa58zF7kDB3tCnLzjCSuhEjtKXM=",
       "System.Private.CoreLib.dll": "sha256-EVS7zPxPV\/41g2mzPwdXtwiigWxI\/SeAHme1IgyD6tc=",
-      "BookResale.Models.dll": "sha256-mH17sXq3IOxiYw5m0sdRtaavVCbDAbtWNONwNvbQQGs=",
-      "BookResale.Web.dll": "sha256-\/ijajLVksHmMjCMMZizCDpcsGzwRnbS1cyuXYcLdNnk="
+      "BookResale.Models.dll": "sha256-bw+KM1B6uL1+WC+upXxtaxp6wrGhteGqQuSptrOUgpg=",
+      "BookResale.Web.dll": "sha256-W+JyNkHgA0+7EYb7pwpBt6ApLlnT5tdA07hurqXDUeo="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
-      "BookResale.Models.pdb": "sha256-SeO0XWqEY8pdjFFxY\/an9+ZTlQSNc5XvV2GMQ7JtLHM=",
-      "BookResale.Web.pdb": "sha256-AcgQ5EpygfKoTOtJ6HWC66EP4z741gxXLVKsafnQggw="
+      "BookResale.Models.pdb": "sha256-13LnuFIEkUnmBQw6tVzC29wZ0Bkwn1KidigCZrtX2c8=",
+      "BookResale.Web.pdb": "sha256-q\/t9Z3l9fyeAdiWqiMGiQEy6d0uPbpr13tgj3K6atvw="
     },
     "runtime": {
       "dotnet.7.0.5.7xykp5whe1.js": "sha256-codB25EodaFEP43MDCfMBuKXU4LqurUKnQrpoMIFnPs=",

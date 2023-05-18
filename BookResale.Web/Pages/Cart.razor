@@ -1,0 +1,75 @@
+﻿@page "/Cart"
+@inherits CartBase
+
+<div class="ds-books top-line cart-cnt">
+    <div class="ach-container cart-body">
+        <h1>shopping cart</h1>
+        <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>book</th>
+                    <th>quantity</th>
+                    <th>price</th>
+                </tr>
+            </thead>
+            <tbody>
+                    @if (CartItems == null)
+                    {
+                       <p></p> 
+                    }
+                    else if(CartItems.Count() == 0)
+                    {
+                        <p></p>
+                    }
+                    else{
+                    foreach(var book in CartItems)
+                    {
+                        <tr>
+                            <td>
+                                <img src="@book.BookImageURL"/>
+                                <div class="cart-text-cont">
+                                    <h6>@book.BookTitle</h6>
+                                    <p><b>item price:</b> @book.Price.ToString("C")</p>
+                                    <span class="remove" @onclick="(() => DeleteBook(book))">remove</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="decr-qty" @onclick="DecreaseQty">-</span>
+                                    <input type="number" class="qty-in" @bind="@Qty" />
+                                    <span class="incr-qty" @onclick="IncreaseQty">+</span>
+                            </td>
+                            <td>@book.Price.ToString("C")</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+            <div class="cart-sumary">
+                <h4>order summary</h4>
+                    <p>
+                        
+                            @if (CartItems != null)
+                            {
+                                <span>
+                            subtotal(@CartItems.Count() items):
+                                </span>
+                            }
+                        
+                        <span>@TotalPrice().ToString("C")</span>
+                    </p>
+                <p><span>shipping:</span> <span>$2.00</span></p>
+                <p><span>tax: </span><span>$0.00</span></p>
+                <div class="checkout">
+                    <span>checkout</span>
+                    <span>
+                        @if(TaxedPrice() != 2)
+                        {
+                            @TaxedPrice().ToString("C")
+                        }
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

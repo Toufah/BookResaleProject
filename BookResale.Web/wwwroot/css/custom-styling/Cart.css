@@ -1,0 +1,128 @@
+﻿.cart-cnt {
+    min-height: 628px;
+}
+.cart-body {
+    padding: 60px 0;
+}
+
+.cart-body > div {
+    display: flex;
+    gap: 50px
+}
+
+.cart-body > h1 {
+    font-size: 1.6rem !important;
+    font-weight: 700;
+    padding: 0 !important;
+}
+
+.cart-body > div > table {
+    width: 70%;
+    text-align: center;
+    border-bottom: solid 0.5px var(--lookalike-gray);
+}
+
+.cart-body > div > table img {
+    width: 100px
+}
+
+th {
+    padding: 7px 20px 7px 0px;
+    font-weight: 500;
+    color: var(--bronze);
+
+}
+thead {
+    border-top: solid 0.5px var(--lookalike-gray);
+    border-bottom: solid 0.5px var(--lookalike-gray);
+    box-shadow: 0 7px 5px -4px var(--lookalike-gray);
+}
+tbody td {
+    padding: 10px 5px;
+}
+td:first-child {
+    display: flex;
+    justify-content: left !important;
+    gap: 20px;
+    padding: 10px 20px 10px 20px;
+}
+td:first-child div {
+    padding: 5px;
+}
+td:first-child div h6 {
+    font-weight: 700;
+    
+}
+td:first-child div p {
+        width: fit-content;
+}
+td:first-child div p b {
+    margin-right: 5px
+}
+td input {
+    border: solid 0.5px var(--bronze);
+    border-radius: 3px;
+    width: 40px;
+    height: 30px;
+    margin: 0 10px;
+    outline: none;
+    text-align: center
+}
+td input::-webkit-inner-spin-button,
+    td input::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+}
+
+.decr-qty, .incr-qty {
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+td:last-child {
+    font-weight: 700;
+}
+.cart-text-cont {
+    text-align: left !important;
+}
+.cart-text-cont > p{
+    font-size: 0.9rem
+}
+.cart-text-cont span {
+    font-size: 0.7rem;
+    color: red;
+    text-decoration: underline;
+    cursor: pointer;
+}
+tr {
+    border-bottom: solid 0.5px var(--lookalike-gray);
+}
+.cart-sumary {
+    padding: 20px 20px 15px 15px;
+    background-color: #f1f1f1;
+    font-size: 0.9rem;
+    height: fit-content;
+    border-radius: 3px;
+}
+.cart-sumary h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+.cart-sumary p {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 15px
+}
+.checkout {
+    margin: 30px auto 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 10px;
+    border-radius: 3px;
+    background-color: var(--orange);
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 1px 1px 4px -1px var(--lookalike-gray);
+}
