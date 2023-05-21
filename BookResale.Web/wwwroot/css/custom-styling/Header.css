@@ -47,6 +47,10 @@ header::before {
     cursor: pointer;
 }
 
+#search-bar:not(:focus) + .search-icon-container + .search-list {
+    display: none !important;
+}
+
 .sign-in-add-to-cart-container {
     font-size: 0.9rem;
     position: relative;
@@ -71,10 +75,11 @@ header::before {
     border-radius: 2px;
     padding: 5px 10px 5px 5px;
     width: 150px;
-    background-color:#fff;
+    background-color: #fff;
     top: 45px;
     left: 0;
     display: none;
+    z-index: 999 !important;
 }
 .tgl-list::before{
     content: '';

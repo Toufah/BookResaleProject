@@ -103,5 +103,18 @@ namespace BookResale.Web.Services
             toastService.ShowInfo($"{item.BookTitle} Removed from cart.");
             OnChange.Invoke();
         }
+
+        public async Task EmptyCart()
+        {
+            await localStorageService.RemoveItemAsync("cart");
+            OnChange.Invoke();
+        }
+
+        public async Task<string> checkout()
+        {
+            var result = await httpClient.PostAsJsonAsync("/api/Payment/checkout", await GetCartItems());
+            var url = await result.Content.ReadAsStringAsync();
+            return url;
+        }
     }
 }

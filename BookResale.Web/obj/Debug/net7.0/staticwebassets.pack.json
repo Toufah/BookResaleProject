@@ -133,6 +133,10 @@
       "PackagePath": "staticwebassets\\css\\custom-styling\\LoadingAnimation.css"
     },
     {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\css\\custom-styling\\Sell.css",
+      "PackagePath": "staticwebassets\\css\\custom-styling\\Sell.css"
+    },
+    {
       "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\css\\custom-styling\\SignIn.css",
       "PackagePath": "staticwebassets\\css\\custom-styling\\SignIn.css"
     },

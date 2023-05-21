@@ -77,6 +77,38 @@ namespace BookResale.Api.Extensions
             return cartItems;
         }
 
+        public static List<CategoryDto> ConvertToDto(this IEnumerable<BookCategory> categories)
+        {
+            return categories.Select(category => new CategoryDto
+            {
+                Id = category.Id,
+                CategoryName = category.CategoryName
+            }).ToList();
+        }
+
+        public static List<StateDto> ConvertToDto(this IEnumerable<BookState> states)
+        {
+            return states.Select(state => new StateDto
+            {
+                Id = state.Id,
+                State = state.State
+            }).ToList();
+        }
+
+        public static List<AuthorDto> ConvertToDto(this IEnumerable<Author> authors)
+        {
+            return authors.Select(author => new AuthorDto
+            {
+                Id = author.Id,
+                FirstName = author.FirstName,
+                LastName = author.LastName,
+                Birthplace = author.Birthplace,
+                Born = author.Born,
+                Died = author.Died,
+                ImageURL = author.ImageURL
+            }).ToList();
+        }
+
 
     }
 }

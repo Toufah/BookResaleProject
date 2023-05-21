@@ -47,7 +47,7 @@ namespace BookResale.Api.Repositories
         public async Task<IEnumerable<BookState>> GetBookStates()
         {
             var states = await this.bookResaleDbContext.BookStates.ToListAsync();
-            return states;
+            return (IEnumerable<BookState>)states;
         }
 
         public async Task<BookCategory> GetCategorie(int id)

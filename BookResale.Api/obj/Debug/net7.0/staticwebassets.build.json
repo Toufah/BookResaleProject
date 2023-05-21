@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "PWOJzcT6Jn28YJvF7EkYLRhntGADJKxvijgjTQ35ALg=",
+  "Hash": "Kk6rQN+VcaU/f9e5HL3hjUPCWXPjZb6MMCnLXjgoU/c=",
   "Source": "BookResale.Api",
   "BasePath": "_content/BookResale.Api",
   "Mode": "Default",
@@ -7456,6 +7456,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\custom-styling\\LoadingAnimation.css"
+    },
+    {
+      "Identity": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\css\\custom-styling\\Sell.css",
+      "SourceId": "BookResale.Web",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "css/custom-styling/Sell.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\custom-styling\\Sell.css"
     },
     {
       "Identity": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\css\\custom-styling\\SignIn.css",

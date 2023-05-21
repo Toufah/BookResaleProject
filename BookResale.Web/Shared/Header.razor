@@ -67,7 +67,14 @@
         <ul class="nav-menu">
             <li><a href="/">books</a></li>
             <li class="after-arrow"><a href="counter">featured</a></li>
-            <li><a href="#">sell</a></li>
+            <AuthorizeView>
+                <Authorized>
+                    <li><a href="/Sell">sell</a></li>
+                </Authorized>
+                <NotAuthorized>
+                    <li><a href="/SignIn">sell</a></li>
+                </NotAuthorized>
+            </AuthorizeView>
             <li><a href="#">help</a></li>
         </ul>
     </div>

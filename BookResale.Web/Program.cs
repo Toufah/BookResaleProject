@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 using BookResale.Web.Shared.Providers;
 using Blazored.Toast;
 
+
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
@@ -24,5 +25,10 @@ builder.Services.AddAuthorizationCore();
 builder.Services.AddBlazoredToast();
 builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<IFilterService, FilterService>();
+builder.Services.AddScoped<ICategoriesService, CategoriesService>();
+builder.Services.AddScoped<IAuthorsService, AuthorsService>();
+builder.Services.AddScoped<IStateService, StateService>();
+
+
 
 await builder.Build().RunAsync();

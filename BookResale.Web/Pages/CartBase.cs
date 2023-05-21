@@ -9,6 +9,8 @@ namespace BookResale.Web.Pages
     {
         [Inject]
         public ICartService CartService { get; set; }
+        [Inject]
+        public NavigationManager NavigationManager { get; set; }
         public List<CartItemDto> CartItems = new List<CartItemDto>();
         public int Qty = 1;
 
@@ -53,6 +55,17 @@ namespace BookResale.Web.Pages
         {
             await CartService.DeleteItem(item);
             CartItems = await CartService.GetCartItems();
+        }
+
+        protected async Task PlaceOrder()
+        {
+            if(CartItems != null && CartItems.Count() != 0)
+            {
+                string checkoutUrl = await CartService.checkout();
+                Console.WriteLine(checkoutUrl);
+                NavigationManager.NavigateTo(checkoutUrl);
+                await CartService.EmptyCart();
+            }
         }
     }
 }

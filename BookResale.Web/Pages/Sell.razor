@@ -1,0 +1,109 @@
+﻿@page "/Sell"
+@using MudBlazor.Services;
+@inherits SellBase
+
+<div class="ach-container">
+    <div class="carousel">
+        <!-- Buttons to switch between sections -->
+        <div class="carousel-buttons">
+            <button class="carousel-button @(activeSectionIndex == 0 ? "active-btn" : "")"><span class="num @(activeSectionIndex == 0 ? "active-num" : "")">1 </span>Category & Author</button>
+            <button class="carousel-button @(activeSectionIndex == 1 ? "active-btn" : "")"><span class="num @(activeSectionIndex == 1 ? "active-num" : "")">2 </span>Book Description</button>
+            <button class="carousel-button @(activeSectionIndex == 2 ? "active-btn" : "")"><span class="num @(activeSectionIndex == 2 ? "active-num" : "")">3 </span>Pricing & Images</button>
+            <button class="carousel-button @(activeSectionIndex == 3 ? "active-btn" : "")"><span class="num @(activeSectionIndex == 3 ? "active-num" : "")">4 </span>Preview</button>
+        </div>
+
+        <div class="carousel-content">
+            <!-- Category section -->
+            <div class="carousel-section @(activeSectionIndex == 0 ? "active" : "")">
+                <div>
+                    <div>
+                        <label for="category">category</label>
+                        <select id="category" @bind="selected_category">
+                            @if (@Categories != null)
+                            {
+                                @foreach (var category in Categories)
+                                {
+                                    <option value="@category.Id">@category.CategoryName</option>
+                                }
+                                <option value="0">other</option>
+                            }
+                        </select>
+                    </div>
+                    <div>
+                        @if (@selected_category == 0)
+                        {
+                            <label>New Category</label>
+                            <input type="text" required class="input-field" placeholder="Ex: Self-help" @bind-value="new_category" @bind-value:event='oninput' />
+                        }
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label for="category">Author</label>
+                        <select id="category" @bind="selected_author">
+                            @if (@Authors != null)
+                            {
+                                @foreach (var author in Authors)
+                                {
+                                    <option value="@author.Id">@author.FirstName @author.LastName</option>
+                                }
+                                <option value="0">other</option>
+                            }
+                        </select>
+                    </div>
+                    <div>
+                        @if (@selected_author == 0)
+                        {
+                            <label>New Author</label>
+                            <input type="text" required class="input-field" placeholder="Ex: Mark Manson" @bind-value="new_author" @bind-value:event='oninput' />
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book Description section -->
+            <div class="carousel-section @(activeSectionIndex == 1 ? "active" : "") cr-ds-flex">
+                <div>
+                    <div>
+                        <label for="title">Title</label>
+                        <input type="text" id="title" required placeholder="Ex: Rich Dad Poor Dad" class="input-field" @bind="title" @bind:event="oninput" />
+                    </div>
+                    <div>
+                        <label for="ISBN">ISBN</label>
+                        <input type="number" id="ISBN" required placeholder="Ex: 978-0-09-95922-8" class="input-field" @bind="ISBN" @bind:event="oninput" />
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label for="state">State</label>
+                        <select id="state" @bind="stateId">
+                            @if (@States!= null)
+                            {
+                                @foreach (var state in States)
+                                {
+                                    <option value="@state.Id">@state.State</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+                <label for="description" class="desc-label">Description (@if(@desc_length != null){ @desc_length.Length}else{ <span>0</span>}/300)</label>
+                <textarea id="description" placeholder="description" @bind="desc_length" @bind:event="oninput"></textarea>
+            </div>
+
+            <!-- Pricing & Images section -->
+            <div class="carousel-section @(activeSectionIndex == 2 ? "active" : "")">
+                <span>test3</span>
+            </div>
+
+            <!-- Preview section -->
+            <div class="carousel-section @(activeSectionIndex == 3 ? "active" : "")">
+                <span>test4</span>
+            </div>
+        </div>
+        <div class="scrolling_buttons">
+            <button class="scrolling_button" @onclick="MoveToPreviousStep">Previous Step</button>
+            <button class="scrolling_button" @onclick="MoveToNextStep">Next Step</button>
+        </div>
+    </div>
+</div>

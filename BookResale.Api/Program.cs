@@ -2,6 +2,7 @@ using BookResale.Api.Data;
 using BookResale.Api.Repositories;
 using BookResale.Api.Repositories.Contracts;
 using BookResale.Api.Services;
+using BookResale.Api.Services.PaymentServices;
 using BookResale.Api.Shared.Settings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,6 +26,7 @@ builder.Services.AddScoped<CartItemsRepository>();
 builder.Services.AddScoped<ICartItemsRepository, CartItemsRepository>();
 builder.Services.AddScoped<FilterRepository>();
 builder.Services.AddScoped<IFilterRepository, FilterRepository>();
+builder.Services.AddScoped<IPaymentService, PaymentService>();
 
 builder.Services.Configure<TokenSettings>(builder.Configuration.GetSection(nameof(TokenSettings)));
 

@@ -48,26 +48,26 @@
             <div class="cart-sumary">
                 <h4>order summary</h4>
                     <p>
-                        
-                            @if (CartItems != null)
+                        <span>subtotal(@if (CartItems != null)
                             {
-                                <span>
-                            subtotal(@CartItems.Count() items):
-                                </span>
+                                @CartItems.Count()
                             }
-                        
+                            items):
+                        </span>
                         <span>@TotalPrice().ToString("C")</span>
                     </p>
                 <p><span>shipping:</span> <span>$2.00</span></p>
                 <p><span>tax: </span><span>$0.00</span></p>
-                <div class="checkout">
+                <div class="checkout" @onclick="PlaceOrder">
                     <span>checkout</span>
-                    <span>
-                        @if(TaxedPrice() != 2)
+                        @if(TaxedPrice() == 2)
                         {
-                            @TaxedPrice().ToString("C")
+                            <span>
+                                $0.00
+                            </span>
+                        }else{
+                        <span>@TaxedPrice().ToString("C")</span>
                         }
-                    </span>
                 </div>
             </div>
         </div>
