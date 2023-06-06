@@ -1,4 +1,5 @@
 ﻿using BookResale.Models.Dtos;
+using BookResale.Web.ViewModels;
 
 namespace BookResale.Web.Services.Contracts
 {
@@ -6,5 +7,6 @@ namespace BookResale.Web.Services.Contracts
     {
         Task<IEnumerable<BookDto>> GetBooks();
         Task<BookDto> GetBook(long id);
+        Task<bool> AddNewBook(BookDto book);
     }
 }

@@ -1,0 +1,34 @@
+﻿.nav-menu-before {
+    position: relative;
+    padding-top: 30px;
+}
+.nav-menu-before::before {
+    content: 'menu';
+    position: absolute;
+    top: 16px;
+    left: 32px;
+    color: var(--ft-gray);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+.bc-fe {
+    background-color: var(--bc-fe) !important;
+    color: var(--ft-gray) !important;
+}
+.ft-gray {
+    color: var(--ft-gray) !important;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: 0.5s;
+}
+.nav-item a:hover {
+    padding-left: 25px;
+}
+.active {
+    color: var(--orange) !important;
+    padding-left: 25px;
+}
+
+a.active:hover {
+    color: var(--orange) !important;
+}

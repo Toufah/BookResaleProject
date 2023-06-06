@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "PXpj0MA51UryJgEI9+NHDjCbzr+tqrYhfD9QF0gXehP4TgMmfmqIXzkrmSJNX/YA9URLiUOk8IlGLXV8zHcY5Q==",
+  "dgSpecHash": "wpzB8V7GvO70gNl4Rqea6HOf/U6AYCxk1TcJJ/2fiJK7QWpIKxRhVve52LPuafn/pL4kdf4cjyiwVf5REHFQww==",
   "success": true,
   "projectFilePath": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Api\\BookResale.Api.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\Lenovo\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\blazored.localstorage\\4.3.0\\blazored.localstorage.4.3.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\blazored.toast\\4.1.0\\blazored.toast.4.1.0.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\blazorinputfile\\0.2.0\\blazorinputfile.0.2.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\fluentvalidation\\11.5.2\\fluentvalidation.11.5.2.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.authorization\\7.0.5\\microsoft.aspnetcore.authorization.7.0.5.nupkg.sha512",
@@ -66,7 +67,7 @@
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\mudblazor\\6.2.3\\mudblazor.6.2.3.nupkg.sha512",
-    "C:\\Users\\Lenovo\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\stripe.net\\41.16.0\\stripe.net.41.16.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",

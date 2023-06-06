@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>BookResale.Admin</title>
+    <base href="/" />
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/app.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link href="BookResale.Admin.styles.css" rel="stylesheet" />
+    <link href="css/bootstrap/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="css/bootstrap/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <!-- NavMenu style sheet-->
+    <link href="/css/CustomStyling/NavMenu.css" rel="stylesheet" />
+    <!-- Font : Sans Serif -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <!-- NavMenu style sheet-->
+    <link href="/css/CustomStyling/Index.css" rel="stylesheet" />
+    <!-- Dashboard style sheet-->
+    <link href="/css/CustomStyling/Dashboard.css" rel="stylesheet" />
+    <style>
+        * {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-transform: capitalize;
+        }
+
+        .userNameProfile {
+            height: 100%;
+            padding: 0 15px;
+            background: transparent;
+            border: none;
+            font-size: 0.9rem;
+            color: var(--bronze);
+        }
+
+        .userNameProfile:hover ~ ul, .userNameProfile ~ ul:hover {
+            display: block;
+        }
+
+        i:not(.drpDownList i) {
+            font-size: 1.1rem !important;
+            background: #F2f6f8;
+            border-radius: 50%;
+            padding: 3px 6px;
+            margin-right: 3px;
+        }
+
+        .drpDownList {
+            position: absolute;
+            top: 95%;
+            background: #fff;
+            padding: 10px 15px;
+            box-shadow: 0 0 15px -8px #000;
+            width: 180px;
+            display: none;
+        }
+
+        .drpDownList li {
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .drpDownList li:last-child {
+            color: red;
+        }
+
+        .drpDownList li:hover {
+            padding-left: 5px;
+        }
+
+        .drpDownList li i {
+            margin-right: 3px;
+        }
+
+        :root {
+            --baby-blue: #89cff0;
+            --lookalike-gray: #909090;
+            --orange: #556ee6;
+            --bronze: #393d33;
+            --bc-fe: #fefefe;
+            --ft-gray: #858b8f;
+            --Orange-Pale-Orange: #FFDFBF;
+            --blue-v1: #556ee6;
+            --orange-v1: #f6f6f9;
+        }
+
+        a, ul, li {
+            text-decoration: none;
+            list-style: none;
+        }
+        .content_container {
+            background-color: var(--orange-v1);
+            padding: 12px;
+        }
+        p{
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <svg class="loading-progress">
+            <circle r="40%" cx="50%" cy="50%" />
+            <circle r="40%" cx="50%" cy="50%" />
+        </svg>
+        <div class="loading-progress-text"></div>
+    </div>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+    <script src="_framework/blazor.webassembly.js"></script>
+    
+    <!--<script src="_framework/blazor.webassembly.js"></script>
+    <script src="_content/BlazorInputFile/inputfile.js"></script>-->
+
+</body>
+
+</html>

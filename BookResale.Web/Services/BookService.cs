@@ -1,7 +1,11 @@
 ﻿using BookResale.Models.Dtos;
 using BookResale.Web.Services.Contracts;
 using Microsoft.VisualBasic;
+using System.Net.Http;
+using System;
 using System.Net.Http.Json;
+using Newtonsoft.Json;
+using BookResale.Web.ViewModels;
 
 namespace BookResale.Web.Services
 {
@@ -65,5 +69,32 @@ namespace BookResale.Web.Services
                 throw;
             }
         }
+        public async Task<bool> AddNewBook(BookDto book)
+        {
+            try
+            {
+                // Make an HTTP POST request to the server API endpoint
+                var response = await httpClient.PostAsJsonAsync("/api/Book/newBook", book);
+
+                // Check if the request was successful
+                if (response.IsSuccessStatusCode)
+                {
+                    string responseContent = await response.Content.ReadAsStringAsync();
+                    return true;
+                }
+                else
+                {
+                    // Handle the error case when the request was not successful
+                    string errorMessage = $"Error: {response.StatusCode} - {response.ReasonPhrase}";
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions that occurred during the request
+                throw;
+            }
+        }
+
     }
 }

@@ -10,7 +10,7 @@ using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components.Authorization;
 using BookResale.Web.Shared.Providers;
 using Blazored.Toast;
-
+using Microsoft.AspNetCore.Components;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -28,7 +28,8 @@ builder.Services.AddScoped<IFilterService, FilterService>();
 builder.Services.AddScoped<ICategoriesService, CategoriesService>();
 builder.Services.AddScoped<IAuthorsService, AuthorsService>();
 builder.Services.AddScoped<IStateService, StateService>();
-
-
+builder.Services.AddScoped<IStatsService, StatsService>();
+builder.Services.AddScoped<ITrackingService, TrackingService>();
+builder.Services.AddScoped<FilesManager>();
 
 await builder.Build().RunAsync();

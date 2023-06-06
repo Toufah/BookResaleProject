@@ -81,6 +81,10 @@
       "PackagePath": "staticwebassets\\Images\\test3.jpg"
     },
     {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\Images\\trading\\TheMentalGameOfTrading.jpg",
+      "PackagePath": "staticwebassets\\Images\\trading\\TheMentalGameOfTrading.jpg"
+    },
+    {
       "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\css\\app.css",
       "PackagePath": "staticwebassets\\css\\app.css"
     },

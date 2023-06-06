@@ -9,6 +9,7 @@
     "assembly": {
       "Blazored.LocalStorage.dll": "sha256-eXVgTw72kEn74FZgDQbLtvAmXbiZDSj5gzUnxVmwowQ=",
       "Blazored.Toast.dll": "sha256-6wGoA8FmxkQCTFIXEM+U+Y2kJJnSTJXRYwuByAUPWGU=",
+      "BlazorInputFile.dll": "sha256-C0KrMmLQQE68cd1+FNwIOW89nNGbOH48hRxQAoSBaaA=",
       "FluentValidation.dll": "sha256-AerL0YWVusUjQ161sI1tP5jyzULbGlkWMb3RFoodQ\/A=",
       "Microsoft.AspNetCore.Authorization.dll": "sha256-\/EkWRHMHBhfvvlx5hLVtXGPm8+Gyp4WkPiKKiiJIrqQ=",
       "Microsoft.AspNetCore.Components.dll": "sha256-SvjxqyTqc68zPsYivPRkvjKRhUg5zYufzqwGNS83bwg=",
@@ -31,9 +32,15 @@
       "Microsoft.Extensions.Logging.Abstractions.dll": "sha256-7zoKnNaWqWOrjF2eX3dFetJL+I03xqvCzORtFB4Ws08=",
       "Microsoft.Extensions.Options.dll": "sha256-gcHJrSv1wTqvF9SyWTEKcbiShn4mkgfnm9+tRQr4OqY=",
       "Microsoft.Extensions.Primitives.dll": "sha256-q4ruoDSCjV\/QJY9ZkzV6uxvEvZUVrDbyUjU3SSh5SlE=",
+      "Microsoft.IdentityModel.Abstractions.dll": "sha256-oGS8AsN70kjfdLCn3UYa8bI3q9nLLpo2S2WVobap9Ik=",
+      "Microsoft.IdentityModel.JsonWebTokens.dll": "sha256-md9I83a0\/ocnnVEnbcPTo3mSv38FoYNn9P+1gojjReQ=",
+      "Microsoft.IdentityModel.Logging.dll": "sha256-2rF+bIGsX7XXwRuHu78s9XpS7Y3k0GpR\/SfRTTe+qnc=",
+      "Microsoft.IdentityModel.Tokens.dll": "sha256-J4gVhNu81SaFGD7bDdUjBooAZOZYZ17Rqgmuwd8zLFI=",
       "Microsoft.JSInterop.dll": "sha256-OBt2YgODs1L5bJWrDjUFgcgGMUjDfmFTHCt9t69RxgU=",
       "Microsoft.JSInterop.WebAssembly.dll": "sha256-GH0zLXwtZcak53A9656ZndP15W57wd1W0kLvKDIV+VE=",
       "MudBlazor.dll": "sha256-oxkaN\/5Gj2R52cf\/msOeJcHp9uLcFnDoHRcG8Z1pwzQ=",
+      "Newtonsoft.Json.dll": "sha256-IsZJ91\/OW+fHzNqIgEc7Y072ns8z9dGritiSyvR9Wgc=",
+      "System.IdentityModel.Tokens.Jwt.dll": "sha256-KrOPRNkpSD7pfhVRd2cTecXC69Rt7TVEkjqdRe8FMD8=",
       "System.IO.Pipelines.dll": "sha256-P\/MqD0fCBd5bgTM16JC1QC\/Zz7s+CwViyzmDFkBG4\/c=",
       "Microsoft.CSharp.dll": "sha256-6Y1rN8knL1K5x5lsZ2tEVDND2h4LtDSuVgCg1N8ghkA=",
       "Microsoft.VisualBasic.Core.dll": "sha256-LRJ4hN7opopr3bsogxcz7uyVjh4bNZOdMbVbIIQ9z+8=",
@@ -203,15 +210,15 @@
       "mscorlib.dll": "sha256-qqpKd+W+AFb6UxudEYEKzrz7ma81p5LrWUwPBVvHV4U=",
       "netstandard.dll": "sha256-OYYuPT3JUknj4LdYIa58zF7kDB3tCnLzjCSuhEjtKXM=",
       "System.Private.CoreLib.dll": "sha256-EVS7zPxPV\/41g2mzPwdXtwiigWxI\/SeAHme1IgyD6tc=",
-      "BookResale.Models.dll": "sha256-7fSEBYg3y4OdRN2ppO+ARIQsiwzOIR8dDFA\/xeGhP\/A=",
-      "BookResale.Web.dll": "sha256-O9RnWybfOZNcfL96+AtrYmlE6Xt7hwH4yqGl8T\/hEcg="
+      "BookResale.Models.dll": "sha256-mXyfbXxsFwschqlts8zpHQsVCOdYXZ8yGnkT3zTVhd0=",
+      "BookResale.Web.dll": "sha256-KzKUFjK9rpcWVFa0gc8CeU\/P3Gwqh\/x77YG9QK\/\/KOw="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
-      "BookResale.Models.pdb": "sha256-7qwQhA2tfyw9d82FEKgyrlBkUf7VXtg0gehqpV+bOtE=",
-      "BookResale.Web.pdb": "sha256-P2tFNCuW3YInkp5so30IR0kU96XoYYpPZj9OqTpsvWU="
+      "BookResale.Models.pdb": "sha256-c239o+eqRZB4+62Che\/8nWjdpbuxw3nOM+qDlmEvjfA=",
+      "BookResale.Web.pdb": "sha256-88dk\/ynrHwmvNMHq3+Bo1wwqpSFaUSSgWVsPq3KoV\/0="
     },
     "runtime": {
       "dotnet.7.0.5.7xykp5whe1.js": "sha256-codB25EodaFEP43MDCfMBuKXU4LqurUKnQrpoMIFnPs=",

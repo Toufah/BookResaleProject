@@ -103,6 +103,13 @@
             border-radius: 3px;
             font-weight: 700;
         }
+        body::-webkit-scrollbar {
+            width: 5px; /* width of the entire scrollbar */
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background-color: var(--orange);
+        }
     </style>
 </head>
 
@@ -122,6 +129,7 @@
     </div>
     <script src="_content/MudBlazor/MudBlazor.min.js"></script>
     <script src="_framework/blazor.webassembly.js"></script>
+    <script src="_content/BlazorInputFile/inputfile.js"></script>
     <!--<script src="_content/Blazored.Toast/blazored-toast.js"></script>-->
 </body>
 

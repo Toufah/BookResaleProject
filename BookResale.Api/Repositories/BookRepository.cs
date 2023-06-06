@@ -61,5 +61,11 @@ namespace BookResale.Api.Repositories
             var categories = await this.bookResaleDbContext.BookCategories.ToListAsync();
             return (IEnumerable<BookCategory>)categories;
         }
+
+        public async Task<List<Book>> GetRecentlyViewedBooks(List<long> ids)
+        {
+            var books = await this.bookResaleDbContext.Books.Where(b => ids.Contains(b.Id)).ToListAsync();
+            return books;
+        }
     }
 }

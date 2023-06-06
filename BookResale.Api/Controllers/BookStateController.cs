@@ -1,4 +1,5 @@
-﻿using BookResale.Api.Extensions;
+﻿using BookResale.Api.Entities;
+using BookResale.Api.Extensions;
 using BookResale.Api.Repositories;
 using BookResale.Models.Dtos;
 using Microsoft.AspNetCore.Mvc;
@@ -35,6 +36,32 @@ namespace BookResale.Api.Controllers
             }
             catch (Exception)
             {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from database");
+            }
+        }
+
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<StateDto>> GetState(int id)
+        {
+            try
+            {
+                var state = await this.bookRepository.GetBookState(id);
+
+                if (state == null)
+                {
+                    return BadRequest();
+                }
+                else
+                {
+
+                    var stateDto = state.ConvertToDto();
+
+                    return Ok(stateDto);
+                }
+            }
+            catch (Exception)
+            {
+
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from database");
             }
         }

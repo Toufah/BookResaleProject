@@ -1,0 +1,56 @@
+﻿@using System.Security.Claims;
+@inherits LayoutComponentBase
+@inject IToastService _toastService;
+@inject AuthenticationStateProvider _authStateProvider;
+@inject NavigationManager _navigationManager;
+@inject ILocalStorageService _localStorageService;
+
+<BlazoredToasts />
+
+<div class="page">
+    <AuthorizeView>
+            <Authorized>
+                <div class="sidebar">
+                    <NavMenu />
+                </div>
+        </Authorized>
+    </AuthorizeView>
+    <main>
+        <AuthorizeView>
+            <Authorized>
+                <div class="top-row px-4" style="background: #fff; border-bottom: none; outline: none;">
+                    <button class="userNameProfile"><i class="bi bi-person"></i>@UserDisplayName(context.User.Claims.ToList())</button>
+                    <ul class="drpDownList">
+                        <li><i class="bi bi-eye"></i> view store</li>
+                        <li><i class="bi bi-gear"></i> admin sittings</li>
+                        <li @onclick="Logout"><i class="bi bi-box-arrow-left"></i> logout</li>
+                    </ul>
+                </div>
+            </Authorized>
+        </AuthorizeView>
+        
+
+        @Body
+    </main>
+</div>
+@code {
+    private string UserDisplayName(List<Claim> claims)
+    {
+        var firstName = claims.Where(_ => _.Type == "Firstname").Select(_ => _.Value).FirstOrDefault();
+        var LastName = claims.Where(_ => _.Type == "Lastname").Select(_ => _.Value).FirstOrDefault();
+        var Email = claims.Where(_ => _.Type == "Email").Select(_ => _.Value).FirstOrDefault();
+        if (!string.IsNullOrEmpty(firstName) || !string.IsNullOrEmpty(LastName))
+        {
+            return $"{firstName} {LastName}";
+        }
+        return "";
+    }
+
+    private async Task Logout()
+    {
+        await _localStorageService.RemoveItemAsync("jwt-access-token");
+        _navigationManager.NavigateTo("/");
+        (_authStateProvider as CustomAuthProvider).NotifyAuthState();
+        _toastService.ShowSuccess("Logged-out.");
+    }
+}

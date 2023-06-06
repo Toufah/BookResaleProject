@@ -46,5 +46,18 @@ namespace BookResale.Api.Controllers
             ModelState.AddModelError("LoginError", "Invalid Credentials");
             return BadRequest(ModelState);
         }
+
+        [HttpPost("loginAdmin")]
+        public async Task<IActionResult> LoginAdminAsync(LoginDto payload)
+        {
+            var result = await userService.LoginAdminAsync(payload);
+            if (result.IsLoginSuccess)
+            {
+                return Ok(result.TokenResponse);
+            }
+
+            ModelState.AddModelError("LoginError", "Invalid Credentials");
+            return BadRequest(ModelState);
+        }
     }
 }

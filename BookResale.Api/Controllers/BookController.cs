@@ -1,6 +1,9 @@
 ﻿using BookResale.Api.Entities;
 using BookResale.Api.Extensions;
 using BookResale.Api.Repositories;
+using BookResale.Api.Repositories.Contracts;
+using BookResale.Api.Services;
+using BookResale.Api.Services.BookServices;
 using BookResale.Models.Dtos;
 using BookResale.Web.Pages;
 using Microsoft.AspNetCore.Http;
@@ -13,11 +16,13 @@ namespace BookResale.Api.Controllers
     [ApiController]
     public class BookController : ControllerBase
     {
-        private readonly BookRepository bookRepository;
+        private readonly IBookRepository bookRepository;
+        private readonly IBookService bookService;
 
-        public BookController(BookRepository bookRepository)
+        public BookController(BookRepository bookRepository, IBookService bookService)
         {
             this.bookRepository = bookRepository;
+            this.bookService = bookService;
         }
 
         [HttpGet]
@@ -74,8 +79,17 @@ namespace BookResale.Api.Controllers
             }
         }
 
-
-
+        [HttpPost("newBook")]
+        public async Task<IActionResult> AddNewBook(BookDto Book)
+        {
+            var result = await bookService.AddNewBook(Book);
+            if (result.DoTheBookExists)
+            {
+                return Ok(result.Message);
+            }
+            ModelState.AddModelError("Book", result.Message);
+            return BadRequest(ModelState);
+        }
 
 
     }

@@ -9,6 +9,8 @@ namespace BookResale.Web.Pages
     {
         [Inject]
         public IBookService BookService { get; set; }
+        [Inject]
+        public IStatsService statsService { get; set; }
 
         public IEnumerable<BookDto> Books { get; set; }
 
@@ -16,5 +18,12 @@ namespace BookResale.Web.Pages
         {
             Books = await BookService.GetBooks();
         }
+
+        protected override async Task OnParametersSetAsync()
+        {
+            await statsService.IncrementVisits();
+            await statsService.GetVisits();
+        }
+
     }
 }

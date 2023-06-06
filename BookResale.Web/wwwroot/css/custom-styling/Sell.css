@@ -122,6 +122,7 @@ option {
 .carousel-section{
     width: 80%;
     margin: 0 auto;
+    overflow: hidden;
 }
 .carousel-section > div {
     margin: 0 auto;
@@ -168,4 +169,81 @@ textarea {
     color: red;
     font-size: 0.8rem;
     bottom: -3px;
+}
+.drop-container {
+    position: relative;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px dashed var(--lookalike-gray);
+    cursor: pointer;
+    transition: background .2s ease-in-out, border .2s ease-in-out;
+}
+
+.drop-container:hover {
+    background: #ddd;
+    border-color: #111;
+}
+
+.drop-container:hover .drop-title {
+    color: #222;
+}
+
+.drop-title {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    transition: color .2s ease-in-out;
+}
+input[type=file] {
+    height: fit-content;
+    border: solid 0.5px var(--lookalike-gray);
+    border-radius: 15px;
+    width: 80%;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+input[type=file]::file-selector-button {
+    border: none;
+    background: var(--orange);
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+    font-size: 1rem;
+    margin-right: 10px;
+}
+.preview > div:first-child {
+    display: flex;
+    gap: 20px;
+}
+.preview > div:first-child img {
+    width: 150px;
+    border-radius: 3px;
+}
+.preview > div:first-child > div > h5 {
+    font-weight: 700;
+    color: var(--bronze);
+}
+.preview > div:first-child > div > p {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+.preview > div:first-child > div > p:nth-child(4) {
+    font-weight: 700;
+    font-size: 1rem;
+}
+.preview > div:last-child > h6{
+    font-weight: 700;
+    color: var(--bronze);
+}
+.preview > div:last-child > p {
+    width: 100%;
+    line-break: anywhere;
 }

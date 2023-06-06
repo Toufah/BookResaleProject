@@ -8,5 +8,6 @@ namespace BookResale.Api.Services
         bool CheckUserUniqueEmail(string email);
 
         Task<(bool IsLoginSuccess, JWTTokenResponseDto TokenResponse)> LoginAsync(LoginDto loginPayload);
+        Task<(bool IsLoginSuccess, JWTTokenResponseDto TokenResponse)> LoginAdminAsync(LoginDto loginPayload);
     }
 }

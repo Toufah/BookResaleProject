@@ -6,6 +6,6 @@ namespace BookResale.Api.Services.PaymentServices
 {
     public interface IPaymentService
     {
-        Task<Session> CreateCheckoutSession(List<CartItemDto> cartItems); 
+        Session CreateCheckoutSession(List<CartItemDto> cartItems); 
     }
 }

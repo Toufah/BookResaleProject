@@ -39,5 +39,32 @@ namespace BookResale.Web.Services
                 throw;
             }
         }
+
+        public async Task<CategoryDto> GetCategory(int id)
+        {
+            try
+            {
+                var response = await httpClient.GetAsync($"api/Categories/{id}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+                    {
+                        return default(CategoryDto);
+                    }
+                    return await response.Content.ReadFromJsonAsync<CategoryDto>();
+                }
+                else
+                {
+                    var message = await response.Content.ReadAsStringAsync();
+                    throw new Exception(message);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

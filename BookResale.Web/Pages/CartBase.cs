@@ -59,13 +59,11 @@ namespace BookResale.Web.Pages
 
         protected async Task PlaceOrder()
         {
-            if(CartItems != null && CartItems.Count() != 0)
-            {
-                string checkoutUrl = await CartService.checkout();
-                Console.WriteLine(checkoutUrl);
-                NavigationManager.NavigateTo(checkoutUrl);
-                await CartService.EmptyCart();
-            }
+            Console.WriteLine("Landing");
+            string checkoutUrl = await CartService.checkout();
+            //NavigationManager.NavigateTo(checkoutUrl);
+            Console.WriteLine("Landing Successfully");
+            await CartService.EmptyCart();
         }
     }
 }

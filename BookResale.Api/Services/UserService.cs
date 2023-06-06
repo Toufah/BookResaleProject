@@ -140,5 +140,29 @@ namespace BookResale.Api.Services
 
             return (true, result);
         }
+
+        public async Task<(bool IsLoginSuccess, JWTTokenResponseDto TokenResponse)> LoginAdminAsync(LoginDto loginPayload)
+        {
+            if (string.IsNullOrEmpty(loginPayload.Email) || string.IsNullOrEmpty(loginPayload.Password))
+            {
+                return (false, null);
+            }
+            var user = await bookResaleDbContext.Users.Where(_ => _.Email.ToLower() == loginPayload.Email.ToLower()).FirstOrDefaultAsync();
+
+            if (user == null || user.RoleId != 2) { return (false, null); }
+
+            bool validPassword = PasswordVerification(loginPayload.Password, user.Password);
+
+            if (!validPassword) { return (false, null); }
+
+            var jwtAccessToken = GenerateJwtToken(user);
+
+            var result = new JWTTokenResponseDto
+            {
+                AccessToken = jwtAccessToken,
+            };
+
+            return (true, result);
+        }
     }
 }

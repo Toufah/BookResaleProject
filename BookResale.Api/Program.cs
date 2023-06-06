@@ -2,10 +2,14 @@ using BookResale.Api.Data;
 using BookResale.Api.Repositories;
 using BookResale.Api.Repositories.Contracts;
 using BookResale.Api.Services;
+using BookResale.Api.Services.BookServices;
 using BookResale.Api.Services.PaymentServices;
+using BookResale.Api.Services.StatsService;
+using BookResale.Api.Services.TrackingService;
 using BookResale.Api.Shared.Settings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Net.Http.Headers;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,6 +31,9 @@ builder.Services.AddScoped<ICartItemsRepository, CartItemsRepository>();
 builder.Services.AddScoped<FilterRepository>();
 builder.Services.AddScoped<IFilterRepository, FilterRepository>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
+builder.Services.AddScoped<IStatsService, StatsService>();
+builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<ITrackingService, TrackingService>();
 
 builder.Services.Configure<TokenSettings>(builder.Configuration.GetSection(nameof(TokenSettings)));
 
@@ -41,8 +48,17 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors(Policy =>
-    Policy.WithOrigins("http://localhost:7270", "https://localhost:7270").AllowAnyMethod().WithHeaders(HeaderNames.ContentType)
+    Policy.WithOrigins("http://localhost:7270", "https://localhost:7270", "http://localhost:7187", "https://localhost:7187")
+        .AllowAnyMethod()
+        .WithHeaders(HeaderNames.ContentType)
 );
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(Directory.GetCurrentDirectory(), "Files")),
+    RequestPath = "/Files"
+});
 
 app.UseHttpsRedirection();
 

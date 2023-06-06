@@ -78,6 +78,25 @@
           "buildMultiTargeting/Blazored.Toast.props": {}
         }
       },
+      "BlazorInputFile/0.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "3.1.0-preview3.19555.2",
+          "Microsoft.AspNetCore.Components.Web": "3.1.0-preview3.19555.2"
+        },
+        "compile": {
+          "lib/netstandard2.1/BlazorInputFile.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/BlazorInputFile.dll": {}
+        },
+        "build": {
+          "buildTransitive/BlazorInputFile.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/BlazorInputFile.props": {}
+        }
+      },
       "FluentValidation/11.5.2": {
         "type": "package",
         "compile": {
@@ -1074,15 +1093,15 @@
           "buildMultiTargeting/MudBlazor.props": {}
         }
       },
-      "Newtonsoft.Json/12.0.3": {
+      "Newtonsoft.Json/13.0.3": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
             "related": ".xml"
           }
         }
@@ -1678,13 +1697,16 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
+          "BlazorInputFile": "0.2.0",
           "Blazored.LocalStorage": "4.3.0",
           "Blazored.Toast": "4.1.0",
           "BookResale.Models": "1.0.0",
           "FluentValidation": "11.5.2",
           "Microsoft.AspNetCore.Components.Authorization": "7.0.5",
           "Microsoft.AspNetCore.Components.WebAssembly": "7.0.5",
-          "MudBlazor": "6.2.3"
+          "MudBlazor": "6.2.3",
+          "Newtonsoft.Json": "13.0.3",
+          "System.IdentityModel.Tokens.Jwt": "6.21.0"
         },
         "compile": {
           "bin/placeholder/BookResale.Web.dll": {}
@@ -1765,6 +1787,24 @@
         "lib/net6.0/Blazored.Toast.dll",
         "lib/net7.0/Blazored.Toast.dll",
         "staticwebassets/Blazored.Toast.bundle.scp.css"
+      ]
+    },
+    "BlazorInputFile/0.2.0": {
+      "sha512": "wsPTwoA9fkHOxjEh0W0brNeTaVBaMCFwfBLehbRhfW+RzlIrYtlJ5qFpT5f377Ej6ELk+xeoUrkDBx9c8JF7DQ==",
+      "type": "package",
+      "path": "blazorinputfile/0.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "blazorinputfile.0.2.0.nupkg.sha512",
+        "blazorinputfile.nuspec",
+        "build/BlazorInputFile.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "buildMultiTargeting/BlazorInputFile.props",
+        "buildTransitive/BlazorInputFile.props",
+        "lib/netstandard2.0/BlazorInputFile.dll",
+        "lib/netstandard2.1/BlazorInputFile.dll",
+        "staticwebassets/inputfile.js"
       ]
     },
     "FluentValidation/11.5.2": {
@@ -3358,14 +3398,15 @@
         "staticwebassets/MudBlazor.min.js"
       ]
     },
-    "Newtonsoft.Json/12.0.3": {
-      "sha512": "6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
+    "Newtonsoft.Json/13.0.3": {
+      "sha512": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
       "type": "package",
-      "path": "newtonsoft.json/12.0.3",
+      "path": "newtonsoft.json/13.0.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.md",
+        "README.md",
         "lib/net20/Newtonsoft.Json.dll",
         "lib/net20/Newtonsoft.Json.xml",
         "lib/net35/Newtonsoft.Json.dll",
@@ -3374,17 +3415,15 @@
         "lib/net40/Newtonsoft.Json.xml",
         "lib/net45/Newtonsoft.Json.dll",
         "lib/net45/Newtonsoft.Json.xml",
+        "lib/net6.0/Newtonsoft.Json.dll",
+        "lib/net6.0/Newtonsoft.Json.xml",
         "lib/netstandard1.0/Newtonsoft.Json.dll",
         "lib/netstandard1.0/Newtonsoft.Json.xml",
         "lib/netstandard1.3/Newtonsoft.Json.dll",
         "lib/netstandard1.3/Newtonsoft.Json.xml",
         "lib/netstandard2.0/Newtonsoft.Json.dll",
         "lib/netstandard2.0/Newtonsoft.Json.xml",
-        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
-        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
-        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
-        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
-        "newtonsoft.json.12.0.3.nupkg.sha512",
+        "newtonsoft.json.13.0.3.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "packageIcon.png"
       ]

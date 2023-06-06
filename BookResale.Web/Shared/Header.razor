@@ -69,11 +69,11 @@
             <li class="after-arrow"><a href="counter">featured</a></li>
             <AuthorizeView>
                 <Authorized>
-                    <li><a href="/Sell">sell</a></li>
+                    @if (SellerAuth(context.User.Claims.ToList()))
+                    {
+                        <li><a href="/Sell">sell</a></li>
+                    }
                 </Authorized>
-                <NotAuthorized>
-                    <li><a href="/SignIn">sell</a></li>
-                </NotAuthorized>
             </AuthorizeView>
             <li><a href="#">help</a></li>
         </ul>
@@ -93,6 +93,15 @@
         return Email;
     }
 
+    private bool SellerAuth(List<Claim> claims)
+    {
+        var Role = int.Parse(claims.Where(_ => _.Type == "Role").Select(_ => _.Value).FirstOrDefault());
+        if (Role != null && Role == 1)
+        {
+            return true;
+        }
+        return false;
+    }
 
     private async Task Logout()
     {

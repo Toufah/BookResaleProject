@@ -203,5 +203,7 @@ namespace BookResale.Api.Data
         public DbSet<BookState> BookStates { get; set; }
         public DbSet<Cart> Carts { get; set; }
         public DbSet<CartItem> CartItems { get; set; }
+        public DbSet<Stats> Stats { get; set; }
+        public DbSet<UserActivityLog> UserActivityLog { get; set; }
     }
 }

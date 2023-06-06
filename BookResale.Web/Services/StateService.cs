@@ -39,5 +39,32 @@ namespace BookResale.Web.Services
                 throw;
             }
         }
+
+        public async Task<StateDto> GetState(int id)
+        {
+            try
+            {
+                var response = await httpClient.GetAsync($"api/BookState/{id}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+                    {
+                        return default(StateDto);
+                    }
+                    return await response.Content.ReadFromJsonAsync<StateDto>();
+                }
+                else
+                {
+                    var message = await response.Content.ReadAsStringAsync();
+                    throw new Exception(message);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

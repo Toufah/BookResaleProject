@@ -39,5 +39,31 @@ namespace BookResale.Api.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from the database");
             }
         }
+
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<CategoryDto>> GetCategory(int id)
+        {
+            try
+            {
+                var category = await this.bookRepository.GetCategorie(id);
+
+                if (category == null)
+                {
+                    return BadRequest();
+                }
+                else
+                {
+
+                    var categoryDto = category.ConvertToDto();
+
+                    return Ok(categoryDto);
+                }
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from database");
+            }
+        }
     }
 }

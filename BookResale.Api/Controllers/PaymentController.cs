@@ -9,18 +9,19 @@ namespace BookResale.Api.Controllers
     [ApiController]
     public class PaymentController : ControllerBase
     {
-        private readonly IPaymentService paymentService;
+        private readonly IPaymentService _paymentService;
 
         public PaymentController(IPaymentService paymentService)
         {
-            this.paymentService = paymentService;
+            _paymentService = paymentService;
         }
 
         [HttpPost("checkout")]
-        public async Task<ActionResult> CreateCheckoutSession(List<CartItemDto> cartItems)
+        public ActionResult CreateCheckoutSession(List<CartItemDto> cartItems)
         {
-            var session = await paymentService.CreateCheckoutSession(cartItems);
-            Console.WriteLine(session.ToString());
+            Console.WriteLine("controler started");
+            var session = _paymentService.CreateCheckoutSession(cartItems);
+            Console.WriteLine("controler done");
             return Ok(session.Url);
         }
     }

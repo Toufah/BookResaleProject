@@ -23,4 +23,8 @@
     <ProjectReference Include="..\BookResale.Web\BookResale.Web.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Files\" />
+  </ItemGroup>
+
 </Project>

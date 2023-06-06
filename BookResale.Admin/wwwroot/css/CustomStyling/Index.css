@@ -1,0 +1,74 @@
+﻿.signInContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    position: relative;
+}
+.signInContainer > div {
+    width: 450px;
+    border-radius: 20px;
+    background-color: #f2f6f8;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.signInContainer > div > div:first-child {
+    background-color: var(--Orange-Pale-Orange);
+    padding: 24px;
+    position: relative;
+    padding-bottom: 40px;
+}
+.signInContainer > div > div:first-child > h5 {
+    color: var(--orange);
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.signInContainer > div > div:first-child > span {
+    font-size: .825rem;
+    font-weight: 500;
+}
+.signInContainer > div > div:first-child > div {
+    position: absolute;
+    background-color: var(--Orange-Pale-Orange);
+    border-radius: 50%;
+    padding: 10px;
+    bottom: -25%;
+}
+img {
+    width: 40px;
+}
+.signInContainer > div > div:nth-child(2) {
+    padding: 60px 16px 16px 16px;
+}
+.mud-paper {
+    padding: 8px;
+}
+.signInContainer > div > div:nth-child(2) > input::placeholder {
+    font-weight: 500;
+}
+.signInContainer > div > div:nth-child(2) input, .signInContainer > div > div:nth-child(2) button {
+    width: 100%;
+    margin-bottom: 25px;
+    height: 40px;
+    padding: 5px 10px;
+    outline: 1px solid var(--Orange-Pale-Orange);
+    font-weight: 600;
+    border-radius: 5px;
+    border: none;
+}
+.signInContainer > div > div:nth-child(2) button {
+    background-color: var(--orange);
+    color: #fff;
+    outline: none;
+}
+.signInContainer > div > div:nth-child(2) button:hover {
+    background-color: #C35214;
+}
+.signInContainer > div > div:last-child {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 600;
+    font-size: 0.85rem;
+}

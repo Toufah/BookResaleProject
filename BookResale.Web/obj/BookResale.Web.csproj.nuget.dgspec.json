@@ -99,6 +99,10 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "BlazorInputFile": {
+              "target": "Package",
+              "version": "[0.2.0, )"
+            },
             "Blazored.LocalStorage": {
               "target": "Package",
               "version": "[4.3.0, )"
@@ -127,6 +131,14 @@
             "MudBlazor": {
               "target": "Package",
               "version": "[6.2.3, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.21.0, )"
             }
           },
           "imports": [

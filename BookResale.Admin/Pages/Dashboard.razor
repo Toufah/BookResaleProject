@@ -1,0 +1,128 @@
+﻿@page "/Dashboard"
+@inherits DashboardBase;
+
+<AuthorizeView>
+    <Authorized>
+            <div class="content_container">
+                <h5>DASHBOARD</h5>
+                <div class="data-container">
+                    <div>
+                        <div>
+                            <h6><i class="bi bi-link-45deg"></i> today visitors</h6>
+                            <p>3 visitors</p>
+                        </div>
+                        <div>
+                            <h6><i class="bi bi-box2-fill"></i> today revenue</h6>
+                            <p>$0</p>
+                        </div>
+                        <div>
+                            <h6><i class="bi bi-clipboard2-pulse-fill"></i> today conversion rate</h6>
+                            <p>0%</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="orders">
+                            <div>
+                                <h6>today orders</h6>
+                                <p>0</p>
+                            </div>
+                            <div>
+                                <h6>today earnings</h6>
+                                <p>$0</p>
+                            </div>
+                        </div>
+                        <div class="orders">
+                            <div>
+                                <h6>today orders</h6>
+                                <p>0</p>
+                            </div>
+                            <div>
+                                <h6>today earnings</h6>
+                                <p>$0</p>
+                            </div>
+                        </div>
+                        <div class="orders">
+                            <div>
+                                <h6>today orders</h6>
+                                <p>0</p>
+                            </div>
+                            <div>
+                                <h6>today earnings</h6>
+                                <p>$0</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="orders">
+                            <div>
+                                <h6>today orders</h6>
+                                <p>0</p>
+                            </div>
+                            <div>
+                                <h6>today earnings</h6>
+                                <p>$0</p>
+                            </div>
+                        </div>
+                        <div class="orders">
+                            <div>
+                                <h6>today orders</h6>
+                                <p>0</p>
+                            </div>
+                            <div>
+                                <h6>today earnings</h6>
+                                <p>$0</p>
+                            </div>
+                        </div>
+                        <div class="orders">
+                            <div>
+                                <h6>today orders</h6>
+                                <p>0</p>
+                            </div>
+                            <div>
+                                <h6>today earnings</h6>
+                                <p>$0</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <h6 class="table_title">last 20 orders</h6>
+                            <div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <td>order id</td>
+                                            <td>client name</td>
+                                            <td>date</td>
+                                            <td>phone</td>
+                                            <td>total</td>
+                                            <td>status</td>
+                                            <td>payment</td>
+                                            <td>mode</td>
+                                            <td>action</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    @for(var i =0; i < 20; i++)
+                                    {
+                                        <tr>
+                                            <td>@i</td>
+                                            <td>Bouchra</td>
+                                            <td>2022-04-12 at 16:04</td>
+                                            <td>0672638581</td>
+                                            <td>$22</td>
+                                            <td>new</td>
+                                            <td>pending</td>
+                                            <td>cod</td>
+                                            <td><button>details</button></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </Authorized>
+</AuthorizeView>

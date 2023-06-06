@@ -1,0 +1,39 @@
+﻿@page "/"
+@inherits IndexBase;
+
+<AuthorizeView>
+    <NotAuthorized>
+        <div class="signInContainer">
+            <div>
+                <div>
+                    <h5>welcome back !</h5>
+                    <span>sign in to your dashboard</span>
+                    <div>
+                        <img src="Images/Logo/Icon-01.svg" />
+                    </div>
+                </div>
+                <div>
+                    <MudCard>
+                        <MudForm Model="loginModel" @ref="form_login" Validation="loginValidatorModel.ValidateValues">
+                            <MudCardContent>
+                                <MudTextField @bind-Value="loginModel.Email"
+                                              For="@(() => loginModel.Email)"
+                                              Immediate="true" Placeholder="Email"/>
+                                <MudTextField @bind-Value="loginModel.Password"
+                                              For="@(() => loginModel.Password)"
+                                              Immediate="true"
+                                              Placeholder="Password" InputType="InputType.Password" />
+                            </MudCardContent>
+                            <MudCardActions Class="btn-cont">
+                                <MudButton Variant="Variant.Filled" Class="cust-btn" OnClick="LoginAsync">sign in</MudButton>
+                            </MudCardActions>
+                        </MudForm>
+                    </MudCard>
+                </div>
+                <div>
+                    <span class="org-cl">&#169;</span> 2023 secondPage
+                </div>
+            </div>
+        </div>
+    </NotAuthorized>
+</AuthorizeView>

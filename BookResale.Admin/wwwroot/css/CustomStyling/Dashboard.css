@@ -1,0 +1,108 @@
+﻿.content_container > h5 {
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--bronze);
+}
+.content_container > div {
+    margin-top: 10px;
+}
+.content_container > div > div {
+    padding: 12px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: 20px;
+    margin: 0;
+}
+.content_container > div > div:first-child {
+    margin-bottom: 20px;
+    padding-bottom: 30px;
+    border-bottom: solid 0.5px #ebe1d6;
+}
+.content_container > div > div > .orders {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 10%;
+    position: relative;
+    overflow: hidden;
+}
+.content_container > div > div > .orders::after,
+.content_container > div > div > .orders::before{
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 400px;
+    background-color: var(--orange-v1);
+    top: -233%;
+    left: -6%;
+    transform: rotate(45deg);
+    opacity: 0.4;
+    transition: 0.8s;
+}
+
+.content_container > div > div > .orders::before {
+    top: -280%;
+    left: -8%;
+}
+.content_container > div > div > .orders:hover::before {
+    top: -101%;
+    left: 99%;
+}
+.content_container > div > div > .orders:hover::after {
+    top: -50%;
+    left: 99%;
+}
+.content_container > div > div > div {
+    background: #fff;
+    padding: 20px 30px 20px 25px;
+    border-radius: 5px;
+}
+.content_container > div > div > div > h6{
+    font-weight: 600;
+}
+.content_container > div > div > .orders > div> h6 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--bronze);
+}
+.content_container > div > div > div > h6 > i {
+    background-color: #d4dbf9 !important;
+    color: var(--orange);
+}
+.content_container > div > div > div > p {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-top: 20px;
+    color: var(--bronze);
+}
+.table_title {
+    font-weight: 700 !important;
+    color: var(--bronze);
+    margin-bottom: 20px;
+}
+table {
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    font-size: 0.95rem;
+    color: var(--bronze);
+}
+thead {
+    background-color: var(--orange-v1);
+}
+thead td {
+    padding: 10px 15px;
+    font-weight: 600;
+}
+tbody td {
+    padding: 10px 15px;
+    font-weight: 500;
+}
+td > button {
+    background: var(--orange);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 15px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.9rem;
+}

@@ -12,5 +12,6 @@ namespace BookResale.Api.Repositories.Contracts
         Task<Author> GetAuthor(int id);
         Task<IEnumerable<BookState>> GetBookStates();
         Task<BookState> GetBookState(int id);
+        Task<List<Book>> GetRecentlyViewedBooks(List<long> ids);
     }
 }

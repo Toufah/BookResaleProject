@@ -1,109 +1,248 @@
 ﻿@page "/Sell"
-@using MudBlazor.Services;
-@inherits SellBase
-
-<div class="ach-container">
-    <div class="carousel">
-        <!-- Buttons to switch between sections -->
-        <div class="carousel-buttons">
-            <button class="carousel-button @(activeSectionIndex == 0 ? "active-btn" : "")"><span class="num @(activeSectionIndex == 0 ? "active-num" : "")">1 </span>Category & Author</button>
-            <button class="carousel-button @(activeSectionIndex == 1 ? "active-btn" : "")"><span class="num @(activeSectionIndex == 1 ? "active-num" : "")">2 </span>Book Description</button>
-            <button class="carousel-button @(activeSectionIndex == 2 ? "active-btn" : "")"><span class="num @(activeSectionIndex == 2 ? "active-num" : "")">3 </span>Pricing & Images</button>
-            <button class="carousel-button @(activeSectionIndex == 3 ? "active-btn" : "")"><span class="num @(activeSectionIndex == 3 ? "active-num" : "")">4 </span>Preview</button>
-        </div>
-
-        <div class="carousel-content">
-            <!-- Category section -->
-            <div class="carousel-section @(activeSectionIndex == 0 ? "active" : "")">
-                <div>
-                    <div>
-                        <label for="category">category</label>
-                        <select id="category" @bind="selected_category">
-                            @if (@Categories != null)
-                            {
-                                @foreach (var category in Categories)
-                                {
-                                    <option value="@category.Id">@category.CategoryName</option>
-                                }
-                                <option value="0">other</option>
-                            }
-                        </select>
+@inherits SellBase;
+@using BlazorInputFile;
+@using BookResale.Models.Dtos;
+@inject FilesManager FilesManager;
+@using BookResale.Web.Shared;
+@using System.Security.Claims;
+<AuthorizeView>
+    <Authorized>
+        @if (SellerAuth(context.User.Claims.ToList()))
+        {
+            <div class="ach-container">
+                <div class="carousel">
+                    <!-- Buttons to switch between sections -->
+                    <div class="carousel-buttons">
+                        <button class="carousel-button @(activeSectionIndex == 0 ? "active-btn" : "")"><span class="num @(activeSectionIndex == 0 ? "active-num" : "")">1 </span>Category & Author</button>
+                        <button class="carousel-button @(activeSectionIndex == 1 ? "active-btn" : "")"><span class="num @(activeSectionIndex == 1 ? "active-num" : "")">2 </span>Book Description</button>
+                        <button class="carousel-button @(activeSectionIndex == 2 ? "active-btn" : "")"><span class="num @(activeSectionIndex == 2 ? "active-num" : "")">3 </span>Pricing & Images</button>
+                        <button class="carousel-button @(activeSectionIndex == 3 ? "active-btn" : "")"><span class="num @(activeSectionIndex == 3 ? "active-num" : "")">4 </span>Preview</button>
                     </div>
-                    <div>
-                        @if (@selected_category == 0)
+
+                    <div class="carousel-content">
+                        <!-- Category section -->
+                        <div class="carousel-section @(activeSectionIndex == 0 ? "active" : "")">
+                            <div>
+                                <div>
+                                    <label for="categories">category</label>
+                                    <select id="categories" @bind="selected_category">
+                                        @if (@Categories != null)
+                                        {
+                                            @foreach (var category in Categories)
+                                            {
+                                                <option value="@category.Id">@category.CategoryName</option>
+                                            }
+                                            <option value="0">other</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div>
+                                    @if (@selected_category == 0)
+                                    {
+                                        <label for="new_category">New Category</label>
+                                        <input type="text" id="new_category" required class="input-field" placeholder="Ex: Self-help" @bind-value="new_category" @bind-value:event='oninput' />
+                                    }
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <label for="authors">Author</label>
+                                    <select id="authors" @bind="selected_author">
+                                        @if (@Authors != null)
+                                        {
+                                            @foreach (var author in Authors)
+                                            {
+                                                <option value="@author.Id">@author.FirstName @author.LastName</option>
+                                            }
+                                            <option value="0">other</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div>
+                                    @if (@selected_author == 0)
+                                    {
+                                        <label for="new_author">New Author</label>
+                                        <input type="text" id="new_author" required class="input-field" placeholder="Ex: Mark Manson" @bind-value="new_author" @bind-value:event='oninput' />
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Book Description section -->
+                        <div class="carousel-section @(activeSectionIndex == 1 ? "active" : "") cr-ds-flex">
+                            <div>
+                                <div>
+                                    <label for="title">Title</label>
+                                    <input type="text" id="title" required placeholder="Ex: Rich Dad Poor Dad" class="input-field" @bind="title" @bind:event="oninput" />
+                                </div>
+                                <div>
+                                    <label for="ISBN">ISBN</label>
+                                    <input type="number" id="ISBN" required placeholder="Ex: 978-0-09-95922-8" class="input-field" @bind="ISBN" @bind:event="oninput" />
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <label for="state">State</label>
+                                    <select id="state" @bind="stateId">
+                                        @if (@States != null)
+                                        {
+                                            @foreach (var state in States)
+                                            {
+                                                <option value="@state.Id">@state.State</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <label for="description" class="desc-label">Description (@if (@desc_length != null)
+                                {
+                                    @desc_length.Length
+                                }
+                                else
+                                {
+                                    <span>0</span>
+                                }/300)</label>
+                            <textarea id="description" placeholder="description" @bind="desc_length" @bind:event="oninput"></textarea>
+                        </div>
+
+                        <!-- Pricing & Images section -->
+                        <div class="carousel-section @(activeSectionIndex == 2 ? "active" : "")">
+                            <div>
+                                <div>
+                                    <label for="images" class="drop-container">
+                                        <span class="drop-title">Drop files here</span>
+                                        or
+                                        <input type="file" id="images" accept=".jpg,.png,.webp,.svg,.jpeg" @*@onchange="OnInputFileChange" *@ @*@ondragenter="HandleDragEnter" @ondragleave="HandleDragEnter" *@/>
+                                    </label>
+                                </div>
+                                <div>
+                                    <label for="price">price</label>
+                                    <input type="number" id="price" placeholder="Ex: $2.99" @bind="price" @bind:event="oninput" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Preview section -->
+                        <div class="carousel-section @(activeSectionIndex == 3 ? "active" : "")">
+                            <div class="preview">
+                                <div>
+                                    <div>
+                                        <img src="/Images/Trading/TheMentalGameOfTrading.jpg" alt="book cover" />
+                                    </div>
+                                    <div>
+                                        <h5>@book.Title | @book.State</h5>
+                                        <p>by: @book.AuthorFirstName @book.AuthorLastName</p>
+                                        <p>category: @book.CategoryName</p>
+                                        <p>@book.Price.ToString("C")</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6>description</h6>
+                                    <p>@book.Description</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scrolling_buttons">
+                        <button class="scrolling_button" @onclick="MoveToPreviousStep">Previous Step</button>
+                        <button class="scrolling_button" @onclick="MoveToNextStep">@if (activeSectionIndex == 3) { <span>publish</span>}else{<span>next step</span>}</button>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <LoadingAnimation></LoadingAnimation>
+        }
+
+        @code {
+            private bool SellerAuth(List<Claim> claims)
+            {
+            var Role = int.Parse(claims.Where(_ => _.Type == "Role").Select(_ => _.Value).FirstOrDefault());
+                if (Role != null && Role == 1)
+                {
+                    return true;
+                }
+                return false;
+            }
+
+            /*
+            string ImageUrl = "";
+            bool Uploading = false;
+            List<string> FileUrls = new List<string>();
+
+            // support for drag/drop
+            string dropClass = string.Empty;
+            void HandleDragEnter()
+            {
+                dropClass = "dropAreaDrug";
+            }
+            void HandleDragLeave()
+            {
+                dropClass = string.Empty;
+            }
+
+            async Task OnInputFileChange(InputFileChangeEventArgs args)
+            {
+                dropClass = string.Empty;
+
+                try
+                {
+                    // disable the upload pane
+                    Uploading = true;
+                    await InvokeAsync(StateHasChanged);
+
+                    // Resize to no more than 400x400
+                    var format = "image/png";
+                    var resizedImageFile = await args.File.RequestImageFileAsync(format, 400, 400);
+
+                    // read resized png data into a buffer
+                    var buffer = new byte[resizedImageFile.Size];
+                    await resizedImageFile.OpenReadStream().ReadAsync(buffer);
+
+                    // get new filename with a bit of entropy
+                    string justFileName = Path.GetFileNameWithoutExtension(args.File.Name);
+                    string newFileNameWithoutPath = $"{justFileName}-{DateTime.Now.Ticks.ToString()}.png";
+
+                    // upload png as one file chunk
+                    var chunk = new FileChunks
                         {
-                            <label>New Category</label>
-                            <input type="text" required class="input-field" placeholder="Ex: Self-help" @bind-value="new_category" @bind-value:event='oninput' />
-                        }
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <label for="category">Author</label>
-                        <select id="category" @bind="selected_author">
-                            @if (@Authors != null)
-                            {
-                                @foreach (var author in Authors)
-                                {
-                                    <option value="@author.Id">@author.FirstName @author.LastName</option>
-                                }
-                                <option value="0">other</option>
-                            }
-                        </select>
-                    </div>
-                    <div>
-                        @if (@selected_author == 0)
-                        {
-                            <label>New Author</label>
-                            <input type="text" required class="input-field" placeholder="Ex: Mark Manson" @bind-value="new_author" @bind-value:event='oninput' />
-                        }
-                    </div>
-                </div>
-            </div>
+                            Data = buffer,
+                            FileNameNoPath = newFileNameWithoutPath,
+                            offset = 0,
+                            FirstChunk = true
+                        };
 
-            <!-- Book Description section -->
-            <div class="carousel-section @(activeSectionIndex == 1 ? "active" : "") cr-ds-flex">
-                <div>
-                    <div>
-                        <label for="title">Title</label>
-                        <input type="text" id="title" required placeholder="Ex: Rich Dad Poor Dad" class="input-field" @bind="title" @bind:event="oninput" />
-                    </div>
-                    <div>
-                        <label for="ISBN">ISBN</label>
-                        <input type="number" id="ISBN" required placeholder="Ex: 978-0-09-95922-8" class="input-field" @bind="ISBN" @bind:event="oninput" />
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <label for="state">State</label>
-                        <select id="state" @bind="stateId">
-                            @if (@States!= null)
-                            {
-                                @foreach (var state in States)
-                                {
-                                    <option value="@state.Id">@state.State</option>
-                                }
-                            }
-                        </select>
-                    </div>
-                </div>
-                <label for="description" class="desc-label">Description (@if(@desc_length != null){ @desc_length.Length}else{ <span>0</span>}/300)</label>
-                <textarea id="description" placeholder="description" @bind="desc_length" @bind:event="oninput"></textarea>
-            </div>
+                    await FilesManager.UploadFileChunk(chunk);
 
-            <!-- Pricing & Images section -->
-            <div class="carousel-section @(activeSectionIndex == 2 ? "active" : "")">
-                <span>test3</span>
-            </div>
+                    ImageUrl = $"files/{newFileNameWithoutPath}";
 
-            <!-- Preview section -->
-            <div class="carousel-section @(activeSectionIndex == 3 ? "active" : "")">
-                <span>test4</span>
-            </div>
-        </div>
-        <div class="scrolling_buttons">
-            <button class="scrolling_button" @onclick="MoveToPreviousStep">Previous Step</button>
-            <button class="scrolling_button" @onclick="MoveToNextStep">Next Step</button>
-        </div>
-    </div>
-</div>
+                    await ListFiles();
+
+                    Uploading = false;
+
+                }
+                catch (Exception ex)
+                {
+                    Uploading = false;
+                    await InvokeAsync(StateHasChanged);
+                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                    throw;
+                }
+            }
+
+            async Task ListFiles()
+            {
+
+                FileUrls = await FilesManager.GetFileNames();
+                await InvokeAsync(StateHasChanged);
+            }
+
+            protected override async Task OnInitializedAsync()
+            {
+                await ListFiles();
+            }
+        */
+        }
+    </Authorized>
+</AuthorizeView>

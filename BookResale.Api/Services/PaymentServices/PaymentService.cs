@@ -12,8 +12,9 @@ namespace BookResale.Api.Services.PaymentServices
         {
             StripeConfiguration.ApiKey = "sk_test_51N9EeqER9FprhnrG03HtFckScqs6GtC2mKH4bKacA7DwSaGApTRV0syYnOemplYA585x3Fx7w6Fw1lvp1AETbLHL00PX1Itk1P";
         }
-        public async Task<Session> CreateCheckoutSession(List<CartItemDto> cartItems)
+        public Session CreateCheckoutSession(List<CartItemDto> cartItems)
         {
+            Console.WriteLine("Here Payment service api getting started");
             var lineItems = new List<SessionLineItemOptions>();
             cartItems.ForEach(ci => lineItems.Add(new SessionLineItemOptions
             {
@@ -23,10 +24,10 @@ namespace BookResale.Api.Services.PaymentServices
                     ProductData = new SessionLineItemPriceDataProductDataOptions
                     {
                         Name = ci.BookTitle,
-                        Images = new List<string> { ci.BookImageURL},
-                    },
+                        Images = new List<string> { ci.BookImageURL}
+                    }
                 },
-                Quantity = 1
+                Quantity = ci.Qty
             }));
 
             var options = new SessionCreateOptions
@@ -37,12 +38,13 @@ namespace BookResale.Api.Services.PaymentServices
                 },
                 LineItems = lineItems,
                 Mode = "payment",
-                SuccessUrl = "https://www.google.com",
-                CancelUrl = "https://www.google.com",
+                SuccessUrl = "https://localhost:7270/",
+                CancelUrl = "https://localhost:7270/Cart"
             };
 
             var service = new SessionService();
-            Session session = await service.CreateAsync(options);
+            Session session = service.Create(options);
+            Console.WriteLine($"Here is achraf saying fuck you : {session.Url}\n\n\n\n\n");
             return session;
         }
     }

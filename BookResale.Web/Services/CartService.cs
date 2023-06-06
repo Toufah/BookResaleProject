@@ -56,10 +56,6 @@ namespace BookResale.Web.Services
                 }
 
                 var ids = cart.Select(item => item.Id).ToList();
-                foreach(var id in ids)
-                {
-                    Console.Write($"id={id}\n");
-                }
 
                 var url = "/api/Cart";
                 var queryString = string.Join("&", ids.Select(id => $"ids={id}"));
@@ -112,8 +108,19 @@ namespace BookResale.Web.Services
 
         public async Task<string> checkout()
         {
+            Console.WriteLine("Prepare to launch");
+            var CartItems = await GetCartItems();
+            foreach(var cartItem in CartItems)
+            {
+                Console.WriteLine($"Cart Item: {cartItem.BookId}");
+                Console.WriteLine($"Cart Item: {cartItem.BookTitle}");
+                Console.WriteLine($"Cart Item: {cartItem.BookImageURL}");
+                Console.WriteLine($"Cart Item: {cartItem.Qty}");
+                Console.WriteLine($"Cart Item: {cartItem.Price}");
+            }
             var result = await httpClient.PostAsJsonAsync("/api/Payment/checkout", await GetCartItems());
             var url = await result.Content.ReadAsStringAsync();
+            Console.WriteLine("Successful launch");
             return url;
         }
     }

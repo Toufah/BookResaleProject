@@ -1,6 +1,7 @@
 {
   "version": "1.0",
   "defaultProvider": "cdnjs",
+  "FileStorage": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookImages\\Sellers",
   "libraries": [
     {
       "library": "bootstrap-icons@1.10.5",
