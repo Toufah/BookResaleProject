@@ -96,5 +96,94 @@ namespace BookResale.Web.Services
             }
         }
 
+        public async Task<IEnumerable<BookDto>> GetRecentlyViewedBooks(int userId)
+        {
+            try
+            {
+                var queryString = $"/{userId}?userId={userId}"; // Create the query string
+                var fullRequestUri = "api/Book/RecentlyViewedBooks" + queryString; // Construct the full request URL
+
+                var response = await this.httpClient.GetAsync(fullRequestUri);
+                if (response.IsSuccessStatusCode)
+                {
+                    if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+                    {
+                        return Enumerable.Empty<BookDto>();
+                    }
+                    return await response.Content.ReadFromJsonAsync<IEnumerable<BookDto>>();
+                }
+                else
+                {
+                    var message = await response.Content.ReadAsStringAsync();
+                    throw new Exception(message);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public async Task<IEnumerable<BookDto>> GetBooksWithCategory(int categoryId)
+        {
+            try
+            {
+                var queryString = $"/{categoryId}"; // Create the query string
+                var fullRequestUri = "api/Book/GetBooksWithCategory" + queryString; // Construct the full request URL
+
+                var response = await this.httpClient.GetAsync(fullRequestUri);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+                    {
+                        return Enumerable.Empty<BookDto>();
+                    }
+                    return await response.Content.ReadFromJsonAsync<IEnumerable<BookDto>>();
+                }
+                else
+                {
+                    var message = await response.Content.ReadAsStringAsync();
+                    throw new Exception(message);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public async Task<CategoryDto> GetTopViewedCategory(int userId)
+        {
+            try
+            {
+                var queryString = $"/{userId}?userId={userId}"; // Create the query string
+                var fullRequestUri = "api/Book/GetUserTopViewedCategory" + queryString; // Construct the full request URL
+
+                var response = await this.httpClient.GetAsync(fullRequestUri);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+                    {
+                        return new CategoryDto();
+                    }
+                    return await response.Content.ReadFromJsonAsync<CategoryDto>();
+                }
+                else
+                {
+                    var message = await response.Content.ReadAsStringAsync();
+                    throw new Exception(message);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
     }
 }

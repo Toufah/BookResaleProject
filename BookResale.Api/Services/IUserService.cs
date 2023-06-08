@@ -9,5 +9,10 @@ namespace BookResale.Api.Services
 
         Task<(bool IsLoginSuccess, JWTTokenResponseDto TokenResponse)> LoginAsync(LoginDto loginPayload);
         Task<(bool IsLoginSuccess, JWTTokenResponseDto TokenResponse)> LoginAdminAsync(LoginDto loginPayload);
+        Task<bool> UpdateUserPassword(UpdatePasswordDto updatePassword);
+        Task<bool> AddUserShippingAddress(UserShippingAdressDto userShippingAdressDto);
+        Task<bool> UpdateUserShippingAddress(UserShippingAdressDto userShippingAdressDto);
+        Task<bool> UpdateUserInformations(UpdateUserInformationsDto updateUserInformationsDto);
+        Task<bool> PasswordVerification(UpdatePasswordDto updatePasswordDto);
     }
 }

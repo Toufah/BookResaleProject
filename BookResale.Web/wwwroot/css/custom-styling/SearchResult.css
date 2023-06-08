@@ -1,0 +1,39 @@
+﻿.search_result_cont {
+    padding: 15px 0;
+}
+.search_result_cont > div > h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+.search_result_cont > div > div > .booksList{
+    padding: 15px 0;
+}
+.search_result_cont > div > div > .booksList > div{
+    display: flex;
+    gap: 30px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 0.2s ease-in-out
+}
+.search_result_cont > div > div > .booksList > div:hover {
+    transform: scale(0.99);
+}
+.search_result_cont > div > div > .booksList > div > img{
+    max-width: 150px;
+    border-radius: 5px;
+}
+.search_result_cont > div > div > .booksList > div > div > h6 {
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--bronze);
+}
+.search_result_cont > div > div > .booksList > div > div > p {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+.search_result_cont > div > div > .booksList > div > div > p:last-child {
+    color: var(--orange);
+    font-weight: 700;
+}

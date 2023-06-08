@@ -9,6 +9,8 @@ namespace BookResale.Web.Shared
     {
         [Inject]
         protected IFilterService FilterService { get; set; }
+        [Inject]
+        private NavigationManager navigationManager { get; set; }
         public IEnumerable<BookDto> searchResult { get; set; }
         protected string searchQuery;
 
@@ -17,6 +19,14 @@ namespace BookResale.Web.Shared
             if (!string.IsNullOrEmpty(searchQuery)) {
                 searchResult = await FilterService.SearchBook(searchQuery);
                 StateHasChanged();
+            }
+        }
+
+        protected async Task SearchResult()
+        {
+            if (!string.IsNullOrEmpty(searchQuery))
+            {
+                navigationManager.NavigateTo($"/SearchResult/{searchQuery}", forceLoad: true);
             }
         }
         public MudField test;

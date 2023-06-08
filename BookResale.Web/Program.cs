@@ -30,6 +30,7 @@ builder.Services.AddScoped<IAuthorsService, AuthorsService>();
 builder.Services.AddScoped<IStateService, StateService>();
 builder.Services.AddScoped<IStatsService, StatsService>();
 builder.Services.AddScoped<ITrackingService, TrackingService>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<FilesManager>();
 
 await builder.Build().RunAsync();

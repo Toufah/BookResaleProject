@@ -41,6 +41,50 @@
       "PackagePath": "staticwebassets\\Images\\Website-Images\\wave.png"
     },
     {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\Images\\randomBookCovers\\AutomateYourBusyWork.jpg",
+      "PackagePath": "staticwebassets\\Images\\randomBookCovers\\AutomateYourBusyWork.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\Images\\randomBookCovers\\CollectiveIllusions.jpg",
+      "PackagePath": "staticwebassets\\Images\\randomBookCovers\\CollectiveIllusions.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\Images\\randomBookCovers\\DarkHorse.jpg",
+      "PackagePath": "staticwebassets\\Images\\randomBookCovers\\DarkHorse.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\Images\\randomBookCovers\\DoTheEasyHardThingsFirst.webp",
+      "PackagePath": "staticwebassets\\Images\\randomBookCovers\\DoTheEasyHardThingsFirst.webp"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\Images\\randomBookCovers\\EatThatFrog.jpg",
+      "PackagePath": "staticwebassets\\Images\\randomBookCovers\\EatThatFrog.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\Images\\randomBookCovers\\HistoryOfTheAmericanFrontier.jpg",
+      "PackagePath": "staticwebassets\\Images\\randomBookCovers\\HistoryOfTheAmericanFrontier.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\Images\\randomBookCovers\\Icebreaker.jpg",
+      "PackagePath": "staticwebassets\\Images\\randomBookCovers\\Icebreaker.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\Images\\randomBookCovers\\LessonsFromTheCovidWar.jpg",
+      "PackagePath": "staticwebassets\\Images\\randomBookCovers\\LessonsFromTheCovidWar.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\Images\\randomBookCovers\\TheHouseMade.jpg",
+      "PackagePath": "staticwebassets\\Images\\randomBookCovers\\TheHouseMade.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\Images\\randomBookCovers\\TheInmate.webp",
+      "PackagePath": "staticwebassets\\Images\\randomBookCovers\\TheInmate.webp"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\Images\\randomBookCovers\\WorkLessMakeMore.jpg",
+      "PackagePath": "staticwebassets\\Images\\randomBookCovers\\WorkLessMakeMore.jpg"
+    },
+    {
       "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\Images\\self-help\\AtomicHabits.jpg",
       "PackagePath": "staticwebassets\\Images\\self-help\\AtomicHabits.jpg"
     },
@@ -135,6 +179,14 @@
     {
       "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\css\\custom-styling\\LoadingAnimation.css",
       "PackagePath": "staticwebassets\\css\\custom-styling\\LoadingAnimation.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\css\\custom-styling\\Profile.css",
+      "PackagePath": "staticwebassets\\css\\custom-styling\\Profile.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\css\\custom-styling\\SearchResult.css",
+      "PackagePath": "staticwebassets\\css\\custom-styling\\SearchResult.css"
     },
     {
       "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\css\\custom-styling\\Sell.css",

@@ -91,6 +91,126 @@ namespace BookResale.Api.Controllers
             return BadRequest(ModelState);
         }
 
+        [HttpGet("RecentlyViewedBookIds/{id:int}")]
+        public async Task<ActionResult<long>> GetUserRecentlyViewBooksIds(int userId)
+        {
+            try
+            {
+                var bookIds = await this.bookRepository.GetUserRecentlyViewBooksIds(userId);
+
+                if (bookIds == null)
+                {
+                    return BadRequest();
+                }
+                else
+                {
+                    return Ok(bookIds);
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while processing the request: " + ex.Message);
+            }
+        }
+
+
+        [HttpGet("RecentlyViewedBooks/{id:int}")]
+        public async Task<ActionResult<BookDto>> GetRecentlyViewedBooks(int userId)
+        {
+            try
+            {
+                var books = await this.bookRepository.GetRecentlyViewedBooks(userId);
+                var bookCategories = await this.bookRepository.GetCategories();
+                var authors = await this.bookRepository.GetAuthors();
+                var bookStates = await this.bookRepository.GetBookStates();
+
+                if (books == null)
+                {
+                    return null;
+                }
+                else
+                {
+                    var bookDtos = books.ConvertToDto(bookCategories, authors, bookStates);
+                    return Ok(bookDtos);
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while processing the request: " + ex.Message);
+            }
+        }
+
+        [HttpGet("GetUserTopViewedCategoryId/{id:int}")]
+        public async Task<ActionResult<int>> GetUserTopViewedCategoryId(int userId)
+        {
+            try
+            {
+                var categoriesId = await this.bookRepository.GetUserTopViewedCategoryId(userId);
+
+                if (categoriesId == null)
+                {
+                    return BadRequest();
+                }
+                else
+                {
+                    return Ok(categoriesId);
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while processing the request: " + ex.Message);
+            }
+        }
+
+        [HttpGet("GetUserTopViewedCategory/{id:int}")]
+        public async Task<ActionResult<CategoryDto>> GetUserTopViewedCategory(int userId)
+        {
+            try
+            {
+                var categories = await this.bookRepository.GetUserTopViewedCategory(userId);
+
+                if (categories == null)
+                {
+                    return null;
+                }
+                else
+                {
+                    var category = categories.ConvertToDto();
+                    return Ok(category);
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while processing the request: " + ex.Message);
+            }
+        }
+
+        [HttpGet("GetBooksWithCategory/{categoryId:int}")]
+        public async Task<ActionResult<IEnumerable<BookDto>>> GetBooksWithCategory(int categoryId)
+        {
+            try
+            {
+                var books = await this.bookRepository.GetBooksWithCategory(categoryId);
+                var bookCategories = await this.bookRepository.GetCategories();
+                var authors = await this.bookRepository.GetAuthors();
+                var bookStates = await this.bookRepository.GetBookStates();
+
+                if (books == null)
+                {
+                    return BadRequest();
+                }
+                else
+                {
+                    var bookDtos = books.ConvertToDto(bookCategories, authors, bookStates);
+                    return Ok(bookDtos);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
 
     }
 }

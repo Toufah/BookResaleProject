@@ -6,7 +6,10 @@
 @inject AuthenticationStateProvider _authStateProvider;
 @inject ICartService cartService;
 @inject IToastService _toastService;
+@inject IUserService userService;
 @inherits HeaderBase;
+@inject AuthenticationStateProvider authenticationStateProvider;
+@inject IJSRuntime JSRuntime;
 
 <header>
     <div class="static-header ach-container">
@@ -14,8 +17,8 @@
             <img src="/Images/Logo/SecondPageLogo-01.svg" alt="logo" class="second-page-logo" />
         </a>
         <div class="search-bar">
-            <input type="text" name="search" id="search-bar" placeholder="Search" @bind="@searchQuery" @bind:event="oninput" @onkeyup="async () => await searchBook()" />
-            <div class="search-icon-container" @onclick="async () => await searchBook()">
+            <input type="text" name="search" id="search-bar" placeholder="Search" @bind="@searchQuery" @bind:event="oninput" @onkeyup="async () => await searchBook()" @ref="searchInput" />
+            <div class="search-icon-container" @onclick="async () => await SearchResult()">
                 <i class="bi bi-search"></i>
             </div>
             @if(searchResult != null)
@@ -27,7 +30,7 @@
                         <div class="search-list">
                         @foreach (var book in searchResult)
                         {
-                            <div class="list-item">
+                            <div class="list-item" @onclick="() => displayBookDetails(book.Id)">
                                 <img src="@book.ImageURL">
                                 <div>
                                     <h6>@book.Title</h6>
@@ -44,9 +47,9 @@
         <div class="sign-in-add-to-cart-container">
             <AuthorizeView>
                 <Authorized>
-                    <span class="name">@UserDisplayName(context.User.Claims.ToList())</span>
+                    <span class="name">@userName</span>
                     <ul class="tgl-list">
-                        <li><a href="#">profil</a></li>
+                        <li><a href="/Profile">profil</a></li>
                         <li @onclick="Logout">logout</li>
                     </ul>
                 </Authorized>
@@ -81,22 +84,43 @@
 </header>
 
 @code {
-    private string UserDisplayName(List<Claim> claims)
+    private bool IsUserLoggedIn { get; set; }
+    private int userId { get; set; }
+    private UserDto userDto { get; set; }
+    private string? userName { get; set; }
+    private ElementReference searchInput;
+
+    private void displayBookDetails(long bookId)
     {
-        var firstName = claims.Where(_ => _.Type == "Firstname").Select(_ => _.Value).FirstOrDefault();
-        var LastName = claims.Where(_ => _.Type == "Lastname").Select(_ => _.Value).FirstOrDefault();
-        var Email = claims.Where(_ => _.Type == "Email").Select(_ => _.Value).FirstOrDefault();
-        if(!string.IsNullOrEmpty(firstName) || !string.IsNullOrEmpty(LastName))
-        {
-            return $"{firstName} {LastName}";
-        }
-        return Email;
+        _navigationManager.NavigateTo($"/BookDetails/{bookId}");
+        JSRuntime.InvokeVoidAsync("focusElement", searchInput);
     }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await authenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+
+        IsUserLoggedIn = user.Identity?.IsAuthenticated ?? false;
+        if (IsUserLoggedIn)
+        {
+            var claims = user.Claims;
+            var user_id = int.Parse(claims.Where(_ => _.Type == "Sub").Select(_ => _.Value).FirstOrDefault());
+            if (user_id != 0)
+            {
+                userId = user_id;
+                userDto = await userService.GetUser(userId);
+                var username = userDto.FirstName + " " + userDto.LastName;
+                userName = username;
+            }
+        }
+    }
+
 
     private bool SellerAuth(List<Claim> claims)
     {
         var Role = int.Parse(claims.Where(_ => _.Type == "Role").Select(_ => _.Value).FirstOrDefault());
-        if (Role != null && Role == 1)
+        if (Role != 0 && Role == 1)
         {
             return true;
         }
@@ -106,9 +130,9 @@
     private async Task Logout()
     {
         await _localStorageService.RemoveItemAsync("jwt-access-token");
-        _navigationManager.NavigateTo("/");
         (_authStateProvider as CustomAuthProvider).NotifyAuthState();
         _toastService.ShowSuccess("Logged-out.");
+        _navigationManager.NavigateTo("/", forceLoad: true);
     }
 
     private int GetBooksCount()

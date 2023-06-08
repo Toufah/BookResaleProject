@@ -47,7 +47,7 @@ header::before {
     cursor: pointer;
 }
 
-#search-bar:not(:focus) + .search-icon-container + .search-list {
+#search-bar:not(:focus) ~ .search-icon-container:not(:active) + .search-list {
     display: none !important;
 }
 

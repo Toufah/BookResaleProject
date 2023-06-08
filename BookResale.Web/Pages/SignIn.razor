@@ -157,7 +157,7 @@
             }
             else if (response.StatusCode == HttpStatusCode.OK)
             {
-                _navigationManager.NavigateTo("/");
+                _navigationManager.NavigateTo("/", forceLoad: true);
                 var tokenResponse = await response.Content.ReadFromJsonAsync<JwtTokenResponseVm>();
                 await _localStorageService.SetItemAsync<string>("jwt-access-token", tokenResponse.AccessToken);
                 (_authStateProvider as CustomAuthProvider).NotifyAuthState();

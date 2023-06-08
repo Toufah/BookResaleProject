@@ -1,0 +1,110 @@
+﻿@page "/Profile"
+@inherits ProfileBase
+
+<AuthorizeView>
+    <Authorized>
+        <div class="profile_cont">
+            <div class="ach-container profileCont">
+                <div class="actions_list">
+                    <ul>
+                        <li class="@ProfileActive" @onclick="SetProfileActive"><i class="bi bi-person-fill"></i>profile</li>
+                        <li class="@ShippingActive" @onclick="SetShippingActive"><i class="bi bi-airplane-engines-fill"></i>shipping informations</li>
+                        <li class="@PasswordActive" @onclick="SetPasswordActive"><i class="bi bi-key-fill"></i>change password</li>
+                    </ul>
+                </div>
+                <div class="actions">
+                    @if (userDto == null)
+                    {
+                        <LoadingAnimation />
+                    }
+                    else
+                    {
+                        <div class="profile" style="display: @ProfileActionActive;">
+                            <span @onclick="enableOrDisableEditProfile"><i class="bi bi-pencil-square"></i></span>
+                            <div>
+                                <label for="Id">Id</label>
+                                <input id="Id" type="text" value="@userDto.Id" disabled />
+                            </div>
+                            <div>
+                                <label for="firstname">firstname</label>
+                                <input id="firstname" type="text" value="@userDto.FirstName" disabled="@EditProfile" @oninput="e => userDto.FirstName = e.Value.ToString()" />
+                            </div>
+                            <div>
+                                <label for="lastname">lastname</label>
+                                <input id="lastname" type="text" value="@userDto.LastName" disabled="@EditProfile" @oninput="e => userDto.LastName = e.Value.ToString()" />
+                            </div>
+                            <div>
+                                <label for="email">email</label>
+                                <input id="email" type="text" value="@userDto.Email" disabled="@EditProfile" @oninput="e => userDto.Email = e.Value.ToString()" />
+                            </div>
+                            <div>
+                                <label for="role">role</label>
+                                <input id="role" type="text" value="@userDto.RoleName" disabled />
+                            </div>
+                            <div>
+                                <button style="display: @submitOnOffProfil;" @onclick="UpdateUserInfo">save</button>
+                            </div>
+                        </div>
+                        <div class="shipping_info" style="display: @ShippingActionActive;">
+                            @if (userShippingAdress == null)
+                            {
+                                <h4>Add shipping address</h4>
+                                <div>
+                                    <label for="add_adress">adress</label>
+                                    <input id="add_adress" type="text" @bind-value="@addUserShippingAddress.Address" @bind-value:event="onchange" placeholder="123 Main Street" />
+                                </div>
+                                <div>
+                                    <label for="add_city">city</label>
+                                    <input id="add_city" type="text" @bind-value="@addUserShippingAddress.city" @bind-value:event="onchange" placeholder="Settat"/>
+                                </div>
+                                <div>
+                                    <label for="add_phone_number">phone number</label>
+                                    <input id="add_phone_number" type="text" @bind-value="@addUserShippingAddress.phoneNumber" @bind-value:event="onchange" placeholder="0666603594"/>
+                                </div>
+                                <div>
+                                    <button @onclick="AddUserShippingAddress">save</button>
+                                </div>
+                            }
+                            else
+                            {
+                                <span @onclick="enableOrDisableEditShipping"><i class="bi bi-pencil-square"></i></span>
+                                <div>
+                                    <label for="adress">adress</label>
+                                    <input id="adress" type="text" value="@userShippingAdress.Address" disabled="@EditShipping" @oninput="e => userShippingAdress.Address = e.Value.ToString()" />
+                                </div>
+                                <div>
+                                    <label for="city">city</label>
+                                    <input id="city" type="text" value="@userShippingAdress.city" disabled="@EditShipping" @oninput="e => userShippingAdress.city = e.Value.ToString()" />
+                                </div>
+                                <div>
+                                    <label for="phone_number">phone number</label>
+                                    <input id="phone_number" type="text" value="@userShippingAdress.phoneNumber" disabled="@EditShipping" @oninput="e => userShippingAdress.phoneNumber = e.Value.ToString()" />
+                                </div>
+                                <div>
+                                    <button style="display: @submitOnOffShipping;" @onclick="UpdateUserShippingAddress">save</button>
+                                </div>
+                            }
+                        </div>
+                        <div class="change_pwd" style="display: @PasswordActionActive;">
+                            <div>
+                                <label for="old_password">old password</label>
+                                <input type="password" id="old_passwor" placeholder="Old Password" @bind="oldPassword" @bind:event="onchange" />
+                            </div>
+                            <div>
+                                <label for="new_password">new password</label>
+                                <input type="password" id="new_passwor" placeholder="new Password" @bind="updatePassword.newPassword" @bind:event="onchange" />
+                            </div>
+                            <div>
+                                <label for="confirm_new_password">confirm new password</label>
+                                <input type="password" id="confirm_new_password" placeholder="Confirm New Password" @bind="confirmPassword" @bind:event="onchange" />
+                            </div>
+                            <div>
+                                <button @onclick="UpdatePassword">save</button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </Authorized>
+</AuthorizeView>

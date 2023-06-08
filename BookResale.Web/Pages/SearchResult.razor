@@ -1,0 +1,46 @@
+﻿@page "/SearchResult/{searchQuery}"
+@using System.Globalization;
+@inherits SearchResultBase;
+
+<div class="search_result_cont">
+    <div class="ach-container">
+        @if (searchResult == null)
+        {
+            <LoadingAnimation />
+        }
+        else if (searchResult.Count() == 0)
+        {
+            <h4>no books found for this title: @searchQuery.</h4>
+        }
+        else
+        {
+            <h4>@searchResult.Count() titles found for: @searchQuery.</h4>
+            <div>
+                @if (searchResult != null)
+                {
+                    @if (searchResult.Count() > 0)
+                    {
+                        @if (!string.IsNullOrEmpty(searchQuery))
+                        {
+                            <div class="booksList">
+                                @foreach (var book in searchResult)
+                                {
+                                    <div @onclick="() => ViewBook(book.Id)">
+                                        <img src="@book.ImageURL">
+                                        <div>
+                                            <h6>@book.Title</h6>
+                                            <p>@book.AuthorFirstName @book.AuthorLastName</p>
+                                            <p>@book.CategoryName</p>
+                                            <p>@book.Price.ToString("C", new CultureInfo("en-US"))</p>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        }
+                    }
+
+                }
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,75 @@
+﻿.profileCont {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    background: #efefef;
+    border-radius: 3px;
+    overflow: hidden;
+    min-height: 640px;
+}
+.actions_list {
+    width: 30%;
+    background: #fff;
+    border-radius: 3px;
+    overflow: hidden;
+}
+.actions_list ul {
+    font-weight: 600;
+}
+.actions_list ul li {
+    padding: 20px 25px 20px 25px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    border-right: solid 4px transparent;
+    color: var(--bronze);
+}
+.liActive {
+    border-right: solid 4px var(--orange) !important;
+}
+.actions_list ul li:hover {
+    border-right: 4px solid var(--orange);
+}
+.actions_list ul li i {
+    margin-right: 10px;
+}
+.actions {
+    width: 100%;
+    background: #fff;
+    border-radius: 3px;
+    overflow: hidden;
+}
+.profile, .shipping_info, .change_pwd {
+    width: 100%;
+    overflow: hidden;
+    transition: 0.2s ease-in;
+    padding: 30px 20px 15px 20px;
+    position: relative;
+}
+.profile > span, .shipping_info > span, .change_pwd > span {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+.profile input, .shipping_info input, .change_pwd input{
+    margin-bottom: 15px;
+}
+.profile input:not(input:disabled), .shipping_info input:not(input:disabled), .change_pwd input:not(input:disabled) {
+    outline: solid 1px var(--orange);
+    font-weight: 600;
+}
+.profile label, .shipping_info label, .change_pwd label {
+    color: var(--bronze);
+
+}
+.profile button, .shipping_info button, .change_pwd button {
+    background: var(--orange);
+    color: #fff;
+    padding: 10px 40px;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: 0 0 4px -1px var(--bronze);
+    text-transform: capitalize;
+}

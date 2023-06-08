@@ -1,4 +1,5 @@
 ﻿@page "/BookDetails/{Id:long}"
+@using System.Globalization;
 @inherits BookDetailsBase
 @inject NavigationManager NavManager
 
@@ -26,7 +27,7 @@
                     </div>
                     <div class="price-inf">
                         <p>condition: <b class="ch-org">@Book.State</b></p>
-                        <h4>@Book.Price.ToString("C")&nbsp;</h4>
+                        <h4>@Book.Price.ToString("C", new CultureInfo("en-US"))&nbsp;</h4>
                         <div class="take-action">
                             <a style="cursor: pointer" @onclick="async () => await AddToCart()" class="or-btn ach-btn">add to cart</a>
                             <a style="cursor: pointer" class="bb-btn ach-btn">buy now</a>

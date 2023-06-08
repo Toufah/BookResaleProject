@@ -65,5 +65,7 @@ namespace BookResale.Api.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from database");
             }
         }
+
+        
     }
 }

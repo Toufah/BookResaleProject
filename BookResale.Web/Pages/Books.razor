@@ -16,7 +16,7 @@
 
 <div class="ds-books">
     <div class="ach-container content">
-        @if (Books == null)
+        @if (Books == null || SelfHelpBooks == null)
         {
             <LoadingAnimation/>
         }
@@ -24,17 +24,37 @@
         {
             @*Start new arrivals*@
             <div>
-                <a href="#" class="ct-title">new arrivals</a>
-
+                @if (RecentlyViewedBooks != null && RecentlyViewedBooks.Count() > 0)
+                {
+                    if (RecentlyViewedBooks.Count() > 7)
+                    {
+                        <span class="arrow-container">
+                            <i class="bi bi-arrow-left" @onclick="PrevSlide"></i>
+                            <i class="bi bi-arrow-right" @onclick="NextSlide"></i>
+                        </span>
+                    }
+                    <a href="#" class="ct-title">Recently Viewed</a>
+                    ToDisplayBooks = RecentlyViewedBooks;
+                }
+                else
+                {
+                    <span class="arrow-container">
+                        <i class="bi bi-arrow-left" @onclick="PrevSlide"></i>
+                        <i class="bi bi-arrow-right" @onclick="NextSlide"></i>
+                    </span>
+                    <a href="#" class="ct-title">new arrivals</a>
+                    ToDisplayBooks = Books;
+                }
+                    
                 @if (Books.Count() > 0)
                 {
-                    var booksCount = Books.Count();
+                    var booksCount = ToDisplayBooks.Count();
                     const int booksPerRow = 6;
                     var booksRowList = new List<BookDto>();
-                    <div class="book-card">
+                    <div class="book-card" style="transform: translateX(@(-index)px);">
                         @for (int i = 0; i < booksPerRow; i++)
                         {
-                            booksRowList = Books.Skip(i * booksPerRow).Take(booksPerRow).ToList();
+                            booksRowList = ToDisplayBooks.Skip(i * booksPerRow).Take(booksPerRow).ToList();
                             int counter = 0;
                             @foreach (var book in booksRowList)
                             {
@@ -59,53 +79,108 @@
 
             @*End new arrivals*@
             @*Start self-help*@
-
-            <div>
-                <a href="#" class="ct-title">self-help</a>
-
-                @if (Books.Count() > 0)
-                {
-                    var booksCount = Books.Count();
-                    const int booksPerRow = 6;
-                    var booksRowList = new List<BookDto>();
-                    <div class="book-card">
-                        @for (int i = 0; i < booksPerRow; i++)
-                        {
-                            booksRowList = Books.Skip(i * booksPerRow).Take(booksPerRow).ToList();
-                            int counter = 0;
-                            @foreach (var book in booksRowList)
+            @if (TopViewedCategoyBooks != null)
+            {
+                <div>
+                    @if (TopViewedCategoyBooks.Count() > 7)
+                    {
+                        <span class="arrow-container">
+                            <i class="bi bi-arrow-left" @onclick="PrevSlideF"></i>
+                            <i class="bi bi-arrow-right" @onclick="NextSlideF"></i>
+                        </span>
+                    }
+                    <a href="#" class="ct-title">@TopViewedCategoyName</a>
+                    @if (TopViewedCategoyBooks.Count() > 0)
+                    {
+                        var booksCount = TopViewedCategoyBooks.Count();
+                        const int booksPerRow = 6;
+                        var booksRowList = new List<BookDto>();
+                        <div class="book-card" style="transform: translateX(@(-indexF)px);">
+                            @for (int i = 0; i < booksPerRow; i++)
                             {
-                                if (counter < 5 && book.CategoryId == 1)
+                                booksRowList = TopViewedCategoyBooks.Skip(i * booksPerRow).Take(booksPerRow).ToList();
+                                int counter = 0;
+                                @foreach (var book in booksRowList)
                                 {
-                                    <a href="/BookDetails/@book.Id">
-                                        <div class="img-cont">
-                                            <img class="image-thumbnail" src="@book.ImageURL" />
-                                        </div>
-                                        <div class="card-body">
-                                            <h6>@book.Title</h6>
-                                            <p><span>$</span>@book.Price</p>
-                                        </div>
-                                    </a>
-                                    counter++;
+                                    if (counter < 5)
+                                    {
+                                        <a href="/BookDetails/@book.Id">
+                                            <div class="img-cont">
+                                                <img class="image-thumbnail" src="@book.ImageURL" />
+                                            </div>
+                                            <div class="card-body">
+                                                <h6>@book.Title</h6>
+                                                <p><span>$</span>@book.Price</p>
+                                            </div>
+                                        </a>
+                                        counter++;
+                                    }
                                 }
-                            }
 
-                        }
-                    </div>
-                }
-            </div>
+                            }
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <div>
+                    @if (SelfHelpBooks.Count() > 7)
+                    {
+                        <span class="arrow-container">
+                            <i class="bi bi-arrow-left" @onclick="PrevSlideF"></i>
+                            <i class="bi bi-arrow-right" @onclick="NextSlideF"></i>
+                        </span>
+                    }
+                    <a href="#" class="ct-title">self-help</a>
+                    @if (SelfHelpBooks.Count() > 0)
+                    {
+                        var booksCount = ToDisplayBooks.Count();
+                        const int booksPerRow = 6;
+                        var booksRowList = new List<BookDto>();
+                        <div class="book-card" style="transform: translateX(@(-indexF)px);">
+                            @for (int i = 0; i < booksPerRow; i++)
+                            {
+                                booksRowList = SelfHelpBooks.Skip(i * booksPerRow).Take(booksPerRow).ToList();
+                                int counter = 0;
+                                @foreach (var book in booksRowList)
+                                {
+                                    if (counter < 5)
+                                    {
+                                        <a href="/BookDetails/@book.Id">
+                                            <div class="img-cont">
+                                                <img class="image-thumbnail" src="@book.ImageURL" />
+                                            </div>
+                                            <div class="card-body">
+                                                <h6>@book.Title</h6>
+                                                <p><span>$</span>@book.Price</p>
+                                            </div>
+                                        </a>
+                                        counter++;
+                                    }
+                                }
+
+                            }
+                        </div>
+                    }
+                </div>
+            }
             @*End self-help*@
             @*Start recommended*@
 
             <div>
-                <a href="#" class="ct-title">recommended</a>
+                <span class="arrow-container">
+                    <i class="bi bi-arrow-left" @onclick="PrevSlideR"></i>
+                    <i class="bi bi-arrow-right" @onclick="NextSlideR"></i>
+                </span>
+                <a href="#" class="ct-title">others</a>
 
                 @if (Books.Count() > 0)
                 {
                     var booksCount = Books.Count();
                     const int booksPerRow = 6;
                     var booksRowList = new List<BookDto>();
-                    <div class="book-card">
+                    <div class="book-card" style="transform: translateX(@(-indexR)px);">
                         @for (int i = 0; i < booksPerRow; i++)
                         {
                             booksRowList = Books.Skip(i * booksPerRow).Take(booksPerRow).ToList();
