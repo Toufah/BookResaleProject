@@ -53,6 +53,13 @@
     overflow: hidden;
 }
 
+.becomeAseller {
+    font-size: 0.85rem;
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: 500;
+}
+
 .content > div::after {
     content: '';
     position: absolute;

@@ -1,0 +1,67 @@
+﻿@page "/Inbox"
+@inherits InboxBase
+
+<AuthorizeView>
+    <Authorized>
+        @if(Inbox == null)
+        {
+            <LoadingAnimation />
+        }else
+        {
+            <div class="inbox_cont">
+                <div class="ach-container">
+                    <div>
+                        <h4 @onclick="GoBackToInbox">Inbox</h4>
+                        @if (Inbox.Count() <= 0)
+                        {
+                            <div class="emptyInbox">
+                                <div>
+                                    <i class="bi bi-inbox-fill"></i>
+                                    <h6>Your inbox is empty.</h6>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <table class="@ViewMessage">
+                                <tbody>
+                                    @foreach (var message in Inbox)
+                                    {
+                                        <tr class="@RemovedMessage" @onclick="() => DisplayMessage(message.Id)">
+                                            <td><i class="bi bi-dash-circle" @onclick="() => RemoveMessage(message.Id)"></i></td>
+                                            <td>@message.SenderName</td>
+                                            <td>@message.Subject.</td>
+                                            <td>@message.Timestamp</td>
+                                            <td>
+                                                @if(message.ReadStatus == 1)
+                                                {
+                                                    <span class="notRead"><i class="bi bi-check2-all"></i></span>
+                                                }else
+                                                {
+                                                    <span class="Read"><i class="bi bi-check2-all"></i></span>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            @if(MessageWithId != null)
+                            {
+                                <div class="seeMessage @HideMessage">
+                                    <div>
+                                        <h6><span>from:</span> @MessageWithId.SenderName</h6>
+                                        <span>@MessageWithId.Timestamp</span>
+                                    </div>
+                                    <div>
+                                        <span>subject: </span>@MessageWithId.Subject.
+                                        <p>@MessageWithId.Content</p>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                    </div>
+            </div>
+        }
+    </Authorized>
+</AuthorizeView>

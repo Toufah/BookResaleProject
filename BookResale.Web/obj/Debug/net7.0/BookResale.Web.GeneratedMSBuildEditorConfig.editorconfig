@@ -52,6 +52,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2VucmVCb29rcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Lenovo/Documents/PFEWebApp/BookResaleSolution/BookResale.Web/Pages/Inbox.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5ib3gucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Lenovo/Documents/PFEWebApp/BookResaleSolution/BookResale.Web/Pages/LoadingAnimation.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9hZGluZ0FuaW1hdGlvbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 

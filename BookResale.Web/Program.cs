@@ -33,6 +33,7 @@ builder.Services.AddScoped<ITrackingService, TrackingService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ISellerBankAccountInfo, SellerBankAccountInfo>();
 builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IInboxService, InboxService>();
 builder.Services.AddScoped<FilesManager>();
 
 

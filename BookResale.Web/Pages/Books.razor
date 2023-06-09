@@ -5,7 +5,11 @@
     <div class="ach-container">
         <div class="slogon-text">
             <p>buy <span class="ch-bb">&</span> sell your books <span class="ch-bb">online</span>.</p>
-            <a href="#">see more</a>
+            <AuthorizeView>
+                <Authorized>
+                    <span class="becomeAseller @hideCTALink" @onclick="BecomeASeller">become a seller</span>
+                </Authorized>
+            </AuthorizeView>
         </div>
         <div class="slogon-image">
             <img src="/Images/Website-Images/glasses-over-books-01.svg" alt="books-image" />

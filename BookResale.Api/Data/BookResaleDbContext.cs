@@ -210,5 +210,6 @@ namespace BookResale.Api.Data
         public DbSet<ApprovalStatus> approvalStatus { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<SellerBankAccountInfo> SellersBankAccountInfo { get; set; }
+        public DbSet<Inbox> Inbox { get; set; }
     }
 }

@@ -51,7 +51,7 @@ namespace BookResale.Web.Pages
         public void SetShippingActive()
         {
             ProfileActive = "";
-            ShippingActionActive = "liActive";
+            ShippingActive = "liActive";
             PasswordActive = "";
 
             ProfileActionActive = "none";

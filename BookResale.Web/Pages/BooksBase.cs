@@ -36,6 +36,7 @@ namespace BookResale.Web.Pages
         private int TopViewedCategoryId;
         protected string? TopViewedCategoyName;
         public string? hideCTA = "";
+        public string? hideCTALink = "";
         public bool IsUserASeller = false;
         public bool hideForEver = false;
         private bool DoSellerAccountExists { get; set; }
@@ -74,6 +75,7 @@ namespace BookResale.Web.Pages
                 {
                     IsUserASeller = true;
                     hideCTA = "hideCTA";
+                    hideCTALink = "hideCTA";
                 }
                 if (hideForEver)
                 {
@@ -82,6 +84,7 @@ namespace BookResale.Web.Pages
                 if (!DoSellerAccountExists)
                 {
                     hideCTA = "hideCTA";
+                    hideCTALink = "hideCTA";
                 }
             }
 

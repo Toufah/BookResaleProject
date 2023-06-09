@@ -74,6 +74,24 @@ namespace BookResale.Api.Extensions
             };
         }
 
+        public static IEnumerable<InboxDto> ConvertToDto(this IEnumerable<Inbox> messages, IEnumerable<User> users)
+        {
+            return (from message in messages
+                    join senderUser in users on message.SenderId equals senderUser.Id
+                    join recipientUser in users on message.RecepientId equals recipientUser.Id
+                    select new InboxDto
+                    {
+                        Id = message.Id,
+                        RecepientId = message.RecepientId,
+                        RecepientName = recipientUser.LastName,
+                        SenderId = message.SenderId,
+                        SenderName = senderUser.LastName,
+                        Subject = message.Subject,
+                        Content = message.Content,
+                        Timestamp = message.Timestamp,
+                        ReadStatus = message.ReadStatus,
+                    }).ToList();
+        }
 
         public static List<CartItemDto> ConvertToDto(this List<Book> books)
         {

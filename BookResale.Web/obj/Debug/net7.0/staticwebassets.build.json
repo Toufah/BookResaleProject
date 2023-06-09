@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "hiypz7O5bHYWe6XEUfBpUsYtd7EvXGVfom/2J7HrRTY=",
+  "Hash": "pludgCcxUzts16VVR64pmsTrJi8SVNRLZtBdJ6r3oJM=",
   "Source": "BookResale.Web",
   "BasePath": "/",
   "Mode": "Root",
@@ -7699,6 +7699,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\custom-styling\\Header.css"
+    },
+    {
+      "Identity": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\css\\custom-styling\\Inbox.css",
+      "SourceId": "BookResale.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "css/custom-styling/Inbox.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\custom-styling\\Inbox.css"
     },
     {
       "Identity": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\css\\custom-styling\\LoadingAnimation.css",

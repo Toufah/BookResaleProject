@@ -249,3 +249,16 @@ header::before {
     padding: 7px 70px 7px 15px;
 
 }
+.dynamic-header {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+.dynamic-header > div {
+    color: var(--bronze);
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+.dynamic-header > div:hover {
+    color: var(--orange);
+}

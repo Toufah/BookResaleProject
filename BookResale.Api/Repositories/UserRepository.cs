@@ -33,6 +33,12 @@ namespace BookResale.Api.Repositories
             return users;
         }
 
+        public async Task<IEnumerable<User>> GetAllUsers()
+        {
+            var users = await _bookResaleDbContext.Users.ToListAsync();
+            return users;
+        }
+
         public async Task<UserShippingAddress> GetUserShippingAddress(int userId)
         {
             var userShippingAddress = await _bookResaleDbContext.UserShippingAddress.SingleOrDefaultAsync(a => a.userId == userId);

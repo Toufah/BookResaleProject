@@ -19,6 +19,8 @@ namespace BookResale.Web.Pages
         public IUserService? userService { get; set; }
         [Inject]
         public NavigationManager? NavigationManager { get; set; }
+        [Inject]
+        public IInboxService inboxService { get; set; }
         public UserDto? UserDto { get; set; }
         public SellerBankAccountInfoDto? SellerBankAccountInfo = new SellerBankAccountInfoDto();
         private bool IsUserLoggedIn { get; set; }
@@ -64,6 +66,15 @@ namespace BookResale.Web.Pages
                     if(AddAccountBool)
                     {
                         toastService.ShowSuccess("You applied to become a seller successfully.");
+                        var AddMessage = new InboxDto
+                        {
+                            SenderId = 24,
+                            RecepientId = userId,
+                            Subject = "Application: Becoming a Seller - Request to Join as a Seller",
+                            Content = "We have received your seller application and appreciate your interest. Our team is currently reviewing your qualifications and will provide an update soon.",
+                            Timestamp = DateTime.Now,
+                        };
+                        await inboxService.AddMessage(AddMessage);
                         NavigationManager.NavigateTo("/");
                     }
                     else

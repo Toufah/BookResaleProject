@@ -95,6 +95,9 @@
             </AuthorizeView>
             <li><a href="#">help</a></li>
         </ul>
+        <div @onclick="NavigateToInbox">
+            <i class="bi bi-bell-fill"></i>
+        </div>
     </div>
 </header>
 
@@ -155,6 +158,11 @@
         var cart = _syncLocalStorageService.GetItem<List<BookDto>>("cart");
         return cart != null ? cart.Count : 0;
 
+    }
+
+    private void NavigateToInbox()
+    {
+        _navigationManager.NavigateTo("/Inbox");
     }
 
     protected override void OnInitialized()
