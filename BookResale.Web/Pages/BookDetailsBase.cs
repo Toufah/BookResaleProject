@@ -117,7 +117,14 @@ namespace BookResale.Web.Pages
 
         public async Task AddToCart()
         {
-            await cartService.AddToCart(Book);
+            if (IsUserLoggedIn)
+            {
+                await cartService.AddToCart(Book);
+            }else
+            {
+                navigationManager.NavigateTo("/SignIn");
+                toastService.ShowInfo("You Have To Sign In First");
+            }
 
         }
         /*private bool isFirstRender = true;

@@ -27,19 +27,19 @@
                             </div>
                             <div>
                                 <label for="firstname">firstname</label>
-                                <input id="firstname" type="text" value="@userDto.FirstName" disabled="@EditProfile" @oninput="e => userDto.FirstName = e.Value.ToString()" />
+                                <input id="firstname" type="text" value="@userDto.FirstName" disabled="@EditProfile" @oninput="e => userDto.FirstName = e.Value.ToString()" @onkeydown="UpdateUserInfoOnKeyPress" />
                             </div>
                             <div>
                                 <label for="lastname">lastname</label>
-                                <input id="lastname" type="text" value="@userDto.LastName" disabled="@EditProfile" @oninput="e => userDto.LastName = e.Value.ToString()" />
+                                <input id="lastname" type="text" value="@userDto.LastName" disabled="@EditProfile" @oninput="e => userDto.LastName = e.Value.ToString()" @onkeydown="UpdateUserInfoOnKeyPress" />
                             </div>
                             <div>
                                 <label for="email">email</label>
-                                <input id="email" type="text" value="@userDto.Email" disabled="@EditProfile" @oninput="e => userDto.Email = e.Value.ToString()" />
+                                <input id="email" type="text" value="@userDto.Email" disabled="@EditProfile" @oninput="e => userDto.Email = e.Value.ToString()" @onkeydown="UpdateUserInfoOnKeyPress" />
                             </div>
                             <div>
                                 <label for="role">role</label>
-                                <input id="role" type="text" value="@userDto.RoleName" disabled />
+                                <input id="role" type="text" value="@userDto.RoleName" disabled @onkeydown="UpdateUserInfoOnKeyPress" />
                             </div>
                             <div>
                                 <button style="display: @submitOnOffProfil;" @onclick="UpdateUserInfo">save</button>
@@ -51,15 +51,15 @@
                                 <h4>Add shipping address</h4>
                                 <div>
                                     <label for="add_adress">adress</label>
-                                    <input id="add_adress" type="text" @bind-value="@addUserShippingAddress.Address" @bind-value:event="onchange" placeholder="123 Main Street" />
+                                    <input id="add_adress" type="text" @bind-value="@addUserShippingAddress.Address" @bind-value:event="onchange" placeholder="123 Main Street" @onkeydown="AddUserShippingAddressOnKeyPress" />
                                 </div>
                                 <div>
                                     <label for="add_city">city</label>
-                                    <input id="add_city" type="text" @bind-value="@addUserShippingAddress.city" @bind-value:event="onchange" placeholder="Settat"/>
+                                    <input id="add_city" type="text" @bind-value="@addUserShippingAddress.city" @bind-value:event="onchange" placeholder="Mapleton" @onkeydown="AddUserShippingAddressOnKeyPress" />
                                 </div>
                                 <div>
                                     <label for="add_phone_number">phone number</label>
-                                    <input id="add_phone_number" type="text" @bind-value="@addUserShippingAddress.phoneNumber" @bind-value:event="onchange" placeholder="0666603594"/>
+                                    <input id="add_phone_number" type="text" @bind-value="@addUserShippingAddress.phoneNumber" @bind-value:event="onchange" placeholder="0666603594" @onkeydown="AddUserShippingAddressOnKeyPress" />
                                 </div>
                                 <div>
                                     <button @onclick="AddUserShippingAddress">save</button>
@@ -70,15 +70,15 @@
                                 <span @onclick="enableOrDisableEditShipping"><i class="bi bi-pencil-square"></i></span>
                                 <div>
                                     <label for="adress">adress</label>
-                                    <input id="adress" type="text" value="@userShippingAdress.Address" disabled="@EditShipping" @oninput="e => userShippingAdress.Address = e.Value.ToString()" />
+                                    <input id="adress" type="text" value="@userShippingAdress.Address" disabled="@EditShipping" @oninput="e => userShippingAdress.Address = e.Value.ToString()" @onkeydown="UpdateAddressOnKeyPress" />
                                 </div>
                                 <div>
                                     <label for="city">city</label>
-                                    <input id="city" type="text" value="@userShippingAdress.city" disabled="@EditShipping" @oninput="e => userShippingAdress.city = e.Value.ToString()" />
+                                    <input id="city" type="text" value="@userShippingAdress.city" disabled="@EditShipping" @oninput="e => userShippingAdress.city = e.Value.ToString()" @onkeydown="UpdateAddressOnKeyPress"  />
                                 </div>
                                 <div>
                                     <label for="phone_number">phone number</label>
-                                    <input id="phone_number" type="text" value="@userShippingAdress.phoneNumber" disabled="@EditShipping" @oninput="e => userShippingAdress.phoneNumber = e.Value.ToString()" />
+                                    <input id="phone_number" type="text" value="@userShippingAdress.phoneNumber" disabled="@EditShipping" @oninput="e => userShippingAdress.phoneNumber = e.Value.ToString()" @onkeydown="UpdateAddressOnKeyPress" />
                                 </div>
                                 <div>
                                     <button style="display: @submitOnOffShipping;" @onclick="UpdateUserShippingAddress">save</button>
@@ -88,15 +88,15 @@
                         <div class="change_pwd" style="display: @PasswordActionActive;">
                             <div>
                                 <label for="old_password">old password</label>
-                                <input type="password" id="old_passwor" placeholder="Old Password" @bind="oldPassword" @bind:event="onchange" />
+                                <input type="password" id="old_passwor" placeholder="Old Password" @bind="oldPassword" @bind:event="onchange" @onkeydown="UpdatePasswordOnKeyPress" />
                             </div>
                             <div>
                                 <label for="new_password">new password</label>
-                                <input type="password" id="new_passwor" placeholder="new Password" @bind="updatePassword.newPassword" @bind:event="onchange" />
+                                <input type="password" id="new_passwor" placeholder="new Password" @bind="updatePassword.newPassword" @bind:event="onchange" @onkeydown="UpdatePasswordOnKeyPress" />
                             </div>
                             <div>
                                 <label for="confirm_new_password">confirm new password</label>
-                                <input type="password" id="confirm_new_password" placeholder="Confirm New Password" @bind="confirmPassword" @bind:event="onchange" />
+                                <input type="password" id="confirm_new_password" placeholder="Confirm New Password" @bind="confirmPassword" @bind:event="onchange" @onkeydown="UpdatePasswordOnKeyPress" />
                             </div>
                             <div>
                                 <button @onclick="UpdatePassword">save</button>

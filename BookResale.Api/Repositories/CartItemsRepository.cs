@@ -18,7 +18,7 @@ namespace BookResale.Api.Repositories
         }
         public async Task<List<Book>> GetCartItems(List<long> ids)
         {
-            var books = await this.bookResaleDbContext.Books.Where(b => ids.Contains(b.Id)).ToListAsync();
+            var books = await this.bookResaleDbContext.Books.Where(b => ids.Contains(b.Id) && b.approvalStatus == 2).ToListAsync();
             return books;
         }
     }

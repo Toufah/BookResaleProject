@@ -17,7 +17,7 @@
             <img src="/Images/Logo/SecondPageLogo-01.svg" alt="logo" class="second-page-logo" />
         </a>
         <div class="search-bar">
-            <input type="text" name="search" id="search-bar" placeholder="Search" @bind="@searchQuery" @bind:event="oninput" @onkeyup="async () => await searchBook()" @ref="searchInput" />
+            <input type="text" name="search" id="search-bar" placeholder="Search" @bind="@searchQuery" @bind:event="oninput" @onkeyup="async () => await searchBook()" @ref="searchInput" @onkeydown="SearchKeyPress"/>
             <div class="search-icon-container" @onclick="async () => await SearchResult()">
                 <i class="bi bi-search"></i>
             </div>
@@ -57,19 +57,34 @@
                     <a href="/SignIn" class="sign-in">sign in</a>
                 </NotAuthorized>
             </AuthorizeView>
-            <span class="separator"></span>
-            <a href="/Cart" class="cart-container">
-                <span class="cart-text">cart</span>
-                <i class="bi bi-cart cart-icon">
-                    <span class="books-count">@GetBooksCount()</span>
-                </i>
-            </a>
+            <AuthorizeView>
+                <Authorized>
+                    <span class="separator"></span>
+                    <a href="/Cart" class="cart-container">
+                        <span class="cart-text">cart</span>
+                        <i class="bi bi-cart cart-icon">
+                            <span class="books-count">@GetBooksCount()</span>
+                        </i>
+                    </a>
+                </Authorized>
+            </AuthorizeView>
         </div>
     </div>
     <div class="dynamic-header ach-container">
         <ul class="nav-menu">
             <li><a href="/">books</a></li>
-            <li class="after-arrow"><a href="counter">featured</a></li>
+            <li class="after-arrow"><a href="">categories</a></li>
+            @if(categories != null && categories.Count() > 0)
+            {
+                <li style="position: absolute;" class="categories_list">
+                    <ul>
+                        @foreach (var category in categories)
+                        {
+                            <li @onclick="() => navigateToGenreBooks(category)">@category.CategoryName</li>
+                        }
+                    </ul>
+                </li>
+            }
             <AuthorizeView>
                 <Authorized>
                     @if (SellerAuth(context.User.Claims.ToList()))

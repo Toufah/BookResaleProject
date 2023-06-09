@@ -1,75 +1,101 @@
 ﻿@page "/Cart"
 @inherits CartBase
 
-<div class="ds-books top-line cart-cnt">
-    <div class="ach-container cart-body">
-        <h1>shopping cart</h1>
-        <div>
-        <table>
-            <thead>
-                <tr>
-                    <th>book</th>
-                    <th>quantity</th>
-                    <th>price</th>
-                </tr>
-            </thead>
-            <tbody>
-                    @if (CartItems == null)
-                    {
-                       <p></p> 
-                    }
-                    else if(CartItems.Count() == 0)
-                    {
-                        <p></p>
-                    }
-                    else{
-                    foreach(var book in CartItems)
-                    {
-                        <tr>
-                            <td>
-                                <img src="@book.BookImageURL"/>
-                                <div class="cart-text-cont">
-                                    <h6>@book.BookTitle</h6>
-                                    <p><b>item price:</b> @book.Price.ToString("C")</p>
-                                    <span class="remove" @onclick="(() => DeleteBook(book))">remove</span>
-                                </div>
-                            </td>
-                            <td>
-                                <span class="decr-qty" @onclick="DecreaseQty">-</span>
-                                    <input type="number" class="qty-in" @bind="@Qty" />
-                                    <span class="incr-qty" @onclick="IncreaseQty">+</span>
-                            </td>
-                            <td>@book.Price.ToString("C")</td>
-                        </tr>
-                    }
-                }
-            </tbody>
-        </table>
-            <div class="cart-sumary">
-                <h4>order summary</h4>
-                    <p>
-                        <span>subtotal(@if (CartItems != null)
+<AuthorizeView>
+    <Authorized>
+        <div class="ds-books top-line cart-cnt">
+            <div class="ach-container cart-body">
+                <h1>shopping cart</h1>
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>book</th>
+                                <th>quantity</th>
+                                <th>price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (CartItems == null)
                             {
-                                @CartItems.Count()
+                                <p></p>
                             }
-                            items):
-                        </span>
-                        <span>@TotalPrice().ToString("C")</span>
-                    </p>
-                <p><span>shipping:</span> <span>$2.00</span></p>
-                <p><span>tax: </span><span>$0.00</span></p>
-                <div class="checkout" @onclick="PlaceOrder">
-                    <span>checkout</span>
-                        @if(TaxedPrice() == 2)
-                        {
+                            else if (CartItems.Count() == 0)
+                            {
+                                <p></p>
+                            }
+                            else
+                            {
+                                foreach (var book in CartItems)
+                                {
+                                    <tr>
+                                        <td>
+                                            <img src="@book.BookImageURL" />
+                                            <div class="cart-text-cont">
+                                                <h6>@book.BookTitle</h6>
+                                                <p><b>item price:</b> @book.Price.ToString("C")</p>
+                                                <span class="remove" @onclick="(() => DeleteBook(book))">remove</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="decr-qty" @onclick="DecreaseQty">-</span>
+                                            <input type="number" class="qty-in" @bind="@Qty" />
+                                            <span class="incr-qty" @onclick="IncreaseQty">+</span>
+                                        </td>
+                                        <td>@book.Price.ToString("C")</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                    <div class="cart-sumary">
+                        <h4>order summary</h4>
+                        <p>
                             <span>
-                                $0.00
+                                subtotal(@if (CartItems != null)
+                                {
+                                    @CartItems.Count()
+                                }
+                                items):
                             </span>
-                        }else{
-                        <span>@TaxedPrice().ToString("C")</span>
-                        }
+                            <span>@TotalPrice().ToString("C")</span>
+                        </p>
+                        <p><span>shipping:</span> <span>$2.00</span></p>
+                        <p><span>tax: </span><span>$0.00</span></p>
+                        <div class="checkout" @onclick="PlaceOrder">
+                            <span>order</span>
+                            @if (TaxedPrice() == 2)
+                            {
+                                <span>
+                                    $0.00
+                                </span>
+                            }
+                            else
+                            {
+                                <span>@TaxedPrice().ToString("C")</span>
+                            }
+                        </div>
+                        <div class="order_address @activateAddress">
+                            <div>
+                                <label for="address">address</label>
+                                <input type="text" id="address" placeholder="Ex:123 Main Street" @bind="userShippingIsNull.Address" @bind:event="onchange" @onkeydown="OrderOnKeyPress" />
+                            </div>
+                            <div>
+                                <label for="city">city</label>
+                                <input type="text" id="city" placeholder="Ex: Mapleton" @bind="userShippingIsNull.city" @bind:event="onchange" @onkeydown="OrderOnKeyPress" />
+                            </div>
+                            <div>
+                                <label for="phone_number">phone number</label>
+                                <input type="text" id="phone_number" placeholder="Ex: 0661042586" @bind="userShippingIsNull.phoneNumber" @bind:event="onchange" @onkeydown="OrderOnKeyPress" />
+                            </div>
+                            <div>
+                                <button @onclick="OrderForAdressNull">confirm order</button>
+                                <button @onclick="cancelOrder">cancel</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </Authorized>
+</AuthorizeView>

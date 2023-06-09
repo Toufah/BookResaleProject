@@ -141,18 +141,18 @@ namespace BookResale.Api.Controllers
         }
 
         [HttpPost("PasswordVerification")]
-        public async Task<ActionResult<bool>> PasswordVerification(UpdatePasswordDto updatePasswordDto)
+        public async Task<ActionResult> PasswordVerification(UpdatePasswordDto updatePasswordDto)
         {
             try
             {
                 var result = await userService.PasswordVerification(updatePasswordDto);
                 if(result)
                 {
-                    return true;
+                    return Ok();
                 }
                 else
                 {
-                    return false;
+                    return NoContent();
                 }
             }
             catch (Exception)

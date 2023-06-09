@@ -10,12 +10,16 @@ namespace BookResale.Api.Extensions
         public static IEnumerable<BookDto> ConvertToDto(this IEnumerable<Book> books,
                                                         IEnumerable<BookCategory> bookcategories,
                                                         IEnumerable<Author> authors,
-                                                        IEnumerable<BookState> states)
+                                                        IEnumerable<BookState> states,
+                                                        IEnumerable<ApprovalStatus> approvals,
+                                                        IEnumerable<User> users)
         {
             return (from book in books
                     join bookCategory in bookcategories on book.CategoryId equals bookCategory.Id
                     join author in authors on book.AuthorId equals author.Id
                     join bookstate in states on book.StateId equals bookstate.Id
+                    join approvalStatus in approvals on book.approvalStatus equals approvalStatus.id
+                    join user in users on book.sellerId equals user.Id
                     select new BookDto
                     {
                         Id = book.Id,
@@ -30,7 +34,12 @@ namespace BookResale.Api.Extensions
                         StateId = book.StateId,
                         State = bookstate.State,
                         Price = book.Price,
-                        Qty = book.Qty
+                        Qty = book.Qty,
+                        approvalStatus = book.approvalStatus,
+                        approvalStatusTitle = approvalStatus.approvalStatusTitle,
+                        sellerId = book.sellerId,
+                        sellerFirstname = user.FirstName,
+                        sellerLastname = user.LastName
 
                     }).ToList();
         }
@@ -38,7 +47,9 @@ namespace BookResale.Api.Extensions
         public static BookDto ConvertToDto(this Book book,
                                                         BookCategory bookcategorie,
                                                         Author bookAuthor,
-                                                        BookState bookState)
+                                                        BookState bookState,
+                                                        ApprovalStatus approval,
+                                                        User user)
         {
             return new BookDto
                     {
@@ -54,8 +65,13 @@ namespace BookResale.Api.Extensions
                         StateId = book.StateId,
                         State = bookState.State,
                         Price = book.Price,
-                        Qty = book.Qty
-                    };
+                        Qty = book.Qty,
+                        approvalStatus = book.approvalStatus,
+                        approvalStatusTitle = approval.approvalStatusTitle,
+                        sellerId = book.sellerId,
+                        sellerFirstname = user.FirstName,
+                        sellerLastname = user.LastName
+            };
         }
 
 

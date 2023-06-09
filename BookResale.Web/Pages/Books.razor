@@ -210,3 +210,13 @@
         }
     </div>
 </div>
+<AuthorizeView>
+    <Authorized>
+        <div class="sellerCTA @hideCTA">
+            <div>
+                <i class="bi bi-x-circle" @onclick="HideCTA"></i>
+            </div>
+            <button @onclick="BecomeASeller">become a seller</button>
+        </div>
+    </Authorized>
+</AuthorizeView>

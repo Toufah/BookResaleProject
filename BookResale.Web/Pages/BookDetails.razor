@@ -22,15 +22,15 @@
                 <div class="book-details">
                     <div class="imp-inf">
                         <h4>@Book.Title</h4>
-                        <p>by <b class="ch-org">@Book.AuthorLastName @Book.AuthorFirstName</b></p>
+                        <p>by <b class="ch-org">@Book.AuthorFirstName @Book.AuthorLastName</b></p>
                         <p>category: <b class="ch-org">@Book.CategoryName</b></p>
                     </div>
                     <div class="price-inf">
+                        <p>seller: <b class="ch-org">@Book.sellerFirstname @Book.sellerLastname</b></p>
                         <p>condition: <b class="ch-org">@Book.State</b></p>
                         <h4>@Book.Price.ToString("C", new CultureInfo("en-US"))&nbsp;</h4>
                         <div class="take-action">
                             <a style="cursor: pointer" @onclick="async () => await AddToCart()" class="or-btn ach-btn">add to cart</a>
-                            <a style="cursor: pointer" class="bb-btn ach-btn">buy now</a>
                         </div>
                         <a href="#">view all available books for this title.</a>
                     </div>

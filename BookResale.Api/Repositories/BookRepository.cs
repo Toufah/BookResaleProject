@@ -29,14 +29,14 @@ namespace BookResale.Api.Repositories
 
         public async Task<Book> GetBook(long id)
         {
-            var book = await this.bookResaleDbContext.Books.FindAsync(id);
+            var book = await this.bookResaleDbContext.Books.Where(b => b.Id == id && b.approvalStatus == 2).FirstOrDefaultAsync();
             return book;
         }
 
         public async Task<IEnumerable<Book>> GetBooks()
         {
-            var books = await this.bookResaleDbContext.Books.ToListAsync();
-            return (IEnumerable<Book>)books;
+            var approvedBooks = await this.bookResaleDbContext.Books.Where(b => b.approvalStatus == 2).ToListAsync();
+            return (IEnumerable<Book>)approvedBooks;
         }
 
         public async Task<BookState> GetBookState(int id)
@@ -69,14 +69,12 @@ namespace BookResale.Api.Repositories
 
             if (filteredBookIds.Count != 0)
             {
-                var books = await this.bookResaleDbContext.Books
-                    .Where(b => filteredBookIds.Contains(b.Id))
-                    .ToListAsync();
+                var approvedBooks = await this.bookResaleDbContext.Books.Where(b => filteredBookIds.Contains(b.Id) && b.approvalStatus == 2).ToListAsync();
 
                 // Sort the books based on the order of the book IDs
-                books = books.OrderBy(b => filteredBookIds.IndexOf(b.Id)).ToList();
+                approvedBooks = approvedBooks.OrderBy(b => filteredBookIds.IndexOf(b.Id)).ToList();
 
-                return books;
+                return approvedBooks;
             }
 
             return null;
@@ -136,8 +134,10 @@ namespace BookResale.Api.Repositories
 
         public async Task<IEnumerable<Book>> GetBooksWithCategory(int categoryId)
         {
-            var books = await this.bookResaleDbContext.Books.Where(b => b.CategoryId == categoryId).ToListAsync();
-            return books;
+            var approvedBooks = await this.bookResaleDbContext.Books
+        .Where(b => b.CategoryId == categoryId && b.approvalStatus == 2)
+        .ToListAsync();
+            return approvedBooks;
         }
     }
 }

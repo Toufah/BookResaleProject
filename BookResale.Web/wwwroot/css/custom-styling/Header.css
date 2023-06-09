@@ -68,7 +68,7 @@ header::before {
     padding: 0 0 15px 0;
 }
 
-.tgl-list {
+.tgl-list, .categories_list {
     position: absolute;
     color: var(--lookalike-gray);
     border: solid 0.5px var(--lookalike-gray);
@@ -78,10 +78,10 @@ header::before {
     background-color: #fff;
     top: 45px;
     left: 0;
-    display: none;
+    display: none !important;
     z-index: 999 !important;
 }
-.tgl-list::before{
+.tgl-list::before, .categories_list::before{
     content: '';
     width: 15px;
     height: 15px;
@@ -94,22 +94,26 @@ header::before {
     transform: rotate(45deg);
 }
 
-.tgl-list > li{
+.tgl-list > li, .categories_list > ul > li{
     padding: 5px 10px;
     cursor: pointer;
     transition: 0.2s;
 }
-.tgl-list > li:hover {
-    padding-left: 20px;
+.tgl-list > li:hover , .categories_list > ul > li:hover{
     color: var(--lookalike-gray);
+    transform: translateX(-5px)
 }
 
 .tgl-list > li > a{
     color: var(--lookalike-gray)
 }
 
+.after-arrow > a {
+    padding: 15px 0;
+}
+
 .name:hover + .tgl-list,
-.tgl-list:hover {
+.tgl-list:hover , .after-arrow:hover + .categories_list, .categories_list:hover{
   display: block !important;
 }
 
@@ -122,8 +126,8 @@ header::before {
 }
 
 .cart-container {
-        margin-left: 5px;
-        position: relative:
+    margin-left: 5px;
+    position: relative:
 }
 
 .cart-text {
@@ -169,6 +173,7 @@ header::before {
 .nav-menu {
     padding: 0;
     color: var(--lookalike-gray);
+    position: relative;
 }
 
 .nav-menu li {
@@ -232,4 +237,15 @@ header::before {
 }
 .list-item span {
     font-size: 0.8rem;
+}
+.categories_list {
+    width: unset;
+    top: 36px;
+    min-width: 300px;
+    left: 70px;
+}
+.categories_list ul li {
+    display: block;
+    padding: 7px 70px 7px 15px;
+
 }

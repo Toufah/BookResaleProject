@@ -8,5 +8,6 @@ namespace BookResale.Api.Repositories.Contracts
         Task<User> GetUser(int id);
         Task<UserShippingAddress> GetUserShippingAddress(int userId);
         Task<Role> GetRole(int id);
+        Task<IEnumerable<User>> GetUsers();
     }
 }

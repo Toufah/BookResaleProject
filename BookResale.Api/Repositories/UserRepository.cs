@@ -27,6 +27,12 @@ namespace BookResale.Api.Repositories
             return user;
         }
 
+        public async Task<IEnumerable<User>> GetUsers()
+        {
+            var users = await _bookResaleDbContext.Users.Where(b => b.RoleId == 2).ToListAsync();
+            return users;
+        }
+
         public async Task<UserShippingAddress> GetUserShippingAddress(int userId)
         {
             var userShippingAddress = await _bookResaleDbContext.UserShippingAddress.SingleOrDefaultAsync(a => a.userId == userId);

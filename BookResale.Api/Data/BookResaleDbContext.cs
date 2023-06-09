@@ -207,5 +207,8 @@ namespace BookResale.Api.Data
         public DbSet<UserActivityLog> UserActivityLog { get; set; }
         public DbSet<UserShippingAddress> UserShippingAddress { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<ApprovalStatus> approvalStatus { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<SellerBankAccountInfo> SellersBankAccountInfo { get; set; }
     }
 }

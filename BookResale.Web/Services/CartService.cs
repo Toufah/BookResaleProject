@@ -34,7 +34,14 @@ namespace BookResale.Web.Services
             {
                 cart = new List<BookDto>();
             }
-
+            foreach(var item in cart)
+            {
+                if (item.Id == bookDto.Id)
+                {
+                    toastService.ShowWarning($"{bookDto.Title} Already Exists In Cart.");
+                    return;
+                }
+            }
             cart.Add(bookDto);
             await localStorageService.SetItemAsync("cart", cart);
 
@@ -104,24 +111,6 @@ namespace BookResale.Web.Services
         {
             await localStorageService.RemoveItemAsync("cart");
             OnChange.Invoke();
-        }
-
-        public async Task<string> checkout()
-        {
-            Console.WriteLine("Prepare to launch");
-            var CartItems = await GetCartItems();
-            foreach(var cartItem in CartItems)
-            {
-                Console.WriteLine($"Cart Item: {cartItem.BookId}");
-                Console.WriteLine($"Cart Item: {cartItem.BookTitle}");
-                Console.WriteLine($"Cart Item: {cartItem.BookImageURL}");
-                Console.WriteLine($"Cart Item: {cartItem.Qty}");
-                Console.WriteLine($"Cart Item: {cartItem.Price}");
-            }
-            var result = await httpClient.PostAsJsonAsync("/api/Payment/checkout", await GetCartItems());
-            var url = await result.Content.ReadAsStringAsync();
-            Console.WriteLine("Successful launch");
-            return url;
         }
     }
 }

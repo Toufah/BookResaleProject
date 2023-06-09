@@ -61,24 +61,26 @@ namespace BookResale.Api.Services.BookServices
                 CategoryId = ++maxCategoryId,
                 StateId = bookDto.StateId,
                 Price = bookDto.Price,
-                Qty = bookDto.Qty
+                Qty = bookDto.Qty,
+                approvalStatus = 2,
+                sellerId = bookDto.sellerId,
             };
 
             var bookCategory = new BookCategory
             {
-                CategoryName = bookDto.CategoryName
+                CategoryName = bookDto.CategoryName,
             };
 
             var author = new Author
             {
                 FirstName = bookDto.AuthorFirstName,
-                LastName = bookDto.AuthorLastName
+                LastName = bookDto.AuthorLastName,
             };
 
             var bookState = new BookState
             {
                 Id = bookDto.StateId,
-                State = bookDto.State
+                State = bookDto.State,
             };
 
             return (book, bookCategory, author, bookState);

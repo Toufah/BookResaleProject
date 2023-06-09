@@ -126,3 +126,51 @@ tr {
     cursor: pointer;
     box-shadow: 1px 1px 4px -1px var(--lookalike-gray);
 }
+.order_address {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #efefef;
+    width: 40%;
+    min-width: 600px;
+    padding: 20px 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 12px -5px #0E0E07;
+    z-index: 1000;
+    display: none;
+}
+.order_address div {
+    margin-bottom: 15px;
+}
+.order_address label {
+    font-weight: 700;
+}
+.order_address input {
+    outline: none;
+    padding: 2px 15px 2px 10px;
+    border-radius: 5px;
+}
+.order_address > div:last-child {
+    text-align: right;
+}
+.order_address button {
+    background-color: var(--orange);
+    padding: 10px 20px;
+    margin-top: 20px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.85rem;
+    border-radius: 5px;
+    box-shadow: 1px 1px 4px -2px #0e0e07;
+    text-transform: capitalize;
+    width: 150px;
+    transition: 0.2s ease-in-out;
+}
+.order_address button:last-child {
+    background-color: var(--lookalike-gray);
+    margin-left: 5px;
+}
+.activateAddress {
+    display: block !important;
+}

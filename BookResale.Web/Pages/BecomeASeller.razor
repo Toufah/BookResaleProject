@@ -1,0 +1,121 @@
+﻿@page "/BecomeASeller"
+@inherits BecomeASellerBase
+
+
+<AuthorizeView>
+    <Authorized>
+        <div class="applyForSellerContainer">
+            <div class="ach-container">
+                <h3>apply to become seller</h3>
+                <div>
+                    <h5>terms and conditions</h5>
+                    <div>
+                        <h6>Terms and Conditions to Become a Seller on SecondPage Book Resale Platform</h6>
+                        <p>Welcome to SecondPage, a book resale platform that connects buyers and sellers. Before becoming a seller on our platform, please read and agree to the following terms and conditions:</p>
+
+                        <ol>
+                            <li>
+                                <h6>Seller Eligibility:</h6>
+                                <ol>
+                                    <li>To become a seller on SecondPage, you must be at least 18 years old.</li>
+                                    <li>You must have legal ownership or authorization to sell the books listed on the platform.</li>
+                                    <li>You must provide accurate and up-to-date information during the registration process.</li>
+                                </ol>
+                            </li>
+
+                            <li>
+                                <h6>Account Registration:</h6>
+                                <ol>
+                                    <li>You must complete the registration process to create a seller account on SecondPage.</li>
+                                    <li>You are responsible for maintaining the confidentiality of your account login credentials.</li>
+                                    <li>You agree to provide accurate and truthful information while creating and maintaining your seller account.</li>
+                                </ol>
+                            </li>
+
+                            <li>
+                                <h6>Book Listings:</h6>
+                                <ol>
+                                    <li>You may list books for sale on SecondPage that you have legal ownership or authorization to sell.</li>
+                                    <li>You are responsible for providing accurate and complete information about the books listed, including the title, author, edition, condition, price, and any additional relevant details.</li>
+                                    <li>You must ensure that the books listed are in the condition described and available for sale.</li>
+                                </ol>
+                            </li>
+
+                            <li>
+                                <h6>Pricing and Payments:</h6>
+                                <ol>
+                                    <li>You have the right to set the price for your listed books.</li>
+                                    <li>SecondPage may charge a commission or transaction fee for each successful sale.</li>
+                                    <li>ou agree to abide by the payment terms and conditions set forth by SecondPage.</li>
+                                    <li>Payments for sold books will be processed and transferred to your designated payment account after deducting any applicable fees.</li>
+                                </ol>
+                            </li>
+
+                            <li>
+                                <h6>Communication and Customer Service:</h6>
+                                <ol>
+                                    <li>As a seller on SecondPage, you are responsible for promptly responding to inquiries, order confirmations, and customer service requests related to your listed books.</li>
+                                    <li>You agree to maintain professional and respectful communication with buyers and resolve any disputes or issues in a fair and timely manner.</li>
+                                </ol>
+                            </li>
+
+                            <li>
+                                <h6>Shipping and Fulfillment:</h6>
+                                <ol>
+                                    <li>You must accurately calculate and disclose the shipping costs, including any additional charges or fees, to the buyer.</li>
+                                    <li>You agree to use reliable shipping methods and provide tracking information to the buyer when available.</li>
+                                </ol>
+                            </li>
+
+                            <li>
+                                <h6>Prohibited Activities:</h6>
+                                <ol>
+                                    <li>You must not engage in any fraudulent, illegal, or deceptive activities while using the SecondPage platform.</li>
+                                    <li>You must not infringe upon the intellectual property rights of others, including copyrights, trademarks, or any other proprietary rights.</li>
+                                </ol>
+                            </li>
+
+                            <li>
+                                <h6>Termination of Seller Account:</h6>
+                                <ol>
+                                    <li>SecondPage reserves the right to suspend or terminate your seller account if you violate any of the terms and conditions outlined herein.</li>
+                                    <li>SecondPage may also take legal action or notify the appropriate authorities in case of any illegal activities or violations.</li>
+                                </ol>
+                            </li>
+
+                            <li>
+                                <h6>Changes to Terms and Conditions:</h6>
+                                <ol>
+                                    <li>SecondPage reserves the right to update or modify these terms and conditions at any time.</li>
+                                    <li> Any changes will be communicated to you via email or through notifications on the SecondPage platform.</li>
+                                    <li> By continuing to use your seller account after any modifications, you accept and agree to the updated terms and conditions.</li>
+                                </ol>
+                            </li>
+
+                        </ol>
+
+                    </div>
+                        <p>By checking the "Agree" checkbox below, you indicate that you have read, understood, and agree to the terms and conditions outlined above.</p>
+                    <div class="checkCont">
+                        <input type="checkbox" id="checkbox" @bind="termsAccepted">
+                        <label for="checkbox">agree to terms and conditions.</label>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label for="RIB">RIB</label>
+                        <input type="number" id="RIB" placeholder="0021346794256341895678425" @bind="SellerBankAccountInfo.RIB" @bind:event="oninput" @onkeydown="AddBankAccountOnKeyPress" />
+                    </div>
+                    <div>
+                        <label for="nameAH">account holder name</label>
+                        <input type="text" id="nameAH" placeholder="Ex: Toufah Achraf" @bind="SellerBankAccountInfo.AccountHolderName" @bind:event="oninput" @onkeydown="AddBankAccountOnKeyPress" />
+                    </div>
+                </div>
+                <div>
+                    <button @onclick="AddBankAccount">submit</button>
+                </div>
+            </div>
+        </div>
+    </Authorized>
+</AuthorizeView>
+

@@ -1,0 +1,101 @@
+﻿.applyForSellerContainer > div {
+    padding: 25px 80px 100px 80px;
+    min-height: 648px;
+}
+.applyForSellerContainer > div > h3 {
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+.applyForSellerContainer > div > div:nth-child(2) {
+    padding: 10px 40px;
+}
+.applyForSellerContainer > div > div:nth-child(2) > h5 {
+    font-size: 1rem;
+    font-weight: 700;
+}
+.applyForSellerContainer > div > div:nth-child(2) > div:nth-child(2){
+    background: #efefef;
+    padding: 15px 20px;
+    border-radius: 10px;
+    outline: solid 1px #8f8f8f;
+    box-shadow: 0 0 6px -2px inset #0f0f0f;
+    width: 90%;
+    height: 400px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    margin: 15px auto;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+.applyForSellerContainer > div > div:nth-child(2) > div:nth-child(2)::-webkit-scrollbar {
+    display: none;
+}
+.applyForSellerContainer > div > div:nth-child(2) > div:nth-child(2) h6 {
+    font-weight: 700;
+}
+.applyForSellerContainer > div > div:nth-child(2) > div:nth-child(2) ol {
+    margin: 15px 0;
+    
+}
+.applyForSellerContainer > div > div:nth-child(2) > div:nth-child(2) ol > li {
+    list-style-type: decimal !important;
+}
+.applyForSellerContainer > div > div:nth-child(2) > p {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-top: 15px;
+}
+.applyForSellerContainer > div > div:nth-child(2) > .checkCont {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    margin-top: 5px;
+}
+#checkbox {
+    width: 15px !important;
+    display: inline;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+}
+.applyForSellerContainer > div > div:nth-child(2) > div > label {
+    display: inline !important;
+    padding: 0;
+    margin: 0;
+    color: unset;
+    margin-left: 10px;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 0.9rem;
+}
+.applyForSellerContainer > div > div:nth-child(3) {
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    gap: 20px;
+}
+.applyForSellerContainer > div > div:nth-child(3) > div {
+    width: 50%;
+}
+.applyForSellerContainer > div > div:nth-child(3) > div input {
+    background: #efefef;
+    transition: 0.2s ease-in;
+}
+.applyForSellerContainer > div > div:nth-child(3) > div input:focus {
+    outline: solid 1px var(--orange);
+}
+.applyForSellerContainer > div > div:last-child {
+    padding: 30px 40px;
+    text-align: right;
+}
+.applyForSellerContainer > div > div:last-child > button {
+    width: 180px;
+    color: #fff;
+    background-color: var(--orange);
+    padding: 10px 15px;
+    font-weight: 600;
+    border-radius: 5px;
+    box-shadow: 0 0 8px -2px #8f8f8f
+}

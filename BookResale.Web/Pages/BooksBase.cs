@@ -1,4 +1,5 @@
-﻿using BookResale.Models.Dtos;
+﻿using Blazored.LocalStorage;
+using BookResale.Models.Dtos;
 using BookResale.Web.Services;
 using BookResale.Web.Services.Contracts;
 using Microsoft.AspNetCore.Components;
@@ -17,6 +18,12 @@ namespace BookResale.Web.Pages
 
         [Inject]
         public AuthenticationStateProvider? authenticationStateProvider { get; set; }
+        [Inject]
+        NavigationManager? NavigationManager { get; set; }
+        [Inject]
+        ILocalStorageService? localStorageService { get; set; }
+        [Inject]
+        public ISellerBankAccountInfo? SellerBankAccountInfo { get; set; }
 
         public IEnumerable<BookDto>? Books { get; set; }
         public IEnumerable<BookDto>? SelfHelpBooks { get; set; }
@@ -28,6 +35,10 @@ namespace BookResale.Web.Pages
         protected bool IsUserLoggedIn;
         private int TopViewedCategoryId;
         protected string? TopViewedCategoyName;
+        public string? hideCTA = "";
+        public bool IsUserASeller = false;
+        public bool hideForEver = false;
+        private bool DoSellerAccountExists { get; set; }
         public IEnumerable<BookDto>? ToDisplayBooks { get; set; }
 
         protected override async Task OnInitializedAsync()
@@ -38,14 +49,17 @@ namespace BookResale.Web.Pages
             var user = authState.User;
 
             IsUserLoggedIn = user.Identity?.IsAuthenticated ?? false;
-            Console.WriteLine(IsUserLoggedIn);
 
             if (IsUserLoggedIn)
             {
                 var claims = user.Claims;
                 var user_id = int.Parse(claims.Where(_ => _.Type == "Sub").Select(_ => _.Value).FirstOrDefault());
+                var userRole = int.Parse(claims.Where(_ => _.Type == "Role").Select(_ => _.Value).FirstOrDefault());
+                var hideForEver = await localStorageService.GetItemAsync<bool>("hideForEver");
+
                 if (user_id != 0)
                 {
+                    DoSellerAccountExists = await SellerBankAccountInfo.DoSellerExists(user_id);
                     RecentlyViewedBooks = await BookService.GetRecentlyViewedBooks(user_id);
                     var TopViewedCategoyNameDto = await BookService.GetTopViewedCategory(user_id);
                     if(TopViewedCategoyNameDto != null)
@@ -54,6 +68,20 @@ namespace BookResale.Web.Pages
                         TopViewedCategoryId = TopViewedCategoyNameDto.Id;
                         TopViewedCategoyBooks = await BookService.GetBooksWithCategory(TopViewedCategoryId);
                     }
+                }
+
+                if (userRole == 2)
+                {
+                    IsUserASeller = true;
+                    hideCTA = "hideCTA";
+                }
+                if (hideForEver)
+                {
+                    hideCTA = "hideCTA";
+                }
+                if (!DoSellerAccountExists)
+                {
+                    hideCTA = "hideCTA";
                 }
             }
 
@@ -117,5 +145,17 @@ namespace BookResale.Web.Pages
             }
         }
 
+        public async Task HideCTA()
+        {
+            if(hideCTA == "")
+            {
+                hideCTA = "hideCTA";
+                await localStorageService.SetItemAsync("hideForEver", true);
+            }
+        }
+        public void BecomeASeller()
+        {
+            NavigationManager.NavigateTo("/BecomeASeller");
+        }
     }
 }

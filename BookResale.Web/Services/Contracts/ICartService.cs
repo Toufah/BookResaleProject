@@ -8,7 +8,6 @@ namespace BookResale.Web.Services.Contracts
         Task AddToCart(BookDto bookDto);
         Task<List<CartItemDto>> GetCartItems();
         Task DeleteItem(CartItemDto item);
-        Task<string> checkout();
         Task EmptyCart();
     }
 }

@@ -14,11 +14,15 @@ namespace BookResale.Api.Controllers
     {
         private readonly FilterRepository filterRepository;
         private readonly BookRepository bookRepository;
+        private readonly IApprovalsRepository approvals;
+        private readonly IUserRepository userRepository;
 
-        public FilterController(FilterRepository filterRepository, BookRepository bookRepository)
+        public FilterController(FilterRepository filterRepository, BookRepository bookRepository, IApprovalsRepository approvals, IUserRepository userRepository)
         {
             this.filterRepository = filterRepository;
             this.bookRepository = bookRepository;
+            this.approvals = approvals;
+            this.userRepository = userRepository;
         }
 
         [HttpGet]
@@ -34,6 +38,8 @@ namespace BookResale.Api.Controllers
                 var bookCategories = await this.bookRepository.GetCategories();
                 var authors = await this.bookRepository.GetAuthors();
                 var bookStates = await this.bookRepository.GetBookStates();
+                var approvals = await this.approvals.GetApprovalStatuses();
+                var sellers = await this.userRepository.GetUsers();
 
                 if (books == null)
                 {
@@ -41,7 +47,7 @@ namespace BookResale.Api.Controllers
                 }
                 else
                 {
-                    var bookDtos = books.ConvertToDto(bookCategories, authors, bookStates);
+                    var bookDtos = books.ConvertToDto(bookCategories, authors, bookStates, approvals, sellers);
                     return Ok(bookDtos);
                 }
             }

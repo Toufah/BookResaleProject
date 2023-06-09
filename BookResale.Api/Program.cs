@@ -3,7 +3,9 @@ using BookResale.Api.Repositories;
 using BookResale.Api.Repositories.Contracts;
 using BookResale.Api.Services;
 using BookResale.Api.Services.BookServices;
+using BookResale.Api.Services.OrderService;
 using BookResale.Api.Services.PaymentServices;
+using BookResale.Api.Services.SellerBankAccountInfoService;
 using BookResale.Api.Services.StatsService;
 using BookResale.Api.Services.TrackingService;
 using BookResale.Api.Shared.Settings;
@@ -35,6 +37,9 @@ builder.Services.AddScoped<IStatsService, StatsService>();
 builder.Services.AddScoped<IBookService, BookService>();
 builder.Services.AddScoped<ITrackingService, TrackingService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IApprovalsRepository, ApprovalsRepository>();
+builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<ISellerBankAccountInfoService, SellersBankAccountInfoService>();
 
 builder.Services.Configure<TokenSettings>(builder.Configuration.GetSection(nameof(TokenSettings)));
 

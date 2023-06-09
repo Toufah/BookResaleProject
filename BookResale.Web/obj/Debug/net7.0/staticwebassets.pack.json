@@ -161,6 +161,10 @@
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\css\\custom-styling\\BecomeASeller.css",
+      "PackagePath": "staticwebassets\\css\\custom-styling\\BecomeASeller.css"
+    },
+    {
       "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\css\\custom-styling\\BookDetails.css",
       "PackagePath": "staticwebassets\\css\\custom-styling\\BookDetails.css"
     },

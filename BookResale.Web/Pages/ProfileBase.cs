@@ -3,6 +3,7 @@ using BookResale.Models.Dtos;
 using BookResale.Web.Services.Contracts;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Components.Web;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
@@ -80,7 +81,7 @@ namespace BookResale.Web.Pages
                 submitOnOffProfil = "none";
             }
         }
-        public async void UpdateUserShippingAddress()
+        public async Task UpdateUserShippingAddress()
         {
             if(userShippingAdress == null || !checkObjectNotEmpty(userShippingAdress))
             {
@@ -95,7 +96,7 @@ namespace BookResale.Web.Pages
             }
         }
 
-        public async void UpdateUserInfo()
+        public async Task UpdateUserInfo()
         {
             if(userDto == null || !checkObjectNotEmpty(userDto))
             {
@@ -118,16 +119,20 @@ namespace BookResale.Web.Pages
             }
         }
 
-        public async void UpdatePassword()
+        public async Task UpdatePassword()
         {
             updatePassword.userId = userId;
-            if(updatePassword == null || !checkObjectNotEmpty(updatePassword))
+            if(updatePassword == null || !checkObjectNotEmpty(updatePassword) || string.IsNullOrEmpty(oldPassword) || string.IsNullOrEmpty(confirmPassword))
             {
                 toastService.ShowWarning("Empty Input");
             }
-            else if(updatePassword.newPassword != confirmPassword)
+            else if (updatePassword.newPassword != confirmPassword)
             {
-                toastService.ShowWarning("Passwords not matching");
+                toastService.ShowError("Passwords not matching");
+            }
+            else if (!IsPasswordStrong(updatePassword.newPassword) )
+            {
+                toastService.ShowWarning("Week New Password.");
             }
             else
             {
@@ -137,13 +142,13 @@ namespace BookResale.Web.Pages
                     newPassword = oldPassword,
                 };
                 var oldPasswordVerification = await userService.PasswordVerification(oldPwdDto);
-                if (oldPasswordVerification == false)
+                if (!oldPasswordVerification)
                 {
                     Console.WriteLine($"old: {oldPassword} \n new : {updatePassword.newPassword}");
                     Console.WriteLine($"pwdv{oldPasswordVerification}");
                     toastService.ShowWarning("Incorrect Old Password");
                 }
-                else
+                else if(oldPasswordVerification)
                 {
                     await userService.UpdatePassword(updatePassword);
                     navigationManager.NavigateTo("/Profile", forceLoad: true);
@@ -152,6 +157,68 @@ namespace BookResale.Web.Pages
                 }
             }
         }
+
+        public async Task UpdatePasswordOnKeyPress(KeyboardEventArgs e)
+        {
+            if (e.Key == "Enter")
+            {
+                await UpdatePassword();
+            }
+        }
+
+        public async Task UpdateAddressOnKeyPress(KeyboardEventArgs e)
+        {
+            if (e.Key == "Enter")
+            {
+                await UpdateUserShippingAddress();
+            }
+        }
+
+        public async Task AddUserShippingAddressOnKeyPress(KeyboardEventArgs e)
+        {
+            if (e.Key == "Enter")
+            {
+                await AddUserShippingAddress();
+            }
+        }
+
+        public async Task UpdateUserInfoOnKeyPress(KeyboardEventArgs e)
+        {
+            if (e.Key == "Enter")
+            {
+                await UpdateUserInfo();
+            }
+        }
+        public bool IsPasswordStrong(string password)
+        {
+            bool hasUppercase = false;
+            bool hasLowercase = false;
+            bool hasDigit = false;
+            bool hasSpecialChar = false;
+
+            foreach (char c in password)
+            {
+                if (char.IsUpper(c))
+                {
+                    hasUppercase = true;
+                }
+                else if (char.IsLower(c))
+                {
+                    hasLowercase = true;
+                }
+                else if (char.IsDigit(c))
+                {
+                    hasDigit = true;
+                }
+                else if (!char.IsLetterOrDigit(c))
+                {
+                    hasSpecialChar = true;
+                }
+            }
+
+            return hasUppercase && hasLowercase && hasDigit && hasSpecialChar;
+        }
+
 
         public void enableOrDisableEditShipping()
         {

@@ -18,11 +18,15 @@ namespace BookResale.Api.Controllers
     {
         private readonly IBookRepository bookRepository;
         private readonly IBookService bookService;
+        private readonly IUserRepository userRepository;
+        private readonly IApprovalsRepository approvalsRepository;
 
-        public BookController(BookRepository bookRepository, IBookService bookService)
+        public BookController(BookRepository bookRepository, IBookService bookService, IUserRepository userRepository, IApprovalsRepository approvalsRepository)
         {
             this.bookRepository = bookRepository;
             this.bookService = bookService;
+            this.userRepository = userRepository;
+            this.approvalsRepository = approvalsRepository;
         }
 
         [HttpGet]
@@ -34,6 +38,8 @@ namespace BookResale.Api.Controllers
                 var bookCategories = await this.bookRepository.GetCategories();
                 var authors = await this.bookRepository.GetAuthors();
                 var bookStates = await this.bookRepository.GetBookStates();
+                var approvals = await this.approvalsRepository.GetApprovalStatuses();
+                var sellers = await this.userRepository.GetUsers();
 
                 if(books == null || bookCategories == null || authors == null || bookStates == null)
                 {
@@ -41,7 +47,7 @@ namespace BookResale.Api.Controllers
                 }
                 else
                 {
-                    var bookDtos = books.ConvertToDto(bookCategories, authors, bookStates);
+                    var bookDtos = books.ConvertToDto(bookCategories, authors, bookStates, approvals, sellers);
                     return Ok(bookDtos);
                 }
             }
@@ -67,8 +73,10 @@ namespace BookResale.Api.Controllers
                     var bookCategory = await this.bookRepository.GetCategorie(book.CategoryId);
                     var bookAuthor = await this.bookRepository.GetAuthor(book.AuthorId);
                     var bookState = await this.bookRepository.GetBookState(book.StateId);
+                    var approval = await this.approvalsRepository.GetApprovalStatus(book.approvalStatus);
+                    var seller = await this.userRepository.GetUser(book.sellerId);
 
-                    var bookDto = book.ConvertToDto(bookCategory, bookAuthor, bookState);
+                    var bookDto = book.ConvertToDto(bookCategory, bookAuthor, bookState, approval, seller);
 
                     return Ok(bookDto);
                 }
@@ -123,6 +131,8 @@ namespace BookResale.Api.Controllers
                 var bookCategories = await this.bookRepository.GetCategories();
                 var authors = await this.bookRepository.GetAuthors();
                 var bookStates = await this.bookRepository.GetBookStates();
+                var approvals = await this.approvalsRepository.GetApprovalStatuses();
+                var sellers = await this.userRepository.GetUsers();
 
                 if (books == null)
                 {
@@ -130,7 +140,7 @@ namespace BookResale.Api.Controllers
                 }
                 else
                 {
-                    var bookDtos = books.ConvertToDto(bookCategories, authors, bookStates);
+                    var bookDtos = books.ConvertToDto(bookCategories, authors, bookStates, approvals, sellers);
                     return Ok(bookDtos);
                 }
             }
@@ -194,6 +204,8 @@ namespace BookResale.Api.Controllers
                 var bookCategories = await this.bookRepository.GetCategories();
                 var authors = await this.bookRepository.GetAuthors();
                 var bookStates = await this.bookRepository.GetBookStates();
+                var approvals = await this.approvalsRepository.GetApprovalStatuses();
+                var sellers = await this.userRepository.GetUsers();
 
                 if (books == null)
                 {
@@ -201,7 +213,7 @@ namespace BookResale.Api.Controllers
                 }
                 else
                 {
-                    var bookDtos = books.ConvertToDto(bookCategories, authors, bookStates);
+                    var bookDtos = books.ConvertToDto(bookCategories, authors, bookStates, approvals, sellers);
                     return Ok(bookDtos);
                 }
             }

@@ -1,5 +1,6 @@
 ﻿.search_result_cont {
     padding: 15px 0;
+    min-height: 630px;
 }
 .search_result_cont > div > h4 {
     font-size: 1.1rem;

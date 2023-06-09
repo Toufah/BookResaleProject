@@ -21,5 +21,10 @@ namespace BookResale.Models.Dtos
         public string State { get; set; } = string.Empty;
         public decimal Price { get; set; }
         public int Qty { get; set; }
+        public int approvalStatus { get; set; }
+        public string? approvalStatusTitle { get; set; }
+        public int sellerId { get; set; }
+        public string? sellerFirstname { get; set; }
+        public string? sellerLastname { get; set; }
     }
 }

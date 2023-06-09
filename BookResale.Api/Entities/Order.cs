@@ -2,11 +2,16 @@
 {
     public class Order
     {
-        public int orderId { get; set; }
-        public string? booksId { get; set; }
-        public int sellerId { get; set; }
-        public decimal totalPrice { get; set; }
-        public DateTime? orderDate { get; set; }
-        public int method { get; set; }
+        public int OrderId { get; set; }
+        public string? BooksId { get; set; }
+        public int UserId { get; set; }
+        public int ItemsCount { get; set; }
+        public decimal TotalPrice { get; set; }
+        public DateTime? OrderDate { get; set; }
+        public int Method { get; set; }
+        public string? Address { get; set; }
+        public string? city { get; set; }
+        public string? phoneNumber { get; set; }
+        public int ApprovalStatus { get; set; }
     }
 }

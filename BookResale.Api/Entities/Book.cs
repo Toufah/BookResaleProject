@@ -11,6 +11,7 @@
         public int StateId { get; set; }
         public int Qty { get; set; }
         public int CategoryId { get; set; }
-
+        public int approvalStatus {get; set;}
+        public int sellerId { get; set; }
     }
 }

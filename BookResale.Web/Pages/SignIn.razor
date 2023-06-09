@@ -19,11 +19,11 @@
                         <MudTextField @bind-Value="loginModel.Email"
                                       For="@(() => loginModel.Email)"
                                       Immediate="true"
-                                      Label="email" />
+                                      Label="email" @onkeydown="LoginOnKeyPress" />
                         <MudTextField @bind-Value="loginModel.Password"
                                       For="@(() => loginModel.Password)"
                                       Immediate="true"
-                                      Label="password" InputType="InputType.Password" />
+                                      Label="password" InputType="InputType.Password" @onkeydown="LoginOnKeyPress" />
                     </MudCardContent>
                     <MudCardActions Class="btn-cont">
                         <MudButton Variant="Variant.Filled" Class="cust-btn" OnClick="LoginAsync">sign in</MudButton>
@@ -39,23 +39,23 @@
                         <MudTextField @bind-Value="RegistratioModel.FirstName"
                                       For="@(() => RegistratioModel.FirstName)"
                                       Immediate="true"
-                                      Label="firstname" />
+                                      Label="firstname" @onkeydown="RegisterOnKeyPress" />
                         <MudTextField @bind-Value="RegistratioModel.LastName"
                                       For="@(() => RegistratioModel.LastName)"
                                       Immediate="true"
-                                      Label="lastname" />
+                                      Label="lastname" @onkeydown="RegisterOnKeyPress" />
                         <MudTextField @bind-Value="RegistratioModel.Email"
                                       For="@(() => RegistratioModel.Email)"
                                       Immediate="true"
-                                      Label="email" />
+                                      Label="email" @onkeydown="RegisterOnKeyPress" />
                         <MudTextField @bind-Value="RegistratioModel.Password"
                                       For="@(() => RegistratioModel.Password)"
                                       Immediate="true"
-                                      Label="password" InputType="InputType.Password" />
+                                      Label="password" InputType="InputType.Password" @onkeydown="RegisterOnKeyPress" />
                         <MudTextField @bind-Value="RegistratioModel.ConfirmPassword"
                                       For="@(() => RegistratioModel.ConfirmPassword)"
                                       Immediate="true"
-                                      Label="confirm password" InputType="InputType.Password" />
+                                      Label="confirm password" InputType="InputType.Password" @onkeydown="RegisterOnKeyPress" />
                     </MudCardContent>
                     <MudCardActions Class="btn-cont">
                         <MudButton Variant="Variant.Filled" Class="cust-btn" OnClick="RegisterAsync">register</MudButton>
@@ -85,6 +85,14 @@
     {
         validationModel = new ResgistrationValidationVM(_http);
         return base.OnInitializedAsync();
+    }
+
+    private async Task RegisterOnKeyPress(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            await RegisterAsync();
+        }
     }
 
     protected async Task RegisterAsync()
@@ -130,6 +138,14 @@
     string APIErrorMessagesLogin;
 
     LoginValidationVM loginValidatorModel = new LoginValidationVM();
+
+    private async Task LoginOnKeyPress(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            await LoginAsync();
+        }
+    }
 
     private async Task LoginAsync()
     {

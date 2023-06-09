@@ -17,12 +17,14 @@ namespace BookResale.Api.Repositories
         }
         public async Task<IEnumerable<Book>> SearchBook(string searchQuery)
         {
-            var books = bookResaleDbContext.Books.AsQueryable();
+            var approvedBooks = bookResaleDbContext.Books.Where(b => b.approvalStatus == 2);
+
             if (!string.IsNullOrWhiteSpace(searchQuery))
             {
-                books = books.Where(x => x.Title.Contains(searchQuery));
+                approvedBooks = approvedBooks.Where(x => x.Title.Contains(searchQuery));
             }
-            return books;
+
+            return await approvedBooks.ToListAsync();
         }
     }
 }

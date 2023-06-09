@@ -1,0 +1,46 @@
+﻿@page "/GenreBooks/{categoryName}/{categoryId:int}"
+@using System.Globalization;
+@inherits GenreBooksBase
+
+<div class="search_result_cont">
+    <div class="ach-container">
+        @if (booksWithCategory == null)
+        {
+            <LoadingAnimation />
+        }
+        else if (booksWithCategory.Count() == 0)
+        {
+            <h4>no books found for this category: @categoryName.</h4>
+        }
+        else
+        {
+            <h4>category: @categoryName</h4>
+            <div>
+                @if (booksWithCategory != null)
+                {
+                    @if (booksWithCategory.Count() > 0)
+                    {
+                        @if (!string.IsNullOrEmpty(categoryName))
+                        {
+                            <div class="booksList">
+                                @foreach (var book in booksWithCategory)
+                                {
+                                    <div @onclick="() => ViewBook(book.Id)">
+                                        <img src="@book.ImageURL">
+                                        <div>
+                                            <h6>@book.Title</h6>
+                                            <p>@book.AuthorFirstName @book.AuthorLastName</p>
+                                            <p>@book.CategoryName</p>
+                                            <p>@book.Price.ToString("C", new CultureInfo("en-US"))</p>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        }
+                    }
+
+                }
+            </div>
+        }
+    </div>
+</div>
