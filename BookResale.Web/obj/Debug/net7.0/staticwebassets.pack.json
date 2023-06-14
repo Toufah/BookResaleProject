@@ -185,6 +185,10 @@
       "PackagePath": "staticwebassets\\css\\custom-styling\\Inbox.css"
     },
     {
+      "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\css\\custom-styling\\Inventory.css",
+      "PackagePath": "staticwebassets\\css\\custom-styling\\Inventory.css"
+    },
+    {
       "Id": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\wwwroot\\css\\custom-styling\\LoadingAnimation.css",
       "PackagePath": "staticwebassets\\css\\custom-styling\\LoadingAnimation.css"
     },

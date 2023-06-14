@@ -9,6 +9,7 @@ using System.Net.Http.Json;
 using Blazored.Toast.Services;
 using Microsoft.AspNetCore.Components.Authorization;
 using BookResale.Web.Shared.Providers;
+using Microsoft.AspNetCore.Components.Web;
 
 namespace BookResale.Admin.Pages
 {
@@ -34,6 +35,13 @@ namespace BookResale.Admin.Pages
         protected string APIErrorMessagesLogin;
         protected LoginValidationVM loginValidatorModel = new LoginValidationVM();
 
+        public async Task LoginOnKeyPress(KeyboardEventArgs e)
+        {
+            if (e.Key == "Enter")
+            {
+                await LoginAsync();
+            }
+        }
         protected async Task LoginAsync()
         {
             await form_login.Validate();

@@ -12,6 +12,7 @@ using BookResale.Web.Shared.Providers;
 using Blazored.Toast;
 using Microsoft.AspNetCore.Components;
 
+
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
@@ -34,7 +35,9 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ISellerBankAccountInfo, SellerBankAccountInfo>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IInboxService, InboxService>();
+builder.Services.AddScoped<IApprovalService, ApprovalService>();
 builder.Services.AddScoped<FilesManager>();
 
 
 await builder.Build().RunAsync();
+

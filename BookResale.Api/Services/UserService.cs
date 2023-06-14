@@ -172,7 +172,7 @@ namespace BookResale.Api.Services
             }
             var user = await bookResaleDbContext.Users.Where(_ => _.Email.ToLower() == loginPayload.Email.ToLower()).FirstOrDefaultAsync();
 
-            if (user == null || user.RoleId != 2) { return (false, null); }
+            if (user == null || user.RoleId != 1) { return (false, null); }
 
             bool validPassword = PasswordVerification(loginPayload.Password, user.Password);
 
@@ -259,5 +259,71 @@ namespace BookResale.Api.Services
 
             return true; // Password updated successfully
         }
+
+
+
+        public async Task<IEnumerable<User>> GetUsers()
+        {
+            var users = await bookResaleDbContext.Users.ToListAsync();
+            return users;
+        }
+
+        public async Task<bool> RemoveUser(int UserId)
+        {
+            try
+            {
+                var remove = await bookResaleDbContext.Users.FindAsync(UserId);
+                if (remove != null)
+                {
+                    bookResaleDbContext.Users.Remove(remove);
+                    await bookResaleDbContext.SaveChangesAsync();
+                    return true;
+                }
+
+                return false;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public async Task<bool> UpdateUserRole(UserDto user)
+        {
+            var userUpdate = await bookResaleDbContext.Users.SingleOrDefaultAsync(u => u.Id == user.Id);
+
+            if (userUpdate == null)
+            {
+                return false; // User not found
+            }
+
+            userUpdate.RoleId = user.RoleId;
+            await bookResaleDbContext.SaveChangesAsync();
+
+            return true; // Password updated successfully
+        }
+
+        public async Task<IEnumerable<RoleDto>> GetRoles()
+        {
+            var Roles = await bookResaleDbContext.Roles.ToListAsync();
+            var rolesDto = new List<RoleDto>();
+
+            foreach (var role in Roles)
+            {
+                var roleDto = new RoleDto
+                {
+                    // Assuming there are properties in RoleDto class that need to be assigned
+                    Id = role.Id,
+                    role = role.role,
+                    // Assign other properties as needed
+                };
+
+                rolesDto.Add(roleDto);
+            }
+
+            return rolesDto;
+        }
+
     }
 }

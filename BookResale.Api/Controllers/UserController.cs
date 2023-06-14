@@ -1,4 +1,6 @@
-﻿using BookResale.Api.Entities;
+﻿using BookResale.Api.Data;
+using BookResale.Api.Entities;
+using BookResale.Api.Extensions;
 using BookResale.Api.Repositories.Contracts;
 using BookResale.Api.Services;
 using BookResale.Models.Dtos;
@@ -15,11 +17,13 @@ namespace BookResale.Api.Controllers
         private readonly IUserService userService;
 
         public readonly IUserRepository _userRepository;
+        private readonly BookResaleDbContext bookResaleDbContext;
 
-        public UserController(IUserService userService, IUserRepository userRepository)
+        public UserController(IUserService userService, IUserRepository userRepository, BookResaleDbContext bookResaleDbContext)
         {
             this.userService = userService;
             _userRepository = userRepository;
+            this.bookResaleDbContext = bookResaleDbContext;
         }
 
         [HttpPost("register")]
@@ -236,5 +240,88 @@ namespace BookResale.Api.Controllers
                 throw;
             }
         }
+
+        [HttpGet("GetUsers")]
+        public async Task<ActionResult<IEnumerable<UserDto>>> GetUsers()
+        {
+            try
+            {
+                var users = await userService.GetUsers();
+                if (users == null)
+                {
+                    return NotFound();
+                }
+                var roles = await bookResaleDbContext.Roles.ToListAsync();
+                var usersDto = users.ConvertToDto(roles);
+
+                return Ok(usersDto);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpDelete]
+        [Route("RemoveUser/{Id}")]
+        public async Task<IActionResult> RemoveUser(int Id)
+        {
+            try
+            {
+                bool removed = await userService.RemoveUser(Id);
+
+                if (removed)
+                    return Ok();
+                else
+                    return NotFound();
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception or return an appropriate error response
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
+
+        [HttpPut("UpdateUserRole")]
+        public async Task<IActionResult> UpdateUserRole([FromBody] UserDto user)
+        {
+            try
+            {
+                bool userRole = await userService.UpdateUserRole(user);
+
+                if (userRole)
+                {
+                    return Ok(); // Password updated successfully
+                }
+                else
+                {
+                    return NotFound(); // User not found
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        [HttpGet("GetRoles")]
+        public async Task<ActionResult<IEnumerable<RoleDto>>> GetRoles()
+        {
+            try
+            {
+                var roles = await userService.GetRoles();
+                if (roles == null)
+                {
+                    return NotFound();
+                }
+                return Ok(roles);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }

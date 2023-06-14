@@ -16,7 +16,7 @@ namespace BookResale.Api.Repositories
 
         public async Task<ApprovalStatus> GetApprovalStatus(int approvalStatusId)
         {
-            var approval = await this.bookResaleDbContext.approvalStatus.SingleOrDefaultAsync(a => a.id == approvalStatusId);
+            var approval = await this.bookResaleDbContext.approvalStatus.Where(b => b.id == approvalStatusId).FirstOrDefaultAsync();
             return approval;
         }
 

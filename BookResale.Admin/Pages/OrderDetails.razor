@@ -1,0 +1,78 @@
+﻿@page "/OrderDetails/{Id:int}"
+@using System.Globalization;
+
+@inherits OrderDetailsBase
+<AuthorizeView>
+    <Authorized>
+        @if(orderDto != null)
+        {
+            <div class="orderDetailsContainer">
+                <div class="content_container">
+                    <div class="approvalsContainer">
+                        <h6>Order status : @orderDto.ApprovalStatusTitle.</h6>
+                        <div>
+                            @if(approvals != null)
+                            {
+                                var i = 1;
+                                @foreach(var approval in approvals)
+                                {
+                                    @if(approval.id == 1 || approval.id == 8 || approval.id == 9)
+                                    {
+                                        <button class="button_@i" @onclick="() => UpdateTostatus(approval)">@approval.approvalStatusTitle</button>
+                                        i++;
+                                    }
+                                }
+                            }
+                        </div>
+                    </div>
+
+                    <div class="booksTable">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>id</td>
+                                    <td>book</td>
+                                    <td>Title</td>
+                                    <td>seller</td>
+                                    <td>price</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if(books != null || books.Count() > 0)
+                                {
+                                    @foreach(var book in books)
+                                    {
+                                        <tr>
+                                            <td>ID</td>
+                                            <td><img src="@book.ImageURL" alt="book image" /></td>
+                                            <td>@book.Title</td>
+                                            <td>@book.sellerFirstname @book.sellerLastname</td>
+                                            <td>@book.Price</td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td>Total:</td>
+                                    <td colspan="4">@orderDto.TotalPrice.ToString("C", new CultureInfo("en-US"))</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div>
+                        <h6>order summary</h6>
+                        <div>
+                            <p><span>ID</span><span>@orderDto.OrderId</span></p>
+                            <p><span>date</span><span>@orderDto.OrderDate</span></p>
+                            <p><span>full name</span><span>@orderDto.UserFirstName @orderDto.UserLastName</span></p>
+                            <p><span>phone number</span><span>@orderDto.phoneNumber</span></p>
+                            <p><span>city</span><span>@orderDto.city</span></p>
+                            <p><span>address</span><span>@orderDto.Address</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </Authorized>
+</AuthorizeView>

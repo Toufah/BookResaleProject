@@ -188,22 +188,6 @@ header::before {
     transition: 0.2s;
 }
 
-.nav-menu .after-arrow::after {
-    content: '';
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    top: 50%;
-    right: -12px;
-    border: solid 1px;
-    border-color: transparent var(--lookalike-gray) var(--lookalike-gray) transparent;
-    transform: translateY(-50%) rotate(45deg);
-    transition: 0.2s;
-}
-
-.nav-menu .after-arrow:hover::after{
-    border-color: transparent var(--orange) var(--orange) transparent;
-}
 
 .search-list {
     position: absolute;

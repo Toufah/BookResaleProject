@@ -1,0 +1,212 @@
+﻿@page "/Inventory"
+@using System.Globalization;
+@inherits InventoryBase
+
+<AuthorizeView>
+    <Authorized>
+        @if(IsASeller){
+            @if (SellerBooks == null)
+            {
+                <LoadingAnimation />
+            }
+            else
+            {
+                <div class="InventoryCont">
+                    <div class="ach-container">
+                        <div>
+                            <h6 @onclick="@GoBackToInventory">@SellerBooks.Count() books published</h6>
+                            <button type="button" @onclick="NavigateToAddBook"><i class="bi bi-plus-circle"></i> add title</button>
+                        </div>
+                        @if (SellerBooks.Count() <= 0)
+                        {
+                            <div class="emptyInventory" style="display: @hideEmptyInventory">
+                                <div>
+                                    <i class="bi bi-archive-fill"></i>
+                                    <h6>you have no books in your inventory.</h6>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="notEmptyInventory">
+                                <div style="display: @hideInventory;">
+                                    @foreach(var book in SellerBooks)
+                                    {
+                                        <div @onclick="() => ViewBookToEdit(book)">
+                                            <div>
+                                                <img src="@book.ImageURL" alt="book cover"/>
+                                                <div>
+                                                    <h6>@book.Title</h6>
+                                                    <span>@book.AuthorFirstName @book.AuthorLastName</span>
+                                                    <span>@book.Price.ToString("C", new CultureInfo("en-US"))</span>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <span>@book.approvalStatusTitle</span>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                                <div style="display: @editBook;" class="editBookCont">
+                                    @if (BookToEdit != null && BookToEditAuthor != null && BookToEditCategory != null && BookToEditState != null && Authors != null && Categories != null && States != null)
+                                    {
+                                        <div class="removebook">
+                                            <h6>product details</h6>
+                                            <button @onclick="confirmDeleteBook"><i class="bi bi-trash"></i></button>
+                                        </div>
+                                        <div class="confirmationMessage @displayConfirmationMessage">
+                                            <span @onclick="closeConfirmDeleteBook"><i class="bi bi-x"></i></span>
+                                            <span><i class="bi bi-x-circle"></i></span>
+                                            <h6>Are you sure?</h6>
+                                            <p>do you really want to delete this Title: <b>@BookToEdit.Title</b>?</p>
+                                            <div>
+                                                <button @onclick="()=> RemoveBook(BookToEdit.Id)" type="button">delete</button>
+                                                <button @onclick="closeConfirmDeleteBook" type="button">cancel</button>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div>
+                                                <label for="ISBN">ISBN</label>
+                                                <input type="number" id="ISBN" value="@BookToEdit.Id" disabled placeholder="Ex: 0035264875985" />
+                                            </div>
+                                            <div>
+                                                <label for="title">book title<i class="bi bi-pencil-square" @onclick="toggleInputTitle"></i></label>
+                                                <input type="text" id="title" value="@BookToEdit.Title" disabled="@enableTitle" placeholder="Ex: Rich Dad Poor Dad" @oninput="e => BookEdited.Title = e.Value.ToString()" />
+                                            </div>
+                                            <div>
+                                                <label for="description">description<i class="bi bi-pencil-square" @onclick="toggleInputDescription"></i></label>
+                                                <textarea id="description" disabled="@enableDescription" @oninput="e => BookEdited.Description = e.Value.ToString()" >@BookToEdit.Description</textarea>
+                                            </div>
+                                            <div>
+                                                <label for="author">Author</label>
+                                                <select id="author" @bind="BookEdited.AuthorId" @bind:event="onchange" @onclick="DisplayInputAuthor">
+                                                    <option default value="@BookToEditAuthor.Id">@BookToEditAuthor.FirstName @BookToEditAuthor.LastName</option>
+                                                    @foreach(var author in Authors)
+                                                    {
+                                                        @if(author.Id != BookToEditAuthor.Id)
+                                                        {
+                                                            <option value="@author.Id">@author.FirstName @author.LastName</option>
+                                                        }
+                                                    }
+                                                    <option value="0">other</option>
+                                                </select>
+                                                <input id="newAuthor" placeholder="Ex: james clear" @bind="newAuthor" @bind:event="oninput" style="display: @displayAuthorInput;" />
+                                            </div>
+                                            <div>
+                                                <label for="category">category</label>
+                                                <select id="category" @bind="BookEdited.CategoryId" @bind:event="onchange">
+                                                    <option default value="@BookToEditCategory.Id">@BookToEditCategory.CategoryName</option>
+                                                    @foreach (var category in Categories)
+                                                    {
+                                                        @if(category.Id != BookToEditCategory.Id)
+                                                        {
+                                                            <option value="@category.Id">@category.CategoryName</option>
+                                                        }
+                                                    }
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label for="state">book state</label>
+                                                <select id="state" @bind="BookEdited.StateId" @bind:event="onchange">
+                                                    <option default value="@BookEdited.Id">@BookToEditState.State</option>
+                                                    @foreach (var state in States)
+                                                    {
+                                                        @if(state.Id != BookToEditState.Id)
+                                                        {
+                                                            <option value="@state.Id">@state.State</option>
+                                                        }
+                                                    }
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label for="price">price<i class="bi bi-pencil-square" @onclick="toggleInputPrice"></i></label>
+                                                <input type="number" id="price" @bind:event="oninput"  @bind="@BookEdited.Price" disabled="@enablePrice" />
+                                            </div>
+                                            <div class="saveChanges">
+                                                <button type="button" @onclick="EditBookInDb" >save changes</button>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        }
+                        <div style="display: @addBook;" class="editBookCont">
+                            <div class="removebook">
+                                <h6>product details</h6>
+                            </div>
+                            <div class="confirmationMessage hideConfirmationMessage">
+                                <span><i class="bi bi-x"></i></span>
+                                <span><i class="bi bi-x-circle"></i></span>
+                                <h6>Are you sure?</h6>
+                                <p>do you really want to delete this Title: <b>test</b>?</p>
+                                <div>
+                                    <button type="button">delete</button>
+                                    <button type="button">cancel</button>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <label for="ISBN">ISBN</label>
+                                    <input type="number" id="ISBN" placeholder="Ex: 0035264875985" />
+                                </div>
+                                <div>
+                                    <label for="title">book title</label>
+                                    <input type="text" id="title" placeholder="Ex: Rich Dad Poor Dad" />
+                                </div>
+                                <div>
+                                    <label for="description">description</label>
+                                    <textarea id="description" placeholder="description"></textarea>
+                                </div>
+                                <div>
+                                    <label for="author">Author</label>
+                                    <select id="author">
+                                        @if (Authors != null)
+                                        {
+                                            @foreach (var author in Authors)
+                                            {
+                                                <option value="@author.Id">@author.FirstName @author.LastName</option>
+                                            }
+                                            <option value="0">other</option>
+                                        }
+                                    </select>
+                                    <input id="newAuthor" placeholder="Ex: james clear" />
+                                </div>
+                                <div>
+                                    <label for="category">category</label>
+                                    <select id="category">
+                                        @if (Categories != null)
+                                        {
+                                            @foreach (var category in Categories)
+                                            {
+                                                <option value="@category.Id">@category.CategoryName</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="state">book state</label>
+                                    <select id="state">
+                                        @if (States != null)
+                                        {
+                                            @foreach (var state in States)
+                                            {
+                                                <option value="@state.Id">@state.State</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="price">price</label>
+                                    <input type="number" id="price" placeholder="Ex: 9.99" />
+                                </div>
+                                <div class="saveChanges">
+                                    <button type="button">add</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </Authorized>
+</AuthorizeView>

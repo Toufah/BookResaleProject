@@ -1,0 +1,42 @@
+﻿@page "/UserDetails/{Id:int}"
+@inherits UserDetailsBase
+<AuthorizeView>
+    <Authorized>
+        @if (userDto != null)
+        {
+            <div class="orderDetailsContainer">
+                <div class="content_container">
+                    <div class="approvalsContainer">
+                        <h6>User Role: @userDto.RoleName.</h6>
+                        <div>
+                            @if (Roles != null)
+                            {
+                                var i = 1;
+                                @foreach (var role in Roles)
+                                {
+                                    <button class="button_@i" @onclick="() => UpdateUserRole(role)">@role.role</button>
+                                    i++;
+                                }
+                            }
+                        </div>
+                    </div>
+                    <div>
+                        <h6>user details</h6>
+                        <div>
+                            <p><span>ID</span><span>@userDto.Id</span></p>
+                            <p><span>first name</span><span>@userDto.FirstName</span></p>
+                            <p><span>last name</span><span>@userDto.LastName</span></p>
+                            <p><span>email</span><span>@userDto.Email</span></p>
+                            @if (userShippingAdressDto != null)
+                            {
+                                <p><span>phone number</span><span>@userShippingAdressDto.phoneNumber</span></p>
+                                <p><span>address</span><span>@userShippingAdressDto.Address</span></p>
+                                <p><span>city</span><span>@userShippingAdressDto.city</span></p>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </Authorized>
+</AuthorizeView>

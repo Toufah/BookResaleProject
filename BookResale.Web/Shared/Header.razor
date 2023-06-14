@@ -89,15 +89,19 @@
                 <Authorized>
                     @if (SellerAuth(context.User.Claims.ToList()))
                     {
-                        <li><a href="/Sell">sell</a></li>
+                        <li><a href="/Inventory">inventory</a></li>
                     }
                 </Authorized>
             </AuthorizeView>
             <li><a href="#">help</a></li>
         </ul>
-        <div @onclick="NavigateToInbox">
-            <i class="bi bi-bell-fill"></i>
-        </div>
+        <AuthorizeView>
+            <Authorized>
+                <div @onclick="NavigateToInbox">
+                    <i class="bi bi-bell-fill"></i>
+                </div>
+            </Authorized>
+        </AuthorizeView>
     </div>
 </header>
 
@@ -138,7 +142,7 @@
     private bool SellerAuth(List<Claim> claims)
     {
         var Role = int.Parse(claims.Where(_ => _.Type == "Role").Select(_ => _.Value).FirstOrDefault());
-        if (Role != 0 && Role == 1)
+        if (Role != 0 && Role == 2)
         {
             return true;
         }

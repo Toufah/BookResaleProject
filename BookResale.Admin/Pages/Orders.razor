@@ -1,0 +1,48 @@
+﻿@page "/Orders"
+@using System.Globalization;
+@inherits OrdersBase
+
+<AuthorizeView>
+    <Authorized>
+        <div class="ordersContainer">
+            <div class="content_container">
+                <div class="tableContainer">
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>order id</td>
+                                <td>client name</td>
+                                <td>date</td>
+                                <td>phone</td>
+                                <td>total</td>
+                                <td>status</td>
+                                <td>method</td>
+                                <td>action</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if(orderDto != null)
+                            {
+                                var orderList = orderDto.ToList();
+                                @for (int i = Math.Max(orderDto.Count() - 1, 0); i >= 0; i--)
+                                {
+                                    var order = orderList[i];
+                                    <tr>
+                                        <td>@order.OrderId</td>
+                                        <td>@($"{order.UserFirstName} {order.UserLastName}")</td>
+                                        <td>@order.OrderDate</td>
+                                        <td>@order.phoneNumber</td>
+                                        <td>@order.TotalPrice.ToString("C", new CultureInfo("en-US"))</td>
+                                        <td>@order.ApprovalStatusTitle</td>
+                                        <td>COD</td>
+                                        <td @onclick="() => ViewOrder(order.OrderId)"><button>details</button></td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </Authorized>
+</AuthorizeView>

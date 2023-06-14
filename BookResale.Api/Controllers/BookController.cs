@@ -1,4 +1,5 @@
-﻿using BookResale.Api.Entities;
+﻿using BookResale.Api.Data;
+using BookResale.Api.Entities;
 using BookResale.Api.Extensions;
 using BookResale.Api.Repositories;
 using BookResale.Api.Repositories.Contracts;
@@ -6,6 +7,7 @@ using BookResale.Api.Services;
 using BookResale.Api.Services.BookServices;
 using BookResale.Models.Dtos;
 using BookResale.Web.Pages;
+using BookResale.Web.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.InteropServices;
@@ -56,6 +58,33 @@ namespace BookResale.Api.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from database");
             }
         }
+        [HttpGet("GetAllBooks")]
+        public async Task<ActionResult<IEnumerable<BookDto>>> GetAllBooks()
+        {
+            try
+            {
+                var books = await this.bookRepository.GetAllBooks();
+                var bookCategories = await this.bookRepository.GetCategories();
+                var authors = await this.bookRepository.GetAuthors();
+                var bookStates = await this.bookRepository.GetBookStates();
+                var approvals = await this.approvalsRepository.GetApprovalStatuses();
+                var sellers = await this.userRepository.GetUsers();
+
+                if (books == null || bookCategories == null || authors == null || bookStates == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    var bookDtos = books.ConvertToDto(bookCategories, authors, bookStates, approvals, sellers);
+                    return Ok(bookDtos);
+                }
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from database");
+            }
+        }
 
         [HttpGet("{id:long}")]
         public async Task<ActionResult<BookDto>> GetBook(long id)
@@ -63,6 +92,36 @@ namespace BookResale.Api.Controllers
             try
             {
                 var book = await this.bookRepository.GetBook(id);
+
+                if (book == null)
+                {
+                    return BadRequest();
+                }
+                else
+                {
+                    var bookCategory = await this.bookRepository.GetCategorie(book.CategoryId);
+                    var bookAuthor = await this.bookRepository.GetAuthor(book.AuthorId);
+                    var bookState = await this.bookRepository.GetBookState(book.StateId);
+                    var approval = await this.approvalsRepository.GetApprovalStatus(book.approvalStatus);
+                    var seller = await this.userRepository.GetUser(book.sellerId);
+
+                    var bookDto = book.ConvertToDto(bookCategory, bookAuthor, bookState, approval, seller);
+
+                    return Ok(bookDto);
+                }
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from database");
+            }
+        }
+
+        [HttpGet("BookAnyway/{id:long}")]
+        public async Task<ActionResult<BookDto>> GetBookAnyway(long id)
+        {
+            try
+            {
+                var book = await this.bookRepository.GetBookAnyway(id);
 
                 if (book == null)
                 {
@@ -215,6 +274,100 @@ namespace BookResale.Api.Controllers
                 {
                     var bookDtos = books.ConvertToDto(bookCategories, authors, bookStates, approvals, sellers);
                     return Ok(bookDtos);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        [HttpGet("GetSellerBooks/{sellerId:int}")]
+        public async Task<ActionResult<IEnumerable<BookDto>>> GetSellerBooks(int sellerId)
+        {
+            try
+            {
+                var books = this.bookService.GetSellerBooks(sellerId);
+                var bookCategories = await this.bookRepository.GetCategories();
+                var authors = await this.bookRepository.GetAuthors();
+                var bookStates = await this.bookRepository.GetBookStates();
+                var approvals = await this.approvalsRepository.GetApprovalStatuses();
+                var sellers = await this.userRepository.GetUsers();
+
+                if (books == null)
+                {
+                    return BadRequest();
+                }
+                else
+                {
+                    var bookDtos = books.ConvertToDto(bookCategories, authors, bookStates, approvals, sellers);
+                    return Ok(bookDtos);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        [HttpDelete]
+        [Route("RemoveBook/{id}")]
+        public async Task<IActionResult> RemoveBook(long id)
+        {
+            try
+            {
+                bool removed = await bookService.RemoveBook(id);
+
+                if (removed)
+                    return Ok();
+                else
+                    return NotFound();
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception or return an appropriate error response
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
+
+        [HttpPut("UpdateBook")]
+        public async Task<IActionResult> UpdateBook([FromBody] BookDto book)
+        {
+            try
+            {
+                bool bookUpdate = await bookService.UpdateBook(book);
+
+                if (bookUpdate)
+                {
+                    return Ok(); // Password updated successfully
+                }
+                else
+                {
+                    return NotFound(); // User not found
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        [HttpPut("UpdateBookStatus")]
+        public async Task<ActionResult> UpdateBookStatus([FromBody] BookDto book)
+        {
+            try
+            {
+                var bookUpdated = await bookService.UpdateBookStatus(book);
+                if (bookUpdated)
+                {
+                    return Ok();
+                }
+                else
+                {
+                    return NotFound();
                 }
             }
             catch (Exception)

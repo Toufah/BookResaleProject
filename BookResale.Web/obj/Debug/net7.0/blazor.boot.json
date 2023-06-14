@@ -17,6 +17,8 @@
       "Microsoft.AspNetCore.Components.Forms.dll": "sha256-eoQ2CgfBGkvbK4QUMBgFDPIBqJem+g8247Fb3ZmnmCI=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-p3BQFPwUbOgu5j9V+1HlUGwDcVzB7iYNO4dIsDCOAgA=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-55+LOYcA1yHHPQEjl6eI0UGgteq41y+8js6DQ5PhXDk=",
+      "Microsoft.AspNetCore.Http.Abstractions.dll": "sha256-qFKmKNr9iAZiZxOVvLJBfMhkKfDy1GvY81fHh1hiphU=",
+      "Microsoft.AspNetCore.Http.Features.dll": "sha256-J2xQUZ4BD6tsrQkvGS5HDQfkTGMzmaS76TA9nJrtCpg=",
       "Microsoft.AspNetCore.Metadata.dll": "sha256-eIu14RWCV9bKCAARda4hnWGsOKJfmnGfQpkmeRnSibQ=",
       "Microsoft.Extensions.Configuration.dll": "sha256-PqQvp77oZ4+uuy2ElXk8AU9I6RfZSf18UGTrd4rulOo=",
       "Microsoft.Extensions.Configuration.Abstractions.dll": "sha256-CnS3b9EMFQmETBUVEgtcron4DBsfFdcVt3zfCP6Uflg=",
@@ -210,15 +212,15 @@
       "mscorlib.dll": "sha256-qqpKd+W+AFb6UxudEYEKzrz7ma81p5LrWUwPBVvHV4U=",
       "netstandard.dll": "sha256-OYYuPT3JUknj4LdYIa58zF7kDB3tCnLzjCSuhEjtKXM=",
       "System.Private.CoreLib.dll": "sha256-EVS7zPxPV\/41g2mzPwdXtwiigWxI\/SeAHme1IgyD6tc=",
-      "BookResale.Models.dll": "sha256-JRIdpmqzgdR9JIDssASKw9urhMHXsn84Bir+1htu\/1Y=",
-      "BookResale.Web.dll": "sha256-99HIK+nMc2zTsk1dXS\/A8NLFKuHYiR55APwJuMuF3Zg="
+      "BookResale.Models.dll": "sha256-Z2z2A137xyUy5SQomyDuBMpduaHSvZzSgVDJk0b80+I=",
+      "BookResale.Web.dll": "sha256-1MA4DS3Pm1Q7VvLNeRVTvNZnjsL63CUDb6myraMezVk="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
-      "BookResale.Models.pdb": "sha256-Apl8OCVQvrIRg2vv2DmqbWA4K0buPfFU\/fcpfMtAfuI=",
-      "BookResale.Web.pdb": "sha256-zqi42OO9mdIf+qzV6mwjH\/e7FJiFfskWIbT6HKJOL64="
+      "BookResale.Models.pdb": "sha256-bvU0Xw8MEIajhlOIU4jClf4UyQ+gAl\/Mp34N491vxx4=",
+      "BookResale.Web.pdb": "sha256-w6Sqx5Xi9qHabRvRKYCVCGIn1A4QFz\/OCFE0OXhPyns="
     },
     "runtime": {
       "dotnet.7.0.5.7xykp5whe1.js": "sha256-codB25EodaFEP43MDCfMBuKXU4LqurUKnQrpoMIFnPs=",

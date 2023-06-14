@@ -1,4 +1,5 @@
 ﻿@page "/Cart"
+@using System.Globalization;
 @inherits CartBase
 
 <AuthorizeView>
@@ -33,7 +34,7 @@
                                             <img src="@book.BookImageURL" />
                                             <div class="cart-text-cont">
                                                 <h6>@book.BookTitle</h6>
-                                                <p><b>item price:</b> @book.Price.ToString("C")</p>
+                                                <p><b>item price:</b> @book.Price.ToString("C", new CultureInfo("en-US"))</p>
                                                 <span class="remove" @onclick="(() => DeleteBook(book))">remove</span>
                                             </div>
                                         </td>
@@ -42,7 +43,7 @@
                                             <input type="number" class="qty-in" @bind="@Qty" />
                                             <span class="incr-qty" @onclick="IncreaseQty">+</span>
                                         </td>
-                                        <td>@book.Price.ToString("C")</td>
+                                        <td>@book.Price.ToString("C", new CultureInfo("en-US"))</td>
                                     </tr>
                                 }
                             }
@@ -58,7 +59,7 @@
                                 }
                                 items):
                             </span>
-                            <span>@TotalPrice().ToString("C")</span>
+                            <span>@TotalPrice().ToString("C", new CultureInfo("en-US"))</span>
                         </p>
                         <p><span>shipping:</span> <span>$2.00</span></p>
                         <p><span>tax: </span><span>$0.00</span></p>
@@ -72,7 +73,7 @@
                             }
                             else
                             {
-                                <span>@TaxedPrice().ToString("C")</span>
+                                <span>@TaxedPrice().ToString("C", new CultureInfo("en-US"))</span>
                             }
                         </div>
                         <div class="order_address @activateAddress">

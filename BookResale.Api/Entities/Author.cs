@@ -11,5 +11,6 @@ namespace BookResale.Api.Entities
         public string Died { get; set; } = string.Empty;
         public string Birthplace { get; set; } = string.Empty;
         public string ImageURL { get; set; } = string.Empty;
+        public ICollection<Book> Books { get; set; }
     }
 }

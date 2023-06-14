@@ -6,6 +6,7 @@ using System;
 using System.Net.Http.Json;
 using Newtonsoft.Json;
 using BookResale.Web.ViewModels;
+using System.Text;
 
 namespace BookResale.Web.Services
 {
@@ -66,32 +67,6 @@ namespace BookResale.Web.Services
             catch (Exception)
             {
 
-                throw;
-            }
-        }
-        public async Task<bool> AddNewBook(BookDto book)
-        {
-            try
-            {
-                // Make an HTTP POST request to the server API endpoint
-                var response = await httpClient.PostAsJsonAsync("/api/Book/newBook", book);
-
-                // Check if the request was successful
-                if (response.IsSuccessStatusCode)
-                {
-                    string responseContent = await response.Content.ReadAsStringAsync();
-                    return true;
-                }
-                else
-                {
-                    // Handle the error case when the request was not successful
-                    string errorMessage = $"Error: {response.StatusCode} - {response.ReasonPhrase}";
-                    return false;
-                }
-            }
-            catch (Exception ex)
-            {
-                // Handle any exceptions that occurred during the request
                 throw;
             }
         }
@@ -185,5 +160,96 @@ namespace BookResale.Web.Services
             }
         }
 
+        public async Task<bool> AddNewBook(BookDto book)
+        {
+            try
+            {
+                var response = await httpClient.PostAsJsonAsync("api/Book/newBook", book);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return true; // Book added successfully
+                }
+                else
+                {
+                    var errorMessage = await response.Content.ReadAsStringAsync();
+                    throw new Exception(errorMessage);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task<IEnumerable<BookDto>> GetSellerBooks(int id)
+        {
+            try
+            {
+                var responseMessage = await httpClient.GetAsync($"api/Book/GetSellerBooks/{id}");
+
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var bookList = await responseMessage.Content.ReadFromJsonAsync<IEnumerable<BookDto>>();
+                    return bookList;
+                }
+                else
+                {
+                    var errorMessage = await responseMessage.Content.ReadAsStringAsync();
+                    throw new Exception(errorMessage);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task<bool> RemoveBook(long id)
+        {
+            try
+            {
+                var response = await httpClient.DeleteAsync($"api/Book/RemoveBook/{id}");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return true; // Book removed successfully
+                }
+                else
+                {
+                    var errorMessage = await response.Content.ReadAsStringAsync();
+                    throw new Exception(errorMessage);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task<bool> UpdateBook(BookDto book)
+        {
+            try
+            {
+                var json = JsonConvert.SerializeObject(book);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await httpClient.PutAsync($"api/Book/UpdateBook", content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return true; // Book updated successfully
+                }
+                else
+                {
+                    var errorMessage = await response.Content.ReadAsStringAsync();
+                    throw new Exception(errorMessage);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

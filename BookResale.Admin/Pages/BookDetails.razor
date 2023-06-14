@@ -1,0 +1,45 @@
+﻿@page "/BookDetails/{Id:long}"
+@using System.Globalization;
+@inherits BookDetailsBase
+<AuthorizeView>
+    <Authorized>
+        @if (bookDto != null)
+        {
+            <div class="orderDetailsContainer">
+                <div class="content_container">
+                    <div class="approvalsContainer">
+                        <h6>approval status: @bookDto.approvalStatusTitle.</h6>
+                        <div>
+                            @if (approvals != null)
+                            {
+                                var i = 1;
+                                @foreach (var approval in approvals)
+                                {
+                                    if(approval.id <= 5)
+                                    {
+                                        <button class="button_@i" @onclick="() => UpdateBookStatus(approval)">@approval.approvalStatusTitle</button>
+                                        i++;
+                                    }
+                                }
+                            }
+                        </div>
+                    </div>
+                    <img src="@bookDto.ImageURL" class="floating_Image"/>
+                    <div>
+                        <h6>Book details</h6>
+                        <div>
+                            <p><span>ID</span><span>@bookDto.Id</span></p>
+                            <p><span>title</span><span>@bookDto.Title</span></p>
+                            <p><span>description</span><span>@bookDto.Description</span></p>
+                            <p><span>author</span><span>@bookDto.AuthorFirstName @bookDto.AuthorLastName</span></p>
+                            <p><span>category</span><span>@bookDto.CategoryName</span></p>
+                            <p><span>State</span><span>@bookDto.State</span></p>
+                            <p><span>price</span><span>@bookDto.Price.ToString("C", new CultureInfo("en-US"))</span></p>
+                            <p><span>seller</span><span>@bookDto.sellerFirstname @bookDto.sellerLastname</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </Authorized>
+</AuthorizeView>

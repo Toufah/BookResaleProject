@@ -21,7 +21,7 @@
                 <div class="top-row px-4" style="background: #fff; border-bottom: none; outline: none;">
                     <button class="userNameProfile"><i class="bi bi-person"></i>@UserDisplayName(context.User.Claims.ToList())</button>
                     <ul class="drpDownList">
-                        <li><i class="bi bi-eye"></i> view store</li>
+                        <li @onclick="ViewStore"><i class="bi bi-eye"></i> view store</li>
                         <li><i class="bi bi-gear"></i> admin sittings</li>
                         <li @onclick="Logout"><i class="bi bi-box-arrow-left"></i> logout</li>
                     </ul>
@@ -52,5 +52,10 @@
         _navigationManager.NavigateTo("/");
         (_authStateProvider as CustomAuthProvider).NotifyAuthState();
         _toastService.ShowSuccess("Logged-out.");
+    }
+
+    private void ViewStore()
+    {
+        _navigationManager.NavigateTo("https://localhost:7270/", true);
     }
 }

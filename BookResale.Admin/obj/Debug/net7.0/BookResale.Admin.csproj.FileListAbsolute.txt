@@ -850,3 +850,15 @@ C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Admin\bin\Debu
 C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Admin\bin\Debug\net7.0\wwwroot\_framework\BlazorInputFile.dll.gz
 C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Admin\bin\Debug\net7.0\BlazorInputFile.dll
 C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Admin\obj\Debug\net7.0\build-gz\8CsaUTtL.gz
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Admin\bin\Debug\net7.0\wwwroot\_framework\BookResale.Models.dll
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Admin\bin\Debug\net7.0\wwwroot\_framework\BookResale.Models.pdb
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Admin\bin\Debug\net7.0\wwwroot\_framework\BookResale.Models.pdb.gz
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Admin\bin\Debug\net7.0\wwwroot\_framework\BookResale.Models.dll.gz
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Admin\bin\Debug\net7.0\BookResale.Models.dll
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Admin\bin\Debug\net7.0\BookResale.Models.pdb
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Admin\obj\Debug\net7.0\build-gz\THhQKrO+.gz
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Admin\obj\Debug\net7.0\build-gz\TdP6L7U7.gz
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Admin\bin\Debug\net7.0\wwwroot\_framework\Newtonsoft.Json.dll
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Admin\bin\Debug\net7.0\wwwroot\_framework\Newtonsoft.Json.dll.gz
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Admin\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Admin\obj\Debug\net7.0\build-gz\MAc4r7nv.gz

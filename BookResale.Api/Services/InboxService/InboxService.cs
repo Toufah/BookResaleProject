@@ -51,11 +51,16 @@ namespace BookResale.Api.Services.InboxService
             return true;
         }
 
-        public async Task<IEnumerable<Inbox>> GetAllMessages()
+        public async Task<IEnumerable<Inbox>> GetAllMessages(int userId)
         {
-            var messages = await bookResaleDbContext.Inbox.ToListAsync();
+            var messages = await bookResaleDbContext.Inbox
+                .Where(i => i.RecepientId == userId)
+                .OrderByDescending(i => i.Timestamp)
+                .ToListAsync();
+
             return messages;
         }
+
 
         public async Task<Inbox> GetMessage(int Id)
         {

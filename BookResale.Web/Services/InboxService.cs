@@ -63,11 +63,11 @@ namespace BookResale.Web.Services
             }
         }
 
-        public async Task<IEnumerable<InboxDto>> GetAllMessages()
+        public async Task<IEnumerable<InboxDto>> GetAllMessages(int userId)
         {
             try
             {
-                var response = await this.httpClient.GetAsync("api/Inbox/GetMessages");
+                var response = await this.httpClient.GetAsync($"api/Inbox/GetMessages?userId={userId}");
                 if (response.IsSuccessStatusCode)
                 {
                     if (response.StatusCode == System.Net.HttpStatusCode.NoContent)

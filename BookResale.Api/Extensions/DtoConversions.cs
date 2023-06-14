@@ -1,7 +1,10 @@
 ﻿using BookResale.Api.Entities;
 using BookResale.Models.Dtos;
+using BookResale.Web.Pages;
 using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
+using System.Linq;
+
 
 namespace BookResale.Api.Extensions
 {
@@ -74,7 +77,7 @@ namespace BookResale.Api.Extensions
             };
         }
 
-        public static IEnumerable<InboxDto> ConvertToDto(this IEnumerable<Inbox> messages, IEnumerable<User> users)
+        public static IEnumerable<InboxDto> ConvertToDto(this IEnumerable<Entities.Inbox> messages, IEnumerable<User> users)
         {
             return (from message in messages
                     join senderUser in users on message.SenderId equals senderUser.Id
@@ -83,9 +86,9 @@ namespace BookResale.Api.Extensions
                     {
                         Id = message.Id,
                         RecepientId = message.RecepientId,
-                        RecepientName = recipientUser.LastName,
+                        RecepientName = recipientUser.LastName + " " + recipientUser.FirstName,
                         SenderId = message.SenderId,
-                        SenderName = senderUser.LastName,
+                        SenderName = senderUser.LastName + " " + senderUser.FirstName,
                         Subject = message.Subject,
                         Content = message.Content,
                         Timestamp = message.Timestamp,
@@ -169,6 +172,62 @@ namespace BookResale.Api.Extensions
                 Id = state.Id,
                 State = state.State,
             };
+        }
+        public static IEnumerable<UserDto> ConvertToDto(this IEnumerable<User> users, List<Role> roles)
+        {
+            return (from user in users
+                    join role in roles on user.RoleId equals role.Id
+                    select new UserDto
+                    {
+                        Id = user.Id,
+                        FirstName = user.FirstName,
+                        LastName = user.LastName,
+                        Email = user.Email,
+                        RoleId = user.RoleId,
+                        RoleName = role.role,
+                    }).ToList();
+        }
+
+        public static IEnumerable<OrderDto> ConvertToDto(this IEnumerable<Order> Orders, IEnumerable<Book> Books, IEnumerable<User> Users, IEnumerable<ApprovalStatus> Approvals)
+        {
+            var orderDtoList = new List<OrderDto>();
+
+            foreach (var order in Orders)
+            {
+                var orderDto = new OrderDto
+                {
+                    OrderId = order.OrderId,
+                    BooksId = order.BooksId,
+                    UserId = order.UserId,
+                    UserFirstName = Users.FirstOrDefault(u => u.Id == order.UserId)?.FirstName,
+                    UserLastName = Users.FirstOrDefault(u => u.Id == order.UserId)?.LastName,
+                    ItemsCount = CalculateItemsCount(order.BooksId),
+                    TotalPrice = order.TotalPrice,
+                    OrderDate = order.OrderDate,
+                    Method = order.Method,
+                    Address = order.Address,
+                    city = order.city,
+                    phoneNumber = order.phoneNumber,
+                    ApprovalStatus = Approvals.FirstOrDefault(a => a.id == order.ApprovalStatus).id,
+                    ApprovalStatusTitle = Approvals.FirstOrDefault(a => a.id == order.ApprovalStatus).approvalStatusTitle != null ? Approvals.FirstOrDefault(a => a.id == order.ApprovalStatus).approvalStatusTitle : string.Empty,
+
+            };
+
+                orderDtoList.Add(orderDto);
+            }
+
+            return orderDtoList;
+        }
+
+        private static int CalculateItemsCount(string? booksId)
+        {
+            if (string.IsNullOrEmpty(booksId))
+            {
+                return 0;
+            }
+
+            string[] bookIds = booksId.Split('/');
+            return bookIds.Length;
         }
     }
 }

@@ -13,5 +13,7 @@
         public int CategoryId { get; set; }
         public int approvalStatus {get; set;}
         public int sellerId { get; set; }
+        public Author? Author { get; set; }
+        public BookCategory? Category{ get; set; }
     }
 }

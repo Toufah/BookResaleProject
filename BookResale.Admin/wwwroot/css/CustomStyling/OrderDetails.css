@@ -1,0 +1,168 @@
+﻿.approvalsContainer, .booksTable, .orderDetailsContainer .content_container > div:last-child {
+    padding: 15px 20px 20px 20px;
+    background: #fff;
+    border-radius: 5px;
+}
+.approvalsContainer > h6, .orderDetailsContainer .content_container > div:last-child > h6{
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.approvalsContainer > div {
+    display: initial !important;
+    padding: 0 !important;
+}
+.approvalsContainer > div > button{
+    display: inline-block;
+    width: 150px;
+    margin-right: 10px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    height: 40px;
+    color: #fff;
+    font-weight: 600;
+}
+.button_1 {
+    background-color: #f1b44c;
+    border-color: #f1b44c;
+}
+.button_2 {
+    background-color: #556ee6;
+    border-color: #556ee6;
+}
+.button_3 {
+    background-color: #f46a6a;
+    border-color: #f46a6a;
+}
+.button_4 {
+    background-color: #84b5cb;
+    border-color: #84b5cb;
+}
+.button_5 {
+    background-color: #7ac17a;
+    border-color: #7ac17a;
+}
+.booksTable{
+    margin-top: 20px !important;
+    
+}
+.booksTable thead td {
+    font-weight: 700;
+}
+.booksTable img {
+    width: 80px;
+}
+.booksTable td:last-child {
+    text-align: right;
+}
+.booksTable tfoot td {
+    padding: 10px 15px;
+    font-weight: 700;
+}
+.booksTable tbody tr {
+    transition: 0.2s ease-in-out;
+}
+.booksTable tbody tr:hover {
+    transform: scale(0.98)
+}
+.orderDetailsContainer .content_container > div:last-child > div {
+    display: initial;
+}
+.orderDetailsContainer .content_container > div:last-child > div > p {
+    display: flex;
+    justify-content: left;
+    padding: 10px 0;
+}
+.orderDetailsContainer .content_container > div:last-child > div > p > span {
+    width: 100%;
+    display: block
+}
+.tableContainer {
+    background: #fff !important;
+    border-radius: 5px;
+    padding: 15px;
+    border-radius: 5px;
+}
+.tableContainer table td{
+    padding: 20px ;
+}
+.tableContainer table thead tr td{
+    font-weight: 700
+}
+.tableContainer table tr:nth-child(even){
+    background: var(--orange-v1);
+}
+.tableContainer table tbody tr{
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+}
+.tableContainer table tbody tr:hover {
+    transform: scale(0.99);
+}
+.tableContainer table tbody tr td:last-child i {
+    font-size: 0.9rem !important;
+}
+.ConfirmationMessage{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 6px -2px #5f5f5f;
+    padding: 15px 25px;
+    overflow: hidden;
+    transition: 0.2s ease-in-out;
+}
+.ConfirmationMessage > span {
+    text-align: center;
+    display: initial !important;
+}
+.ConfirmationMessage > span > span{
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    display: block;
+}
+.ConfirmationMessage > span > div  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+.ConfirmationMessage > span > div > button {
+    width: 140px;
+    height: 45px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-weight: 700;
+    color: #fff;
+}
+.ConfirmationMessage > span > div > button:first-child{
+    background-color: #f46a6a;
+    border-color: #f46a6a;
+}
+.ConfirmationMessage > span > div > button:last-child{
+    background-color: var(--lookalike-gray)
+}
+.DisplayConfirmationMessage{
+    width: 0;
+    height: 0;
+    padding: 0;
+}
+.floating_Image {
+    position: fixed;
+    width: 30px;
+    padding: 2px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 8px -2px #5f5f5f;
+    right: 5px;
+    top: 65px;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+.floating_Image:hover {
+    width: 250px;
+}

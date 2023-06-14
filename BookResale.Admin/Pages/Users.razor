@@ -1,0 +1,52 @@
+﻿@page "/Users"
+@inherits UsersBase
+
+<AuthorizeView>
+    <Authorized>
+        <div class="ordersContainer">
+            <div class="content_container">
+                <div class="tableContainer">
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>user ID</td>
+                                <td>first name</td>
+                                <td>last name</td>
+                                <td>email</td>
+                                <td>role</td>
+                                <td>action</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Users != null)
+                            {
+                                var users = Users.ToList();
+                                @for (int i = Math.Max(Users.Count() - 1, 0); i >= 0; i--)
+                                {
+                                    var user = users[i];
+                                    <tr>
+                                        <td>@user.Id</td>
+                                        <td>@user.FirstName</td>
+                                        <td>@user.LastName</td>
+                                        <td>@user.Email</td>
+                                        <td>@user.RoleName</td>
+                                        <td><i class="bi bi-eye-fill" @onclick="() => ViewUser(user.Id)"></i><i class="bi bi-trash-fill" @onclick="() => DisplayConfirmationMessage(user.Id)"></i></td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="ConfirmationMessage @displayConfirmationMessage">
+                    <span>
+                        <span>do you want to remove this user?</span>
+                        <div>
+                            <button @onclick="RemoveUser">remove</button>
+                            <button @onclick="HideConfirmationMessage">cancel</button>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </Authorized>
+</AuthorizeView>

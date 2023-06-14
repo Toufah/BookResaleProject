@@ -169,7 +169,7 @@
     text-transform: capitalize;
 }
 .hideCTA {
-    display: none !important;
+    visibility: hidden !important;
 }
 @keyframes shockwaveJump {
     0% {

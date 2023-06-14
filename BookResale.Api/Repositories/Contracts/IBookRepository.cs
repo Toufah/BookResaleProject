@@ -5,8 +5,10 @@ namespace BookResale.Api.Repositories.Contracts
     public interface IBookRepository
     {
         Task<IEnumerable<Book>> GetBooks();
+        Task<IEnumerable<Book>> GetAllBooks();
         Task<IEnumerable<BookCategory>> GetCategories();
         Task<Book> GetBook(long id);
+        Task<Book> GetBookAnyway(long id);
         Task<BookCategory> GetCategorie(int id);
         Task<IEnumerable<Author>> GetAuthors();
         Task<Author> GetAuthor(int id);

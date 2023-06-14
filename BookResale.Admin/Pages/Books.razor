@@ -1,0 +1,61 @@
+﻿@page "/Books"
+@using System.Globalization;
+@inherits BooksBase
+
+<AuthorizeView>
+    <Authorized>
+        <div class="ordersContainer">
+            <div class="content_container">
+                <div class="tableContainer">
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>ISBN</td>
+                                <td>book title</td>
+                                <td>book image</td>
+                                <td>Author</td>
+                                <td>category</td>
+                                <td>state</td>
+                                <td>price</td>
+                                <td>approval status</td>
+                                <td>seller</td>
+                                <td>action</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Books != null)
+                            {
+                                var BooksList = Books.ToList();
+                                @for (int i = Math.Max(Books.Count() - 1, 0); i >= 0; i--)
+                                {
+                                    var book = BooksList[i];
+                                    <tr>
+                                        <td>@book.Id</td>
+                                        <td>@book.Title</td>
+                                        <td><img src="@book.ImageURL"/></td>
+                                        <td>@book.AuthorFirstName @book.AuthorLastName</td>
+                                        <td>@book.CategoryName</td>
+                                        <td>@book.State</td>
+                                        <td>@book.Price.ToString("C", new CultureInfo("en-US"))</td>
+                                        <td>@book.approvalStatusTitle</td>
+                                        <td>@book.sellerFirstname @book.sellerLastname</td>
+                                        <td><i class="bi bi-eye-fill" @onclick="() => ViewBook(book.Id)"></i><i class="bi bi-trash-fill" @onclick="() => DisplayConfirmationMessage(book.Id)"></i></td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="ConfirmationMessage @displayConfirmationMessage">
+                    <span>
+                        <span>do you want to delete this book?</span>
+                        <div>
+                            <button @onclick="RemoveBook">remove</button>
+                            <button @onclick="HideConfirmationMessage">cancel</button>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </Authorized>
+</AuthorizeView>

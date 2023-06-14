@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "jMhmUu1B2j4PhEtFc+hrcGpS8nLIjXuWXyblP136zgwlWG5Cj4Fe64PCqnBQgDWbzoik2nrhD0+kyXol80ipIw==",
+  "dgSpecHash": "VxGh0+Fs2/k4+lCpAq51Yk/hLFZrml9jLOzT6Bb/WTqhb4A6KZr4EHX7azIzTy6at6hnm9r6WqwIPc5WXEvvJg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Admin\\BookResale.Admin.csproj",
   "expectedPackageFiles": [
@@ -34,6 +34,7 @@
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.jsinterop\\7.0.5\\microsoft.jsinterop.7.0.5.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.jsinterop.webassembly\\7.0.5\\microsoft.jsinterop.webassembly.7.0.5.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\mudblazor\\6.2.5\\mudblazor.6.2.5.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\system.io.pipelines\\7.0.0\\system.io.pipelines.7.0.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512",

@@ -11,6 +11,8 @@ namespace BookResale.Models.Dtos
         public int OrderId { get; set; }
         public string? BooksId { get; set; }
         public int UserId { get; set; }
+        public string? UserFirstName { get; set; }
+        public string? UserLastName { get; set; }
         public int ItemsCount { get; set; }
         public decimal TotalPrice { get; set; }
         public DateTime? OrderDate { get; set; }
@@ -19,5 +21,6 @@ namespace BookResale.Models.Dtos
         public string? city { get; set; }
         public string? phoneNumber { get; set; }
         public int ApprovalStatus { get; set; }
+        public string? ApprovalStatusTitle { get;  set; }
     }
 }

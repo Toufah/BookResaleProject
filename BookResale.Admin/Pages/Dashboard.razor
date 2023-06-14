@@ -1,4 +1,5 @@
 ﻿@page "/Dashboard"
+@using System.Globalization;
 @inherits DashboardBase;
 
 <AuthorizeView>
@@ -8,79 +9,226 @@
                 <div class="data-container">
                     <div>
                         <div>
-                            <h6><i class="bi bi-link-45deg"></i> today visitors</h6>
-                            <p>3 visitors</p>
-                        </div>
+                            <h6><i class="bi bi-link-45deg"></i> all time visitors</h6>
+                        <p>@if (visits != 0)
+                            {
+                                <span>@visits</span>
+                            } visitors</p>
+                    </div>
                         <div>
                             <h6><i class="bi bi-box2-fill"></i> today revenue</h6>
-                            <p>$0</p>
-                        </div>
+                        <p>@if (TodayRevenue == null)
+                            {
+                                <span>--</span>
+                            }
+                            else
+                            {
+                                <span>@TodayRevenue.ToString("C", new CultureInfo("en-US"))</span>
+                            }</p>
+                    </div>
                         <div>
-                            <h6><i class="bi bi-clipboard2-pulse-fill"></i> today conversion rate</h6>
-                            <p>0%</p>
+                            <h6><i class="bi bi-clipboard2-pulse-fill"></i> All-time Revenue</h6>
+                        <p>
+                            @if (AllTimeRevenue == null)
+                            {
+                                <span>--</span>
+                            }
+                            else
+                            {
+                                <span>@AllTimeRevenue.ToString("C", new CultureInfo("en-US"))</span>
+                            }
+                        </p>
                         </div>
                     </div>
                     <div>
                         <div class="orders">
                             <div>
                                 <h6>today orders</h6>
-                                <p>0</p>
+                            <p>
+                                @if (TodayOrdres == null)
+                                {
+                                    <span>--</span>
+                                }
+                                else
+                                {
+                                    <span>@TodayOrdres</span>
+                                }
+                            </p>
                             </div>
                             <div>
                                 <h6>today earnings</h6>
-                                <p>$0</p>
+                            <p>
+                                @if (TodayRevenue == null)
+                                {
+                                    <span>--</span>
+                                }
+                                else
+                                {
+                                    <span>@TodayRevenue.ToString("C", new CultureInfo("en-US"))</span>
+                                }
+                            </p>
+                            </div>
+                            <div>
+                            <span><span>1D</span></span>
                             </div>
                         </div>
                         <div class="orders">
                             <div>
-                                <h6>today orders</h6>
-                                <p>0</p>
+                                <h6>yesterday orders</h6>
+                            <p>
+                                @if (YesterdayOrders == null)
+                                {
+                                    <span>--</span>
+                                }
+                                else
+                                {
+                                    <span>@YesterdayOrders</span>
+                                }
+                            </p>
                             </div>
                             <div>
-                                <h6>today earnings</h6>
-                                <p>$0</p>
+                                <h6>yesterday earnings</h6>
+                            <p>
+                                @if (YesterdayEarnings == null)
+                                {
+                                    <span>--</span>
+                                }
+                                else
+                                {
+                                    <span>@YesterdayEarnings.ToString("C", new CultureInfo("en-US"))</span>
+                                }
+                            </p>
+                            </div>
+                            <div>
+                            <span><span>-1D</span></span>
                             </div>
                         </div>
                         <div class="orders">
                             <div>
-                                <h6>today orders</h6>
-                                <p>0</p>
+                                <h6>this week orders</h6>
+                            <p>
+                                @if (ThisWeekOrders == null)
+                                {
+                                    <span>--</span>
+                                }
+                                else
+                                {
+                                    <span>@ThisWeekOrders</span>
+                                }
+                            </p>
                             </div>
                             <div>
-                                <h6>today earnings</h6>
-                                <p>$0</p>
+                                <h6>this week earnings</h6>
+                            <p>
+                                @if (ThisWeekEarnings == null)
+                                {
+                                    <span>--</span>
+                                }
+                                else
+                                {
+                                    <span>@ThisWeekEarnings.ToString("C", new CultureInfo("en-US"))</span>
+                                }
+                            </p>
+                            </div>
+                            <div>
+                            <span><span>7D</span></span>
                             </div>
                         </div>
                     </div>
                     <div>
                         <div class="orders">
                             <div>
-                                <h6>today orders</h6>
-                                <p>0</p>
+                                <h6>this month orders</h6>
+                            <p>
+                                @if (ThisMonthOrders == null)
+                                {
+                                    <span>--</span>
+                                }
+                                else
+                                {
+                                    <span>@ThisMonthOrders</span>
+                                }
+                            </p>
                             </div>
                             <div>
-                                <h6>today earnings</h6>
-                                <p>$0</p>
+                                <h6>this month earnings</h6>
+                            <p>
+                                @if (ThisMonthEarnings == null)
+                                {
+                                    <span>--</span>
+                                }
+                                else
+                                {
+                                    <span>@ThisMonthEarnings.ToString("C", new CultureInfo("en-US"))</span>
+                                }
+                            </p>
+                            </div>
+                            <div>
+                            <span><span>30D</span></span>
                             </div>
                         </div>
                         <div class="orders">
                             <div>
-                                <h6>today orders</h6>
-                                <p>0</p>
+                                <h6>this year orders</h6>
+                            <p>
+                                @if (ThisYearOrders == null)
+                                {
+                                    <span>--</span>
+                                }
+                                else
+                                {
+                                    <span>@ThisYearOrders</span>
+                                }
+                            </p>
                             </div>
                             <div>
                                 <h6>today earnings</h6>
-                                <p>$0</p>
+                            <p>
+                                @if (ThisYearEarnings == null)
+                                {
+                                    <span>--</span>
+                                }
+                                else
+                                {
+                                    <span>@ThisYearEarnings.ToString("C", new CultureInfo("en-US"))</span>
+                                }
+                            </p>
+                            </div>
+                            <div>
+                            <span><span>1Y</span></span>
                             </div>
                         </div>
                         <div class="orders">
                             <div>
-                                <h6>today orders</h6>
-                                <p>0</p>
+                                <h6>all-time orders</h6>
+                            <p>
+                                @if (orderDto == null)
+                                {
+                                    <span>--</span>
+                                }
+                                else
+                                {
+                                    <span>@orderDto.Count()</span>
+                                }
+                            </p>
                             </div>
                             <div>
                                 <h6>today earnings</h6>
-                                <p>$0</p>
+                            <p>
+                                @if (AllTimeRevenue == null)
+                                {
+                                    <span>--</span>
+                                }
+                                else
+                                {
+                                    <span>@AllTimeRevenue.ToString("C", new CultureInfo("en-US"))</span>
+                                }
+                            </p>
+                            </div>
+                            <div>
+                                <span>
+                                <span>+00</span>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -97,25 +245,28 @@
                                             <td>phone</td>
                                             <td>total</td>
                                             <td>status</td>
-                                            <td>payment</td>
-                                            <td>mode</td>
+                                            <td>method</td>
                                             <td>action</td>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    @for(var i =0; i < 20; i++)
+                                    @if(orderDto != null)
                                     {
-                                        <tr>
-                                            <td>@i</td>
-                                            <td>Bouchra</td>
-                                            <td>2022-04-12 at 16:04</td>
-                                            <td>0672638581</td>
-                                            <td>$22</td>
-                                            <td>new</td>
-                                            <td>pending</td>
-                                            <td>cod</td>
-                                            <td><button>details</button></td>
-                                        </tr>
+                                        var orderList = orderDto.ToList();
+                                        @for (int i = Math.Max(ordersCount - 1, 0); i >= Math.Max(ordersCount - maxValue, 0); i--)
+                                        {
+                                            var order = orderList[i];
+                                            <tr>
+                                                <td>@order.OrderId</td>
+                                                <td>@($"{order.UserFirstName} {order.UserLastName}")</td>
+                                                <td>@order.OrderDate</td>
+                                                <td>@order.phoneNumber</td>
+                                                <td>@order.TotalPrice.ToString("C", new CultureInfo("en-US"))</td>
+                                                <td>@order.ApprovalStatusTitle</td>
+                                                <td>COD</td>
+                                                <td><button @onclick="() => ViewOrderDetails(order.OrderId)">details</button></td>
+                                            </tr>
+                                        }
                                     }
                                 </tbody>
                                 </table>

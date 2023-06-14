@@ -1,4 +1,5 @@
-﻿using BookResale.Models.Dtos;
+﻿using BookResale.Api.Entities;
+using BookResale.Models.Dtos;
 
 namespace BookResale.Api.Services
 {
@@ -14,5 +15,9 @@ namespace BookResale.Api.Services
         Task<bool> UpdateUserShippingAddress(UserShippingAdressDto userShippingAdressDto);
         Task<bool> UpdateUserInformations(UpdateUserInformationsDto updateUserInformationsDto);
         Task<bool> PasswordVerification(UpdatePasswordDto updatePasswordDto);
+        Task<IEnumerable<User>> GetUsers();
+        Task<bool> RemoveUser(int Id);
+        Task<bool> UpdateUserRole(UserDto user);
+        Task<IEnumerable<RoleDto>> GetRoles();
     }
 }

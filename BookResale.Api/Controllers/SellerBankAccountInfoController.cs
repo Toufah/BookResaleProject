@@ -44,11 +44,11 @@ namespace BookResale.Api.Controllers
                 bool result = await sellerBankAccountInfoService.DoBankAccountExists(sellerId);
                 if (result)
                 {
-                    return Ok("Bank Account Do Not Exists.");
+                    return Ok(true);
                 }
                 else
                 {
-                    return BadRequest("Bank Account Already Exists.");
+                    return Ok(false);
                 }
             }
             catch (Exception)

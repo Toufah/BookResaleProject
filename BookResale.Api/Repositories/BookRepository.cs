@@ -139,5 +139,17 @@ namespace BookResale.Api.Repositories
         .ToListAsync();
             return approvedBooks;
         }
+
+        public async Task<IEnumerable<Book>> GetAllBooks()
+        {
+            var approvedBooks = await this.bookResaleDbContext.Books.ToListAsync();
+            return (IEnumerable<Book>)approvedBooks;
+        }
+
+        public async Task<Book> GetBookAnyway(long id)
+        {
+            var book = await this.bookResaleDbContext.Books.SingleOrDefaultAsync(a => a.Id == id);
+            return book;
+        }
     }
 }

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Fagrf+kSDiDnb9cNObxl/XMqG/PUi0j7XyCwQPZe8Fg51z1vYezM9wvVIemOBuZcQQLhLefMMMdJUfFAYWZK/g==",
+  "dgSpecHash": "IcNGmCFu9oP2AT11vDM7OwwUqKD39LCy75F4CeG9ocTbQCqSgFh6audpOKKFoTCgmSTQwXrshaoXgFJ8uKm3mw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Lenovo\\Documents\\PFEWebApp\\BookResaleSolution\\BookResale.Web\\BookResale.Web.csproj",
   "expectedPackageFiles": [
@@ -16,6 +16,8 @@
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.components.web\\7.0.5\\microsoft.aspnetcore.components.web.7.0.5.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly\\7.0.5\\microsoft.aspnetcore.components.webassembly.7.0.5.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.devserver\\7.0.5\\microsoft.aspnetcore.components.webassembly.devserver.7.0.5.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.aspnetcore.metadata\\7.0.5\\microsoft.aspnetcore.metadata.7.0.5.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",

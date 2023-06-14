@@ -883,3 +883,11 @@ C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\obj\Debug\
 C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\obj\Debug\net7.0\build-gz\1sulap7P.gz
 C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\obj\Debug\net7.0\build-gz\+RwuHx4b.gz
 C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\obj\Debug\net7.0\build-gz\yNOC+Qzq.gz
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\bin\Debug\net7.0\wwwroot\_framework\Microsoft.AspNetCore.Http.Abstractions.dll
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\bin\Debug\net7.0\wwwroot\_framework\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\bin\Debug\net7.0\wwwroot\_framework\Microsoft.AspNetCore.Http.Features.dll.gz
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\bin\Debug\net7.0\wwwroot\_framework\Microsoft.AspNetCore.Http.Abstractions.dll.gz
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\bin\Debug\net7.0\Microsoft.AspNetCore.Http.Abstractions.dll
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\bin\Debug\net7.0\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\obj\Debug\net7.0\build-gz\lz6z7Ypq.gz
+C:\Users\Lenovo\Documents\PFEWebApp\BookResaleSolution\BookResale.Web\obj\Debug\net7.0\build-gz\2uZuV44w.gz

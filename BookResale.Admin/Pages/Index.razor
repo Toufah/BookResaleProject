@@ -18,11 +18,11 @@
                             <MudCardContent>
                                 <MudTextField @bind-Value="loginModel.Email"
                                               For="@(() => loginModel.Email)"
-                                              Immediate="true" Placeholder="Email"/>
+                                              Immediate="true" Placeholder="Email" @onkeydown="LoginOnKeyPress" />
                                 <MudTextField @bind-Value="loginModel.Password"
                                               For="@(() => loginModel.Password)"
                                               Immediate="true"
-                                              Placeholder="Password" InputType="InputType.Password" />
+                                              Placeholder="Password" InputType="InputType.Password" @onkeydown="LoginOnKeyPress" />
                             </MudCardContent>
                             <MudCardActions Class="btn-cont">
                                 <MudButton Variant="Variant.Filled" Class="cust-btn" OnClick="LoginAsync">sign in</MudButton>

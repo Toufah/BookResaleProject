@@ -1,4 +1,5 @@
-﻿using BookResale.Api.Extensions;
+﻿using BookResale.Api.Entities;
+using BookResale.Api.Extensions;
 using BookResale.Api.Repositories.Contracts;
 using BookResale.Api.Services.InboxService;
 using BookResale.Models.Dtos;
@@ -42,11 +43,11 @@ namespace BookResale.Api.Controllers
         }
 
         [HttpGet("GetMessages")]
-        public async Task<ActionResult<IEnumerable<InboxDto>>> GetAllMessages()
+        public async Task<ActionResult<IEnumerable<InboxDto>>> GetAllMessages(int userId)
         {
             try
             {
-                var messages = await inboxService.GetAllMessages();
+                var messages = await inboxService.GetAllMessages(userId);
                 var users = await userRepository.GetAllUsers();
 
                 if(messages == null || users == null)
@@ -131,7 +132,7 @@ namespace BookResale.Api.Controllers
                 {
                     Id = message.Id,
                     SenderId = sender.Id,
-                    SenderName = sender.LastName,
+                    SenderName = sender.LastName + " " + sender.FirstName,
                     RecepientId = recepient.Id,
                     RecepientName = recepient.LastName,
                     Subject = message.Subject,
